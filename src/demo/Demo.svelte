@@ -1,12 +1,13 @@
 <script>
   import { onMount } from "svelte";
+  import data from "./demo-data.json";
   import { TemplateEditor } from "@/classes/TemplateEditor";
-  import { transformToEjs } from "@/services/transform-to-ejs.service";
+  import { transform } from "@/services/transform";
 
   let editor = null;
   const placeholder = "Start writing here";
 
-  const demoData = {};
+  const demoData = data;
 
   onMount(() => {
     editor = new TemplateEditor({
@@ -16,16 +17,22 @@
     });
   });
 
-  const downloadEJS = () => {
-    editor
-      .save()
-      .then((outputData) => {
-        console.log("Article data: ", outputData);
-        transformToEjs(outputData);
-      })
-      .catch((error) => {
-        console.log("Saving failed: ", error);
-      });
+  const downloadEJS = async () => {
+    const ejs = await transform.toEJS(editor);
+    var pom = document.createElement("a");
+    pom.setAttribute(
+      "href",
+      "data:text/plain;charset=utf-8," + encodeURIComponent(ejs)
+    );
+    pom.setAttribute("download", "index.html");
+
+    if (document.createEvent) {
+      var event = document.createEvent("MouseEvents");
+      event.initEvent("click", true, true);
+      pom.dispatchEvent(event);
+    } else {
+      pom.click();
+    }
   };
 </script>
 
@@ -37,4 +44,13 @@
 </div>
 
 <style>
+  .top-menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: lightgray;
+    padding: 1rem;
+    border-top: 1px solid black;
+  }
 </style>

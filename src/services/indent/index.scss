@@ -1,0 +1,41 @@
+$columns: 12;
+$indent-color: #eff0f1;
+$tab-size: 40;
+
+// This function generates this:
+// .indent-2 {
+//     .cdx-block, .condition-container {
+//         margin-left: 40px;
+//         box-shadow:
+//             -8px 0px white, -10px 0 0px lightgrey,
+//             -28px 0px white, -30px 0 0px lightgrey;
+
+//     }
+// }
+
+@mixin indent {
+  @for $i from 1 through $columns {
+    .indent-#{$i} {
+      .cdx-block,
+      .ce-header,
+      .condition-container {
+        &:not(.inline) {
+          margin-left: calc(#{$i * $tab-size}px - 30px);
+          box-shadow: custome-box-shadow($i);
+        }
+      }
+    }
+  }
+}
+
+@function custome-box-shadow($n) {
+  $box-shadow: "";
+  @for $i from 1 through $n {
+    $shadows: -#{8 + (($i - 1) * $tab-size)}px 0px white,
+      -#{10 + (($i - 1) * $tab-size)}px 0 0px #{$indent-color};
+    $box-shadow: $box-shadow + $shadows + " ,";
+  }
+  @return str_slice(unquote($box-shadow), 0, str_length($box-shadow)-1);
+}
+
+@include indent;
