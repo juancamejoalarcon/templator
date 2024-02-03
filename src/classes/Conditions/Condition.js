@@ -9,7 +9,7 @@ export class Condition {
     constructor({ api, data = { skipEndBlock: false, type: '', condition: '' }, config = { type: 'if' }}) {
         this.api = api
 
-        if (!state.api) state.setApi(api)
+        state.setApi(api)
 
         this.skipEndBlock = data.skipEndBlock || data.type
         
@@ -76,7 +76,7 @@ export class Condition {
             const block = this.api.blocks.getBlockByIndex(i);
             const endBlockName = this.type === 'if' ? 'IfEndCondition' : 'ForEndCondition'
             if (block?.name === endBlockName) return i
-            if (this.type === 'if' && block?.name === 'ElseCondition') this.api.blocks.delete(i)
+            if (this.type === 'if' && (block?.name === 'ElseCondition' || block?.name === 'IfElseCondition')) this.api.blocks.delete(i)
         }
     }
 

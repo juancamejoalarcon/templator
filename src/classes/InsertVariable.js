@@ -25,6 +25,7 @@ export class InsertVariable {
         const selectedText = range.extractContents();
 
         const ifConditionContainer = document.createElement('span');
+        ifConditionContainer.classList.add('templator-variable')
         new VariableComponent({ target: ifConditionContainer, props: { text: selectedText } })
 
 

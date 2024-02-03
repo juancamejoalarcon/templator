@@ -1,32 +1,38 @@
 <script>
-  import CloseIcon from '@/assets/icons/xmark-solid.svg?raw'
+  import CloseIcon from "@/assets/icons/xmark-solid.svg?raw";
   export let inline = false;
-  export let conditionChanged = (condition) => {}
-  export let onRemove = null
-  export let statement = 'IF'
-  export let condition = statement === 'IF' ? 'condicion == resultado' : 'item in items'
-  export let isEnd = false
+  export let conditionChanged = (condition) => {};
+  export let onRemove = null;
+  export let statement = "IF";
+  export let condition =
+    statement === "IF" ? "condicion == resultado" : "item in items";
+  export let isEnd = false;
 
-  const remove = onRemove || function () {}
+  const remove = onRemove || function () {};
 
-  const startCondition = '['
-  const endCondition = ']'
+  const startCondition = "[";
+  const endCondition = "]";
 
-  const startBracket = '('
-  const endBracket = ')'
+  const startBracket = "(";
+  const endBracket = ")";
 
   const onConditionChange = (e) => {
-    condition = e.target.textContent
-    conditionChanged(condition)
-  }
+    condition = e.target.textContent;
+    conditionChanged(condition);
+  };
 </script>
 
 <span class="condition-container" class:inline data-statement={statement}>
   <span>{startCondition}</span>
 
-  {#if !isEnd}
+  {#if !isEnd && statement !== "ELSE"}
     <span class="condition-input">
-      {statement} {startBracket}<span on:input={onConditionChange} class="condition-input-edit" contenteditable="true">{condition}</span>{endBracket}
+      {statement}
+      {startBracket}<span
+        on:input={onConditionChange}
+        class="condition-input-edit"
+        contenteditable="true">{condition}</span
+      >{endBracket}
     </span>
   {:else}
     <span class="condition-input">
@@ -37,14 +43,19 @@
   <span>{endCondition}</span>
 
   {#if onRemove}
-    <span class="close-icon" on:click={onRemove} on:keydown={onRemove} role="button" tabindex="0">
+    <span
+      class="close-icon"
+      on:click={onRemove}
+      on:keydown={onRemove}
+      role="button"
+      tabindex="0"
+    >
       {@html CloseIcon}
     </span>
   {/if}
 </span>
 
 <style lang="scss">
-
   .condition-container {
     cursor: default;
 
@@ -63,7 +74,7 @@
     }
   }
   .condition-input {
-    background-color: #EFF0F1;
+    background-color: #eff0f1;
     font-family: monospace;
     cursor: default;
     &-edit {

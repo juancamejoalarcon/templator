@@ -10,8 +10,10 @@ export class ElseCondition {
         };
     }
 
-    constructor({ api, data = { condition: '' } }) {
+    constructor({ api, data = { condition: '' }, config = { type: 'else' } }) {
         this.api = api
+
+        this.type = config.type
 
         this.condition = data.condition || this.getDefaultCondition()
     }
@@ -25,7 +27,7 @@ export class ElseCondition {
         const app = new ConditionComponent({
             target,
             props: {
-                statement: 'ELSE',
+                statement: this.type.toUpperCase(),
                 condition: this.condition,
                 conditionChanged: (condition) => {
                     this.condition = condition

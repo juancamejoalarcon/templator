@@ -27,6 +27,12 @@ export const transformToEjs = async (editor) => {
                     conditionEl.replaceWith(textNode)
                 })
 
+                parsedText.querySelectorAll('.templator-variable').forEach((variable) => {
+                    const content = variable.querySelector('.variable-container').textContent
+                    let textNode = document.createTextNode(`<%= ${content} %>`);
+                    variable.replaceWith(textNode)
+                })
+
                 let inner = parsedText.innerHTML
                 inner = inner.replaceAll('&lt;', '<')
                 inner = inner.replaceAll('&gt;', '>')
@@ -37,13 +43,15 @@ export const transformToEjs = async (editor) => {
 
         const edjsParser = edjsHTML({
             IfCondition: ({ data }) => `<% if (${data.condition}) { %>`,
-            ForCondition: ({ data }) => `<% for (const ${data.condition}) { %>`,
-            ElseCondition: ({ data }) => `<% } else if (${data.condition}) { %>`,
+            IfElseCondition: ({ data }) => `<% } else if (${data.condition}) { %>`,
+            ElseCondition: ({ data }) => `<% } else { %>`,
             IfEndCondition: ({ data }) => `<% } %>`,
+            ForCondition: ({ data }) => `<% for (const ${data.condition}) { %>`,
             ForEndCondition: ({ data }) => `<% } %>`
         });
 
         const parsed = edjsParser.parse(cloneData);
+        console.log(parsed)
 
         return parsed.join('')
 

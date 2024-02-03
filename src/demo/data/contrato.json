@@ -1,0 +1,61 @@
+{
+    "time": 1706977394715,
+    "blocks": [
+        {
+            "id": "Z8_yQSk41t",
+            "type": "IfCondition",
+            "data": {
+                "type": "IF",
+                "condition": "tipo_contrato == 'instalments'"
+            }
+        },
+        {
+            "id": "DDPR1t4fmM",
+            "type": "header",
+            "data": {
+                "text": "Contrato del servicio de pago aplazado de Aplazame.",
+                "level": 2
+            }
+        },
+        {
+            "id": "ib5yfjkom5",
+            "type": "IfElseCondition",
+            "data": {
+                "type": "ELSE",
+                "condition": "tipo_contrato == 'pay in 4'"
+            }
+        },
+        {
+            "id": "uAfhugga0j",
+            "type": "header",
+            "data": {
+                "text": "Contrato del servicio de paga en 4 de Aplazame.",
+                "level": 2
+            }
+        },
+        {
+            "id": "m9-niBrJ3I",
+            "type": "IfElseCondition",
+            "data": {
+                "type": "ELSE",
+                "condition": "tipo_contrato == 'paylater'"
+            }
+        },
+        {
+            "id": "KmO94oLTHu",
+            "type": "header",
+            "data": {
+                "text": "Contrato de servicio de pago aplazado en <span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container  s-TQFJ7UDzQX2l\">paylater_num_days</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span> días de Aplazame.",
+                "level": 2
+            }
+        },
+        {
+            "id": "GSvwocZPvK",
+            "type": "IfEndCondition",
+            "data": {
+                "type": "ENDIF"
+            }
+        }
+    ],
+    "version": "2.29.0"
+}

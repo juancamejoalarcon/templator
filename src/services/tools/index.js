@@ -54,6 +54,7 @@ export const tools = {
             defaultStyle: 'unordered'
         }
     },
+    image: Image,
     If: {
         class: InlineCondition,
         config: {
@@ -87,7 +88,24 @@ export const tools = {
             title: 'IF',
         }
     },
-    ElseCondition,
+    IfElseCondition: {
+        class: ElseCondition,
+        config: {
+            type: 'else if'
+        },
+        toolbox: {
+            title: 'ELSE IF',
+        }
+    },
+    ElseCondition: {
+        class: ElseCondition,
+        config: {
+            type: 'else'
+        },
+        toolbox: {
+            title: 'ELSE',
+        }
+    },
     ForCondition: {
         class: Condition,
         config: {
@@ -109,7 +127,8 @@ export const tools = {
             type: 'ENDFOR'
         },
     },
-    image: Image,
     // Columns,
-    InsertVariable,
+    Variable: {
+        class: InsertVariable,
+    },
 }

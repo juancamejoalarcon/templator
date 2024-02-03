@@ -19,21 +19,21 @@ export const indent = (api) => {
             indentLevel += 1
         }
 
-        if (indentLevel && block.holder && block.name !== 'IfEndCondition' && block.name !== 'ForEndCondition' && block.name !== 'IfCondition' && block.name !== 'ForCondition' && block.name !== 'ElseCondition') {
+        if (indentLevel && block.holder && block.name !== 'IfEndCondition' && block.name !== 'ForEndCondition' && block.name !== 'IfCondition' && block.name !== 'ForCondition' && block.name !== 'ElseCondition' && block.name !== 'IfElseCondition') {
 
             if (indentLevel) {
                 block.holder.classList.add(`indent-${indentLevel}`)
             }
         }
 
-        if ((block.name === 'IfEndCondition' || block.name === 'IfCondition' || block.name === 'ElseCondition') && indentLevel > 1) {
+        if ((block.name === 'IfEndCondition' || block.name === 'IfCondition' || block.name === 'ElseCondition' || block.name === 'IfElseCondition') && indentLevel > 1) {
             block.holder.classList.add(`indent-${indentLevel - 1}`)
         }
 
         if ((block.name === 'ForEndCondition' || block.name === 'ForCondition') && indentLevel > 1) {
             block.holder.classList.add(`indent-${indentLevel - 1}`)
         }
-        // ElseCondition
+
         if (block.name === 'IfEndCondition' || block.name === 'ForEndCondition') {
             indentLevel -= 1
         }

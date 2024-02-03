@@ -37,13 +37,13 @@ export class TemplateEditor {
                 this.editor.on('block changed', ({ event }) => {
                     const { type } = event
                     if (type === 'block-moved' || type === 'block-removed' || type === 'block-added') {
-                        if (this.api) indent(this.api)
+                        if (state.api) indent(state.api)
                     }
                 })
                 new DragDrop(this.editor);
 
                 document.addEventListener("mouseup", () => {
-                    onSelectionChanged(this.api)
+                    onSelectionChanged(state.api)
                 }, false);
 
                 setTimeout(() => {
@@ -54,7 +54,7 @@ export class TemplateEditor {
                 onReady()
             },
             onChange: (API) => {
-                if (!this.api) this.api = API
+                state.setApi(API)
                 onChange()
             },
             tunes: ['IfConditionTune', 'ForConditionTune'],

@@ -1,44 +1,74 @@
 <script>
   import { onMount } from "svelte";
-  import data from "./demo-data.json";
+  import lorem from "./data/lorem.json";
+  import contrato from "./data/contrato.json";
   import { TemplateEditor } from "@/classes/TemplateEditor";
   import { transform } from "@/services/transform";
+  import { downloadHTML } from "./download";
 
+  let selected;
   let editor = null;
   const placeholder = "Start writing here";
+  const demos = [
+    { title: "lorem", data: lorem },
+    { title: "contrato", data: contrato },
+  ];
 
-  const demoData = data;
+  let demoData = {};
 
   onMount(() => {
+    startDemo();
+  });
+
+  const startDemo = () => {
     editor = new TemplateEditor({
       holder: "editorjs",
       placeholder,
       data: demoData,
     });
-  });
+  };
+
+  const onSelectDemo = () => {
+    demoData = demos.find((demo) => demo.title === selected)?.data;
+    editor?.destroy();
+    startDemo();
+  };
+
+  const logData = () => {
+    // editor.save().then((data) => console.log(data));
+    transform.toEJS(editor).then((data) => console.log(data));
+  };
 
   const downloadEJS = async () => {
     const ejs = await transform.toEJS(editor);
-    var pom = document.createElement("a");
-    pom.setAttribute(
-      "href",
-      "data:text/plain;charset=utf-8," + encodeURIComponent(ejs)
-    );
-    pom.setAttribute("download", "index.html");
-
-    if (document.createEvent) {
-      var event = document.createEvent("MouseEvents");
-      event.initEvent("click", true, true);
-      pom.dispatchEvent(event);
-    } else {
-      pom.click();
-    }
+    downloadHTML(ejs);
   };
 </script>
 
 <div class="demo">
   <div class="top-menu">
-    <button on:click={downloadEJS}> Export to EJS </button>
+    <div class="menu-button">
+      <label for="demos">DEMO:</label>
+      <select
+        name="demos"
+        id="demos"
+        bind:value={selected}
+        on:change={onSelectDemo}
+      >
+        <option value="empty">Empty</option>
+        {#each demos as demo}
+          <option value={demo.title}>
+            {demo.title}
+          </option>
+        {/each}
+      </select>
+    </div>
+    <div class="menu-button">
+      <button on:click={downloadEJS}> Export to EJS </button>
+    </div>
+    <div class="menu-button">
+      <button on:click={logData}> Log data</button>
+    </div>
   </div>
   <div id="editorjs"></div>
 </div>
@@ -48,9 +78,13 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 9999;
     background-color: lightgray;
     padding: 1rem;
     border-top: 1px solid black;
+    display: flex;
+  }
+  .menu-button {
+    padding: 0rem 1rem;
   }
 </style>
