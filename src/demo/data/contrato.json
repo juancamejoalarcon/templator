@@ -1,5 +1,5 @@
 {
-    "time": 1707062918172,
+    "time": 1707070455137,
     "blocks": [
         {
             "id": "Z8_yQSk41t",
@@ -71,8 +71,7 @@
                 "withHeadings": true,
                 "content": [
                     [
-                        "1. Identidad y datos de contacto del prestamista.",
-                        ""
+                        "1. Identidad y datos de contacto del prestamista."
                     ],
                     [
                         "<b>Prestamista</b>\nWiZink Bank, S.A.U., a través de su marca APLAZAME\n",
@@ -115,7 +114,7 @@
                     ],
                     [
                         "endif",
-                        "condition"
+                        ""
                     ],
                     [
                         "if",
@@ -126,7 +125,7 @@
                     ],
                     [
                         "endif",
-                        "condition"
+                        ""
                     ]
                 ]
             }

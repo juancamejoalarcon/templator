@@ -1,0 +1,86 @@
+{
+    "time": 1707070369878,
+    "blocks": [
+        {
+            "id": "5VPe8uxc0E",
+            "type": "IfCondition",
+            "data": {
+                "type": "IF",
+                "condition": "condicion1 == resultado1"
+            }
+        },
+        {
+            "id": "YLTb8bEiFY",
+            "type": "paragraph",
+            "data": {
+                "text": "Integer sit amet libero non risus venenatis semper. Vestibulum dui sem, gravida nec tempor ut, ornare sed dui. Nulla a dui erat. Phasellus mattis massa id efficitur consectetur. Nullam mauris quam, tempus non efficitur non, consectetur id libero. Nam scelerisque, leo id ornare efficitur, neque nisl porttitor neque, sed eleifend mi libero non arcu. Sed odio turpis, vehicula a tempus id, blandit in quam."
+            }
+        },
+        {
+            "id": "njL10QH7r9",
+            "type": "IfCondition",
+            "data": {
+                "type": "IF",
+                "condition": "condicion2 == resultado2"
+            }
+        },
+        {
+            "id": "v4yR8vPqG0",
+            "type": "paragraph",
+            "data": {
+                "text": "In accumsan risus gravida, fermentum mauris quis, convallis mauris. Fusce ornare turpis nec velit convallis, volutpat euismod ipsum blandit. Maecenas blandit egestas magna a volutpat. Fusce sagittis cursus gravida. Aenean tempor pretium nibh eget faucibus. Donec a est nunc."
+            }
+        },
+        {
+            "id": "eRA-6rdOT-",
+            "type": "IfCondition",
+            "data": {
+                "type": "IF",
+                "condition": "condicion3 == resultado3"
+            }
+        },
+        {
+            "id": "aQe282wc58",
+            "type": "paragraph",
+            "data": {
+                "text": "Ut ullamcorper varius nisi, eget sodales sem. Duis interdum mauris non tortor semper ultricies. Donec eleifend orci non maximus aliquam. Pellentesque pharetra posuere iaculis. Morbi porta gravida nisi, et egestas purus lobortis eu. Donec sed mauris odio. Sed lacinia erat nibh. Sed vestibulum lorem non arcu vulputate eleifend. Aenean rutrum at urna eu dictum. Ut non sodales orci, sit amet ornare diam. Nunc condimentum vehicula dui id vestibulum. Pellentesque rhoncus placerat mi sit amet aliquam. Maecenas eleifend ex molestie urna pellentesque, vitae vulputate nunc pretium."
+            }
+        },
+        {
+            "id": "8R8yql62NH",
+            "type": "IfEndCondition",
+            "data": {
+                "type": "ENDIF"
+            }
+        },
+        {
+            "id": "fdjYdwpmwM",
+            "type": "paragraph",
+            "data": {
+                "text": "Duis augue odio, rhoncus vitae sollicitudin a, iaculis varius justo. Duis cursus arcu eu efficitur facilisis. Phasellus sed consequat lorem, a dictum nibh. Sed ac turpis nunc. Nulla dapibus, leo id porta posuere, enim augue vulputate ante, et pulvinar risus ipsum at leo. Curabitur semper, ante eu pulvinar laoreet, mauris dui consectetur orci, efficitur semper sem lacus non diam. Suspendisse a eros quis massa gravida ullamcorper. Phasellus aliquet enim placerat, feugiat ipsum ac, condimentum risus. Phasellus sagittis a urna sit amet fringilla. Phasellus in lectus vitae nulla faucibus pellentesque."
+            }
+        },
+        {
+            "id": "29Wj_QiPEa",
+            "type": "IfEndCondition",
+            "data": {
+                "type": "ENDIF"
+            }
+        },
+        {
+            "id": "TG1bY42LUb",
+            "type": "paragraph",
+            "data": {
+                "text": "In accumsan risus gravida, fermentum mauris quis, convallis mauris. Fusce ornare turpis nec velit convallis, volutpat euismod ipsum blandit. Maecenas blandit egestas magna a volutpat. Fusce sagittis cursus gravida. Aenean tempor pretium nibh eget faucibus. Donec a est nunc."
+            }
+        },
+        {
+            "id": "1-OzDXbfUI",
+            "type": "IfEndCondition",
+            "data": {
+                "type": "ENDIF"
+            }
+        }
+    ],
+    "version": "2.29.0"
+}

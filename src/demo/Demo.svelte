@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import lorem from "./data/lorem.json";
   import contrato from "./data/contrato.json";
+  import indent from "./data/indent.json";
   import { TemplateEditor } from "@/classes/TemplateEditor";
   import { transform } from "@/services/transform";
   import { downloadHTML } from "./download";
@@ -10,8 +11,9 @@
   let editor = null;
   const placeholder = "Start writing here";
   const demos = [
-    { title: "lorem", data: lorem },
+    { title: "indent", data: indent },
     { title: "contrato", data: contrato },
+    { title: "lorem", data: lorem },
   ];
 
   let demoData = {};
