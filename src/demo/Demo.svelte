@@ -19,6 +19,12 @@
   let demoData = {};
 
   onMount(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const demo = urlParams.get("demo");
+    if (demo) {
+      selected = demo;
+      demoData = demos.find((demo) => demo.title === selected)?.data;
+    }
     startDemo();
   });
 
@@ -34,6 +40,12 @@
     demoData = demos.find((demo) => demo.title === selected)?.data;
     editor?.destroy();
     startDemo();
+
+    if ("URLSearchParams" in window) {
+      var searchParams = new URLSearchParams(window.location.search);
+      searchParams.set("demo", selected);
+      window.location.search = searchParams.toString();
+    }
   };
 
   const logData = () => {
