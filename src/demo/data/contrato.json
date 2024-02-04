@@ -1,5 +1,5 @@
 {
-    "time": 1706983131207,
+    "time": 1707052554491,
     "blocks": [
         {
             "id": "Z8_yQSk41t",
@@ -65,22 +65,43 @@
             }
         },
         {
-            "id": "Nv9OehcABA",
+            "id": "_IfmJPAHce",
             "type": "table",
             "data": {
                 "withHeadings": true,
                 "content": [
                     [
-                        "1. Identidad y datos de contacto del prestamista."
+                        "1. Identidad y datos de contacto del prestamista.",
+                        ""
                     ],
                     [
-                        "<b>Prestamista</b>WiZink Bank, S.A.U., a través de su marca APLAZAME",
-                        "<b>Teléfono</b>919 03 30 15",
-                        "<b>Correo electrónico</b>hola@aplazame.com",
-                        "<b>Dirección web</b><a href=\"https://aplazame.com\">https://aplazame.com</a>"
+                        "<b>Prestamista</b>\nWiZink Bank, S.A.U., a través de su marca APLAZAME\n",
+                        "<b>Teléfono</b>\n919 03 30 15\n",
+                        "<b>Correo electrónico</b>\nhola@aplazame.com\n",
+                        "<b>Dirección web</b>\n<a href=\"https://aplazame.com\">https://aplazame.com</a>\n"
                     ],
                     [
-                        "<b>Dirección</b>Ulises nº. 16-18 28043 Madrid"
+                        "<b>Dirección</b>\nUlises nº. 16-18 28043 Madrid\n"
+                    ]
+                ]
+            }
+        },
+        {
+            "id": "Qt0oEX6FBo",
+            "type": "table",
+            "data": {
+                "withHeadings": true,
+                "content": [
+                    [
+                        "2. Identidad y datos de contacto del prestatario."
+                    ],
+                    [
+                        "<b>Nombre y apellidos</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">full_name</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n"
+                    ],
+                    [
+                        "<b>Correo electrónico</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">email</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>",
+                        "<b>D.N.I / N.I.E.</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">document_id</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n",
+                        "<b>Teléfono</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">phone</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n"
                     ]
                 ]
             }

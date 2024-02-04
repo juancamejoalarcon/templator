@@ -1,6 +1,22 @@
 import edjsHTML from 'editorjs-html'
 
 
+const replaceVariablesInElement = (element) => {
+    element.querySelectorAll('.templator-variable').forEach((variable) => {
+        const content = variable.querySelector('.variable-container').textContent
+        let textNode = document.createTextNode(`<%= ${content} %>`);
+        variable.replaceWith(textNode)
+    })
+}
+
+const replaceSpecialChars = (html) => {
+    html = html.replaceAll('&lt;', '<')
+    html = html.replaceAll('&gt;', '>')
+
+    return html
+}
+
+
 export const transformToEjs = async (editor) => {
 
     try {
@@ -27,24 +43,47 @@ export const transformToEjs = async (editor) => {
                     conditionEl.replaceWith(textNode)
                 })
 
-                parsedText.querySelectorAll('.templator-variable').forEach((variable) => {
-                    const content = variable.querySelector('.variable-container').textContent
-                    let textNode = document.createTextNode(`<%= ${content} %>`);
-                    variable.replaceWith(textNode)
-                })
+                replaceVariablesInElement(parsedText)
 
-                let inner = parsedText.innerHTML
-                inner = inner.replaceAll('&lt;', '<')
-                inner = inner.replaceAll('&gt;', '>')
+                let inner = replaceSpecialChars(parsedText.innerHTML)
 
                 block.data.text = inner
             }
         });
 
+        const cleanCellHtml = (html) => {
+            return html.replaceAll('\n', '<br>')
+        }
+
         const table = ({ data }) => {
-            console.log('----')
-            console.log(data)
-            console.log('----')
+            const { withHeadings, content } = data
+            const table = document.createElement('table')
+            if (withHeadings) {
+                const header = document.createElement('thead')
+                const headerRow = content[0]
+                table.appendChild(header)
+                headerRow.forEach(cellContent => {
+                    const cell = document.createElement('th')
+                    cell.innerHTML = cleanCellHtml(cellContent)
+                    header.appendChild(cell)
+                });
+            }
+            const body = document.createElement('tbody')
+            table.appendChild(body)
+            content.forEach((row, index) => {
+                if (index === 0 && withHeadings) return
+                const rowEl = document.createElement('tr')
+                row.forEach(cellContent => {
+                    const cell = document.createElement('td')
+                    cell.innerHTML = cleanCellHtml(cellContent)
+                    rowEl.appendChild(cell)
+                });
+                body.appendChild(rowEl)
+            });
+
+            replaceVariablesInElement(table)
+
+            return replaceSpecialChars(table.outerHTML)
         }
 
         const edjsParser = edjsHTML({
@@ -58,7 +97,6 @@ export const transformToEjs = async (editor) => {
         });
 
         const parsed = edjsParser.parse(cloneData);
-        console.log(parsed)
 
         return parsed.join('')
 

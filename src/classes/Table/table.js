@@ -616,10 +616,19 @@ export default class Table {
     if (data && data.content) {
       for (let i = 0; i < data.content.length; i++) {
         for (let j = 0; j < data.content[i].length; j++) {
-          this.setCellContent(i + 1, j + 1, data.content[i][j]);
+          this.setCellContent(i + 1, j + 1, this.cleanHTML(data.content[i][j]));
         }
       }
     }
+  }
+
+  /**
+   * Filter html
+   * @param {string} html
+   * @returns {string}
+   */
+  cleanHTML(html) {
+    return html.replaceAll('\n', '<br>')
   }
 
   /**
@@ -1074,11 +1083,13 @@ export default class Table {
       }
 
       const cellIsHidden = (cell) => cell.style.display === 'none'
-      data.push(cells.filter(cell => !cellIsHidden(cell)).map(cell => cell.querySelector(`.${CSS.cellContent}`).innerHTML));
+
+      const sanitizeHTML = (HTML) => {
+        return HTML.replaceAll('<br>', '\n')
+      }
+      data.push(cells.filter(cell => !cellIsHidden(cell)).map(cell => sanitizeHTML(cell.querySelector(`.${CSS.cellContent}`).innerHTML)));
       if (ifCondition) data.push(['endif', 'condition'])
     }
-
-    console.log(data)
 
     return data;
   }
