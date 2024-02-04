@@ -381,7 +381,7 @@ export default class Table {
    /**
    * Add column in table row
    *
-   * @param {number} rowIndex - 
+   * @param {number} rowIndex
    * @param {boolean} [setFocus] - pass true to focus the cell
    */
    addColumnToRow(rowIndex, setFocus = false) {
@@ -438,7 +438,7 @@ export default class Table {
     return insertedRow;
   };
 
-  addConditionToRow(index) {
+  addConditionToRow(index, condition = null) {
     let row = this.getRow(index);
 
     const ifConditionContainer = document.createElement('span');
@@ -447,6 +447,7 @@ export default class Table {
       target: ifConditionContainer, 
       props: {
         statement: 'IF',
+        condition: condition ? condition : "condicion == resultado",
         inline: false, 
         onRemove: () => {
           ifConditionContainer.remove()
@@ -596,13 +597,48 @@ export default class Table {
   resize() {
     const { rows, cols } = this.computeInitialSize();
 
+    let skippedRows = 0
+
     for (let i = 0; i < rows; i++) {
+      if (this.isConditionRow(i)) {
+        skippedRows += 1
+        continue
+      }
       this.addRow(-1, false, false);
       const colNumber = this.computeInitialSizeOfRow(i);
       for (let j = 0; j < colNumber; j++) {
-        this.addColumnToRow(i);
+        this.addColumnToRow(i - skippedRows);
       }
     }
+    this.findAndApplyConditionsToTable()
+  }
+
+  /**
+   * Detect if its condition row in data
+   *
+   * @param {number} rowIndex
+   * @return {boolean}
+   */
+  isConditionRow(rowIndex) {
+    const content = this.data && this.data.content;
+    const isCondition = ['if', 'endif'].find((condition) => content[rowIndex][0] === condition)
+    return Boolean(isCondition)
+  }
+
+   /**
+   * @return {void}
+   */
+  findAndApplyConditionsToTable() {
+    const content = this.data && this.data.content;
+    let currentIndex = 0
+    content.forEach((row, i) => {
+
+        if (!this.isConditionRow(i)) currentIndex += 1
+
+        if (row[0] === 'if') {
+            this.addConditionToRow(currentIndex + 1, row[1])
+        }
+    });
   }
 
   /**
@@ -613,10 +649,17 @@ export default class Table {
   fill() {
     const data = this.data;
 
+    let skippedRows = 0
+
     if (data && data.content) {
       for (let i = 0; i < data.content.length; i++) {
-        for (let j = 0; j < data.content[i].length; j++) {
-          this.setCellContent(i + 1, j + 1, this.cleanHTML(data.content[i][j]));
+        if (!this.isConditionRow(i)) {
+            const row = i - skippedRows
+            for (let j = 0; j < data.content[i].length; j++) {
+                this.setCellContent(row + 1, j + 1, this.cleanHTML(data.content[i][j]));
+            }
+        } else {
+            skippedRows += 1
         }
       }
     }

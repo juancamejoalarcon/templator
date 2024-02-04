@@ -1,5 +1,5 @@
 {
-    "time": 1707052554491,
+    "time": 1707059896663,
     "blocks": [
         {
             "id": "Z8_yQSk41t",
@@ -102,6 +102,20 @@
                         "<b>Correo electrónico</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">email</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>",
                         "<b>D.N.I / N.I.E.</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">document_id</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n",
                         "<b>Teléfono</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">phone</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n"
+                    ],
+                    [
+                        "<b>Domicilio a efectos del presente contrato</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">address</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>"
+                    ],
+                    [
+                        "if",
+                        null
+                    ],
+                    [
+                        "<b>Dirección de envío del producto adquirido</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">shipping_info</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n"
+                    ],
+                    [
+                        "endif",
+                        "condition"
                     ]
                 ]
             }
