@@ -41,13 +41,20 @@ export const transformToEjs = async (editor) => {
             }
         });
 
+        const table = ({ data }) => {
+            console.log('----')
+            console.log(data)
+            console.log('----')
+        }
+
         const edjsParser = edjsHTML({
             IfCondition: ({ data }) => `<% if (${data.condition}) { %>`,
             IfElseCondition: ({ data }) => `<% } else if (${data.condition}) { %>`,
             ElseCondition: ({ data }) => `<% } else { %>`,
             IfEndCondition: ({ data }) => `<% } %>`,
             ForCondition: ({ data }) => `<% for (const ${data.condition}) { %>`,
-            ForEndCondition: ({ data }) => `<% } %>`
+            ForEndCondition: ({ data }) => `<% } %>`,
+            table
         });
 
         const parsed = edjsParser.parse(cloneData);

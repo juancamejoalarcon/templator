@@ -1,5 +1,5 @@
 {
-    "time": 1706977394715,
+    "time": 1706983131207,
     "blocks": [
         {
             "id": "Z8_yQSk41t",
@@ -54,6 +54,35 @@
             "type": "IfEndCondition",
             "data": {
                 "type": "ENDIF"
+            }
+        },
+        {
+            "id": "HlHIyPO7lV",
+            "type": "header",
+            "data": {
+                "text": "Condiciones particulares del Contrato",
+                "level": 4
+            }
+        },
+        {
+            "id": "Nv9OehcABA",
+            "type": "table",
+            "data": {
+                "withHeadings": true,
+                "content": [
+                    [
+                        "1. Identidad y datos de contacto del prestamista."
+                    ],
+                    [
+                        "<b>Prestamista</b>WiZink Bank, S.A.U., a través de su marca APLAZAME",
+                        "<b>Teléfono</b>919 03 30 15",
+                        "<b>Correo electrónico</b>hola@aplazame.com",
+                        "<b>Dirección web</b><a href=\"https://aplazame.com\">https://aplazame.com</a>"
+                    ],
+                    [
+                        "<b>Dirección</b>Ulises nº. 16-18 28043 Madrid"
+                    ]
+                ]
             }
         }
     ],

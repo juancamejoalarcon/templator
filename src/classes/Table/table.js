@@ -334,7 +334,8 @@ export default class Table {
   setCellContent(row, column, content) {
     const cell = this.getCell(row, column);
 
-    cell.innerHTML = content;
+    if (cell) cell.querySelector('.cell-content').innerHTML = content;
+    else console.log('CELL NOT FOUND')
   }
 
   /**
@@ -377,6 +378,19 @@ export default class Table {
     this.addHeadingAttrToFirstRow();
   };
 
+   /**
+   * Add column in table row
+   *
+   * @param {number} rowIndex - 
+   * @param {boolean} [setFocus] - pass true to focus the cell
+   */
+   addColumnToRow(rowIndex, setFocus = false) {
+    let cell;
+    const cellElem = this.createCell();
+    cell = this.getRow(rowIndex + 1).appendChild(cellElem);
+    this.addHeadingAttrToFirstRow();
+   }
+
   /**
    * Add row in table on index place
    *
@@ -384,7 +398,7 @@ export default class Table {
    * @param {boolean} [setFocus] - pass true to focus the inserted row
    * @returns {HTMLElement} row
    */
-  addRow(index = -1, setFocus = false) {
+  addRow(index = -1, setFocus = false, fillRow = true) {
     let insertedRow;
     let rowElem = $.make('div', CSS.row);
 
@@ -407,16 +421,18 @@ export default class Table {
       insertedRow = this.table.appendChild(rowElem);
     }
 
-    this.fillRow(insertedRow, numberOfColumns);
+    if (fillRow) this.fillRow(insertedRow, numberOfColumns);
 
     if (this.tunes.withHeadings) {
       this.addHeadingAttrToFirstRow();
     }
 
-    const insertedRowFirstCell = this.getRowFirstCell(insertedRow);
+    if (fillRow) {
+        const insertedRowFirstCell = this.getRowFirstCell(insertedRow);
 
-    if (insertedRowFirstCell && setFocus) {
-      $.focus(insertedRowFirstCell);
+        if (insertedRowFirstCell && setFocus) {
+          $.focus(insertedRowFirstCell);
+        }
     }
 
     return insertedRow;
@@ -554,6 +570,24 @@ export default class Table {
     };
   }
 
+    /**
+   * Get number of columns of a row based on initial data
+   *
+   * @param {number} rowIndex - row to get columns
+   */
+  computeInitialSizeOfRow(rowIndex) {
+    const content = this.data && this.data.content;
+    const isValidArray = Array.isArray(content);
+    const isNotEmptyArray = isValidArray ? content.length : false;
+    const contentCols = isNotEmptyArray ? content[rowIndex].length : undefined;
+    const parsedCols = Number.parseInt(this.config && this.config.cols);
+    const configCols = !isNaN(parsedCols) && parsedCols > 0 ? parsedCols : undefined;
+    const defaultCols = 2;
+    const cols = contentCols || configCols || defaultCols;
+
+    return cols
+  }
+
   /**
    * Resize table to match config size or transmitted data size
    *
@@ -563,11 +597,11 @@ export default class Table {
     const { rows, cols } = this.computeInitialSize();
 
     for (let i = 0; i < rows; i++) {
-      this.addRow();
-    }
-
-    for (let i = 0; i < cols; i++) {
-      this.addColumn();
+      this.addRow(-1, false, false);
+      const colNumber = this.computeInitialSizeOfRow(i);
+      for (let j = 0; j < colNumber; j++) {
+        this.addColumnToRow(i);
+      }
     }
   }
 

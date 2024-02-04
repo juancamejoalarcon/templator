@@ -35,8 +35,8 @@
   };
 
   const logData = () => {
-    // editor.save().then((data) => console.log(data));
-    transform.toEJS(editor).then((data) => console.log(data));
+    editor.save().then((data) => console.log(data));
+    // transform.toEJS(editor).then((data) => console.log(data));
   };
 
   const downloadEJS = async () => {
