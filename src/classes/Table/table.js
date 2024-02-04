@@ -1122,7 +1122,7 @@ export default class Table {
       }
       const ifCondition = row.querySelector('.if')
       if (ifCondition) {
-        data.push(['if', ifCondition.getAttribute('condition')])
+        data.push(['if', ifCondition.querySelector('.condition-input-edit').textContent])
       }
 
       const cellIsHidden = (cell) => cell.style.display === 'none'
@@ -1131,7 +1131,7 @@ export default class Table {
         return HTML.replaceAll('<br>', '\n')
       }
       data.push(cells.filter(cell => !cellIsHidden(cell)).map(cell => sanitizeHTML(cell.querySelector(`.${CSS.cellContent}`).innerHTML)));
-      if (ifCondition) data.push(['endif', 'condition'])
+      if (ifCondition) data.push(['endif', ''])
     }
 
     return data;

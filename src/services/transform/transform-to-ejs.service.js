@@ -56,34 +56,67 @@ export const transformToEjs = async (editor) => {
         }
 
         const table = ({ data }) => {
+
+            const makeTable = (content) => `<table>${content}</table>`
+            const makeHeader = (content) => `<thead>${content}</thead>`
+            const makeBody = (content) => `<tbody>${content}</tbody>`
+            const makeRow = (content) => `<tr>${content}</tr>`
+
+            const isConditionRow = (cellContent) => {
+                const isCondition = ['if', 'endif'].find((condition) => cellContent === condition)
+                return Boolean(isCondition)
+            }
+
+            const getCondition = (row) => {
+                const statement = row[0]
+                const condition = row[1]
+                if (statement === 'if') {
+                    return `<% if (${condition}) { %>`
+                }
+                if (statement === 'endif') {
+                    return `<% } %>`
+                }
+
+                return ''
+            }
+
             const { withHeadings, content } = data
-            const table = document.createElement('table')
+            let header = '';
             if (withHeadings) {
-                const header = document.createElement('thead')
                 const headerRow = content[0]
-                table.appendChild(header)
+
+                let headerContent = ''
                 headerRow.forEach(cellContent => {
                     const cell = document.createElement('th')
                     cell.innerHTML = cleanCellHtml(cellContent)
-                    header.appendChild(cell)
+                    replaceVariablesInElement(cell)
+                    headerContent += cell.outerHTML
                 });
+                header = makeHeader(headerContent)
             }
-            const body = document.createElement('tbody')
-            table.appendChild(body)
+
+            let bodyContent = ''
             content.forEach((row, index) => {
                 if (index === 0 && withHeadings) return
-                const rowEl = document.createElement('tr')
+                if (isConditionRow(row[0])) {
+                    bodyContent += getCondition(row)
+                    return
+                }
+                let rowContent = ''
                 row.forEach(cellContent => {
                     const cell = document.createElement('td')
                     cell.innerHTML = cleanCellHtml(cellContent)
-                    rowEl.appendChild(cell)
+                    replaceVariablesInElement(cell)
+                    rowContent += cell.outerHTML
                 });
-                body.appendChild(rowEl)
+                bodyContent += makeRow(rowContent)
             });
 
-            replaceVariablesInElement(table)
+            const tableContent = header + makeBody(bodyContent)
+            const table = makeTable(tableContent)
 
-            return replaceSpecialChars(table.outerHTML)
+
+            return replaceSpecialChars(table)
         }
 
         const edjsParser = edjsHTML({

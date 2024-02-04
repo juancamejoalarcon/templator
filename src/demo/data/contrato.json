@@ -1,5 +1,5 @@
 {
-    "time": 1707059896663,
+    "time": 1707062918172,
     "blocks": [
         {
             "id": "Z8_yQSk41t",
@@ -108,10 +108,21 @@
                     ],
                     [
                         "if",
-                        null
+                        "shipping_info"
                     ],
                     [
                         "<b>Dirección de envío del producto adquirido</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">shipping_info</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n"
+                    ],
+                    [
+                        "endif",
+                        "condition"
+                    ],
+                    [
+                        "if",
+                        "billing_address"
+                    ],
+                    [
+                        "<b>Direccion de facturacion del producto o servicio adquirido</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">billing_address</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n"
                     ],
                     [
                         "endif",
