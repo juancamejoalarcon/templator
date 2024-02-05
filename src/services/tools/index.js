@@ -2,15 +2,15 @@ import Header from '@editorjs/header';
 import ColorPlugin from 'editorjs-text-color-plugin'
 import List from "@editorjs/list";
 
-import Table from '@/classes/Table'
-import Image from '@/classes/Image'
+import Table from '@/core/plugins/Table'
+import Image from '@/core/plugins/Image'
 
-import ConditionTune from '@/classes/Conditions/ConditionTune'
-import { Condition } from '@/classes/Conditions/Condition';
-import { ElseCondition } from '@/classes/Conditions/ElseCondition';
-import { EndCondition } from '@/classes/Conditions/EndCondition';
-import { InlineCondition } from '@/classes/Conditions/InlineCondition';
-import { InsertVariable } from '@/classes/InsertVariable';
+import ConditionTune from '@/core/plugins/Conditions/ConditionTune'
+import { Condition } from '@/core/plugins/Conditions/Condition';
+import { ElseCondition } from '@/core/plugins/Conditions/ElseCondition';
+import { EndCondition } from '@/core/plugins/Conditions/EndCondition';
+import { InlineCondition } from '@/core/plugins/Conditions/InlineCondition';
+import { InsertVariable } from '@/core/plugins/InsertVariable';
 
 export const tools = {
     header: {

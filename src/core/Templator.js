@@ -10,7 +10,7 @@ import { onSelectionChanged } from '../services/selection.service'
 import state from '@/services/state.service';
 
 
-export class TemplateEditor {
+export class Templator {
 
     constructor({
         holder,

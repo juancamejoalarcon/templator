@@ -1,6 +1,8 @@
 import ConditionComponent from '@/components/ConditionComponent.svelte'
 import { getConditionContainers, onRemoveObserver } from '@/services/condition.service'
 
+import './index.scss'
+
 export class InlineCondition {
     static get isInline() {
         return true;

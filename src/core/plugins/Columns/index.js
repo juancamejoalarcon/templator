@@ -20,7 +20,7 @@ import "./editorjs-columns.scss";
 
 // import EditorJS from '@editorjs/editorjs'; // required for npm mode
 
-import { TemplateEditor } from "../TemplateEditor";
+import { Templator } from "../../Templator";
 
 class EditorJsColumns {
 
@@ -183,7 +183,7 @@ class EditorJsColumns {
             // 	minHeight: 50,
             // });
 
-            let editorjs_instance = new TemplateEditor({
+            let editorjs_instance = new Templator({
                 holder: editor_col_id,
                 placeholder: "Let`s write an awesome story!",
             });
@@ -287,7 +287,7 @@ class EditorJsColumns {
             // 	readOnly: this.readOnly,
             // 	minHeight: 50,
             // });
-            let editorjs_instance = new TemplateEditor({
+            let editorjs_instance = new Templator({
                 holder: editor_col_id,
                 placeholder: "Let`s write an awesome story!",
             });

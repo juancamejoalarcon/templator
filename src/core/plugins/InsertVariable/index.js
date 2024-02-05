@@ -1,4 +1,6 @@
-import VariableComponent from '../components/VariableComponent.svelte'
+import VariableComponent from '@/components/VariableComponent.svelte'
+
+import './index.scss'
 
 export class InsertVariable {
     static get isInline() {

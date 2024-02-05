@@ -3,7 +3,7 @@
   import lorem from "./data/lorem.json";
   import contrato from "./data/contrato.json";
   import indent from "./data/indent.json";
-  import { TemplateEditor } from "@/classes/TemplateEditor";
+  import { Templator } from "@/core/Templator";
   import { transform } from "@/services/transform";
   import { downloadHTML } from "./download";
 
@@ -29,7 +29,7 @@
   });
 
   const startDemo = () => {
-    editor = new TemplateEditor({
+    editor = new Templator({
       holder: "editorjs",
       placeholder,
       data: demoData,
