@@ -472,7 +472,7 @@ export default class Table {
       props: { 
         inline: true,
         statement: 'ENDIF',
-        isEnd: true
+        isEndBlock: true
       } 
     })
     endifConditionContainer.setAttribute('contenteditable', 'false')

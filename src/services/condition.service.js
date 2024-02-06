@@ -1,5 +1,45 @@
 import ConditionComponent from '@/components/ConditionComponent.svelte'
 
+/**
+ * @param {(string)} type
+ */
+export const getDefaultCondition = (type) => {
+    const defaults = {
+        'if': 'variable == "result"',
+        'else': 'variable == "result"',
+        'else if': 'variable == "result"',
+        'for': 'item in items'
+    }
+    return defaults[type]
+}
+
+/**
+ * @param {(string)} type
+ */
+export const getNameOfEndStatement = (type) => {
+    const endStatements = {
+        'if': 'endif',
+        'for': 'endfor'
+    }
+    return endStatements[type]
+}
+
+/**
+ * @param {(string)} type
+ */
+export const getBlockNames = (type) => {
+    const blockNames = {
+        'if': 'IfCondition',
+        'elseif': 'IfElseCondition',
+        'else': 'ElseCondition',
+        'endif': 'IfEndCondition',
+        'for': 'ForCondition',
+        'endfor': 'ForEndCondition',
+    }
+
+    return blockNames[type]
+}
+
 export const reapplyConditionsToBlocks = (api) => {
     const blockCount = api.blocks.getBlocksCount();
     for (let i = 0; i < blockCount; i++) {
@@ -24,8 +64,7 @@ export const reapplyConditionsToBlocks = (api) => {
 export const getConditionContainers = (randomId, conditionText, type = 'if') => {
     const condition = conditionText || type === 'if' ? 'condicion == resultado' : 'item in items'
     const ifConditionContainer = document.createElement('span');
-    ifConditionContainer.classList.add('condition-start')
-    ifConditionContainer.classList.add(randomId)
+    ifConditionContainer.classList.add('condition-start', randomId)
     new ConditionComponent({
         target: ifConditionContainer,
         props: {
@@ -44,14 +83,14 @@ export const getConditionContainers = (randomId, conditionText, type = 'if') => 
     ifConditionContainer.setAttribute('contenteditable', 'false');
 
     const endifConditionContainer = document.createElement('span');
-    endifConditionContainer.classList.add('condition-end')
+    endifConditionContainer.classList.add('condition-end', randomId)
     endifConditionContainer.classList.add(randomId)
     new ConditionComponent({
         target: endifConditionContainer,
         props: {
             statement: type === 'if' ? 'ENDIF' : 'ENDFOR',
             inline: true,
-            isEnd: true
+            isEndBlock: true
         }
     })
 

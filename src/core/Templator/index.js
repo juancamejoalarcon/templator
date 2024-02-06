@@ -3,11 +3,11 @@ import DragDrop from 'editorjs-drag-drop';
 
 import { tools as defaultTools } from '@/services/tools'
 
-import { indent } from '@/services/indent'
+import { setEventListeners } from './templator-events';
 
-import { reapplyConditionsToBlocks } from '../services/condition.service'
-import { onSelectionChanged } from '../services/selection.service'
 import state from '@/services/state.service';
+
+import './index.scss'
 
 
 export class Templator {
@@ -34,23 +34,8 @@ export class Templator {
             placeholder,
             data,
             onReady: () => {
-                this.editor.on('block changed', ({ event }) => {
-                    const { type } = event
-                    if (type === 'block-moved' || type === 'block-removed' || type === 'block-added') {
-                        if (state.api) indent(state.api)
-                    }
-                })
                 new DragDrop(this.editor);
-
-                document.addEventListener("mouseup", () => {
-                    onSelectionChanged(state.api)
-                }, false);
-
-                setTimeout(() => {
-                    indent(state.api)
-                    reapplyConditionsToBlocks(state.api)
-                }, 50);
-
+                setEventListeners(this.editor)
                 onReady()
             },
             onChange: (API) => {

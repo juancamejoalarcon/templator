@@ -6,7 +6,7 @@
   export let statement = "IF";
   export let condition =
     statement === "IF" ? "condicion == resultado" : "item in items";
-  export let isEnd = false;
+  export let isEndBlock = false;
 
   const remove = onRemove || function () {};
 
@@ -25,7 +25,7 @@
 <span class="condition-container" class:inline data-statement={statement}>
   <span>{startCondition}</span>
 
-  {#if !isEnd && statement !== "ELSE"}
+  {#if !isEndBlock && statement !== "ELSE"}
     <span class="condition-input">
       {statement}
       {startBracket}<span

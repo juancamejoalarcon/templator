@@ -1,37 +1,58 @@
+import state from '@/services/state.service';
+
 import logicIcon from '@/assets/icons/logic-icon.svg?raw'
 import ConditionComponent from '@/components/ConditionComponent.svelte'
-import state from '@/services/state.service';
+import { getDefaultCondition, getBlockNames } from '@/services/condition.service'
 
 
 export class Condition {
-
-
-    constructor({ api, data = { skipEndBlock: false, type: '', condition: '' }, config = { type: 'if' }}) {
-        this.api = api
-
-        state.setApi(api)
-
-        this.skipEndBlock = data.skipEndBlock || data.type
-        
-        this.type = config.type 
-        this.condition = data.condition || this.getDefaultCondition()
-    }
 
     static get toolbox() {
         return {
             icon: logicIcon,
         };
     }
+    /**
+     * @returns {object} api - Editor.js API
+    */
+    get api() {
+        return state.api
+    }
 
-    getDefaultCondition() {
-        if (this.type === 'if') return 'condicion == resultado'
-        if (this.type === 'for') return 'item in items'
+    /**
+     * @returns {string}
+    */
+    get endConditionBlockName() {
+        return getBlockNames('end' + this.type)
+    }
+
+    constructor({ api, data = { skipEndBlock: false, condition: '' }, config = { type: 'if' }}) {
+        state.setApi(api)
+
+        /**
+         * Block type, (if, for)
+         * @type {string}
+         */
+        this.type = config.type
+        /**
+         * Determines whether to add a block to close the closure
+         * For example: if the type of condition is equal to "for"
+         * a block of tpye "endfor" should be added or not depending on this value
+         * @type {boolean}
+         */
+        this.skipEndBlock = Boolean(data.skipEndBlock)
+        /**
+         * Value inside the parentheses of the statement
+         * (For example: if (condition))
+         * @type {string}
+        **/
+        this.condition = data.condition || getDefaultCondition(this.type)
     }
 
     render() {
-        const target = document.createElement("div");
-        const app = new ConditionComponent({
-            target,
+        const conditionWrapper = document.createElement("div");
+        new ConditionComponent({
+            target: conditionWrapper,
             props: {
                 statement: this.type.toUpperCase(),
                 condition: this.condition,
@@ -44,29 +65,33 @@ export class Condition {
                 }
             }
         })
-        this.addEndBlock()
-        return target;
+
+        if (!this.skipEndBlock) this.addEndBlock()
+
+        return conditionWrapper;
     }
 
+    /**
+     * A condition must have a closure, this function adds
+     * the end of the condition ('endif', 'endfor')
+     * @returns {void}
+    */
     addEndBlock() {
-        if (this.skipEndBlock) return
         const index = this.api.blocks.getCurrentBlockIndex() + 1
-        const type = this.type === 'if' ? 'IfEndCondition' : 'ForEndCondition'
-
-        this.api.blocks.insert(type, { type: this.type === 'if' ? 'ENDIF' : 'ENDFOR'  }, { }, index, true);
+        this.api.blocks.insert(this.endConditionBlockName, { type: this.type }, { }, index, true);
     }
 
     destroy() {
         if (state.preventDestroyFunctToFireFlag) return
-        setTimeout(() => {
-            this.deleteNextEndBlock(), 0
-        })
+        setTimeout(() => this.deleteNextEndBlock(), 0)
     }
 
     deleteNextEndBlock() {
         state.setPreventDestroyFunctToFire(true)
+
         const index = this.getNextEndBlockIndex()
         if (Number.isInteger(index)) this.api.blocks.delete(index)
+
         state.setPreventDestroyFunctToFire(false)
     }
 
@@ -74,15 +99,20 @@ export class Condition {
         const blockCount = this.api.blocks.getBlocksCount();
         for (let i = 0; i < blockCount; i++) {
             const block = this.api.blocks.getBlockByIndex(i);
-            const endBlockName = this.type === 'if' ? 'IfEndCondition' : 'ForEndCondition'
-            if (block?.name === endBlockName) return i
-            if (this.type === 'if' && (block?.name === 'ElseCondition' || block?.name === 'IfElseCondition')) this.api.blocks.delete(i)
+            if (block?.name === this.endConditionBlockName) return i
+            if (this.shouldDeleteBlockOnDestroy(block)) {
+                this.api.blocks.delete(i)
+            }
         }
+    }
+
+    shouldDeleteBlockOnDestroy(block) {
+        return this.type === 'if' && (block?.name === getBlockNames('else') || block?.name === getBlockNames('elseif'))
     }
 
     save() {
         return {
-            type: this.type.toUpperCase(),
+            type: this.type,
             condition: this.condition
         };
     }

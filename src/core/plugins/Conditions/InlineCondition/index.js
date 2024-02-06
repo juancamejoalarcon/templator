@@ -1,5 +1,6 @@
 import ConditionComponent from '@/components/ConditionComponent.svelte'
 import { getConditionContainers, onRemoveObserver } from '@/services/condition.service'
+import { insertNodeAfter } from '@/services/dom-utils.service'
 
 import './index.scss'
 
@@ -18,9 +19,7 @@ export class InlineCondition {
     render() {
         this.button = document.createElement('button');
         this.button.type = 'button';
-        this.button.classList.add('ce-inline-tool')
-        this.button.classList.add('add-condition-button')
-        this.button.classList.add('add-condition-button-' + this.type)
+        this.button.classList.add('ce-inline-tool', 'add-condition-button', 'add-condition-button-' + this.type)
 
         return this.button;
     }
@@ -35,18 +34,10 @@ export class InlineCondition {
 
         range.insertNode(ifConditionContainer);
 
-        function insertAfter(newNode, existingNode) {
-            existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
-        }
-
-        insertAfter(endifConditionContainer, ifConditionContainer)
-        insertAfter(selectedText, ifConditionContainer)
+        insertNodeAfter(endifConditionContainer, ifConditionContainer)
+        insertNodeAfter(selectedText, ifConditionContainer)
 
         onRemoveObserver(ifConditionContainer, randomId)
     }
 
-   
-    checkState(selection) {
-
-    }
 }

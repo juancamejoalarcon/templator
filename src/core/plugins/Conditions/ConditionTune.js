@@ -1,14 +1,24 @@
-/**
- * Build styles
- */
-
+import state from '@/services/state.service';
 import logicIcon from '@/assets/icons/logic-icon.svg?raw'
+import { getDefaultCondition, getBlockNames } from '@/services/condition.service'
+
 
 export default class ConditionTune {
 
-    constructor({ api, config }) {
-        this.api = api;
+    /**
+     * @returns {object} api - Editor.js API
+    */
+    get api() {
+        return state.api
+    }
 
+    constructor({ api, config }) {
+        state.setApi(api)
+
+        /**
+         * Block type, (if, for)
+         * @type {string}
+        */
         this.type = config.type
     }
 
@@ -18,36 +28,32 @@ export default class ConditionTune {
 
     render() {
         let wrapper = document.createElement('div');
-        const ifConditionButton = document.createElement('div');
-        ifConditionButton.classList.add('ce-popover-item')
+        const button = this.getAddConditionButton();
 
-        ifConditionButton.innerHTML = `
-            <div class="ce-popover-item__icon">
-                ${logicIcon}
-            </div>
-            <div class="ce-popover-item__title">
-                ${this.type === 'if' ? 'IF' : 'FOR'}
-            </div>
-            `
-        ifConditionButton.addEventListener('click', () => {
-            const index = this.api.blocks.getCurrentBlockIndex()
-            const blockName = this.type === 'if' ? "IfCondition" : "ForCondition"
-            this.api.blocks.insert(blockName, { skipEndBlock: true }, {}, index, true);
-            setTimeout(() => {
-                const endBlockName = this.type === 'if' ? "IfEndCondition" : "ForEndCondition"
-                this.api.blocks.insert(endBlockName, {}, {}, index + 2, true)
-            }, 10);
-        })
-
-
-        wrapper.appendChild(ifConditionButton)
+        wrapper.appendChild(button)
 
         return wrapper;
-        // const button = document.createElement('button');
+    }
 
-        // button.classList.add(this.api.styles.button);
-        // button.textContent = 'H';
-    
-        // return button; 
+    getAddConditionButton() {
+        const button = document.createElement('div');
+
+        button.classList.add('ce-popover-item');
+        button.innerHTML = `
+            <div class="ce-popover-item__icon">${logicIcon}</div>
+            <div class="ce-popover-item__title">${this.type.toUpperCase()}</div>
+            `
+        button.addEventListener('click', this.onAddConditionButtonClicked.bind(this))
+
+        return button
+    }
+
+    onAddConditionButtonClicked() {
+        const index = this.api.blocks.getCurrentBlockIndex();
+        const blockName = getBlockNames(this.type);
+        this.api.blocks.insert(blockName, { skipEndBlock: true }, {}, index, true);
+        // add end block
+        const endBlockName = getBlockNames('end' + this.type)
+        this.api.blocks.insert(endBlockName, {}, {}, index + 2, true)
     }
 }
