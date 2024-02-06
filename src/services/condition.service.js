@@ -40,39 +40,45 @@ export const getBlockNames = (type) => {
     return blockNames[type]
 }
 
-export const reapplyConditionsToBlocks = (api) => {
-    const blockCount = api.blocks.getBlocksCount();
-    for (let i = 0; i < blockCount; i++) {
-        const block = api.blocks.getBlockByIndex(i);
-        if (block.name === 'header' || block.name === 'paragraph') {
-            block.holder.querySelectorAll('.condition-start').forEach(element => {
-                const statement = element.firstElementChild.getAttribute('data-statement')
-                const condition = element.querySelector('.condition-input-edit').textContent
-                const id = Array.from(element.classList).find(className => className.includes('condition-id-'))
-                const { ifConditionContainer, endifConditionContainer } = getConditionContainers(id, condition, statement.toLowerCase())
 
-                const currentEnd = block.holder.querySelector('.condition-end.' + id)
-                element.replaceWith(ifConditionContainer)
-                currentEnd.replaceWith(endifConditionContainer)
+export const startOfIdForInlineConditionContainers = 'condition-id-'
 
-                onRemoveObserver(ifConditionContainer, id)
-            });
-        }
-    }
+/**
+ * @returns {string} id - is used to coordinate all condition containers of the same closure
+ */
+export const getIdForInlineConditionContainers = () => {
+    return startOfIdForInlineConditionContainers + (Math.random() + 1).toString(36).substring(7);
 }
 
-export const getConditionContainers = (randomId, conditionText, type = 'if') => {
-    const condition = conditionText || type === 'if' ? 'condicion == resultado' : 'item in items'
-    const ifConditionContainer = document.createElement('span');
-    ifConditionContainer.classList.add('condition-start', randomId)
+/**
+ * @param {(string)} id - is used to coordinate all condition containers of the same closure
+ * @param {(string)} conditionText
+ * @param {(string)} type
+ * @typedef {Object} ConditionContainers
+ * @property {HTMLElement} startConditionContainer
+ * @property {HTMLElement} endConditionContainer
+ * @returns {(ConditionContainers)}
+ */
+export const getInlineConditionContainers = (id, conditionText, type = 'if') => {
+
+    const condition = conditionText || getDefaultCondition(type);
+
+    const createWrapper = (className) => {
+        const wrapper = document.createElement('span');
+        wrapper.classList.add(className, id);
+        wrapper.setAttribute('contenteditable', 'false');
+        return wrapper
+    };
+
+    const startConditionContainer = createWrapper('condition-start');
     new ConditionComponent({
-        target: ifConditionContainer,
+        target: startConditionContainer,
         props: {
-            statement: type === 'if' ? 'IF' : 'FOR',
+            statement: type.toUpperCase(),
             inline: true,
             condition,
             onRemove: () => {
-                const containers = ifConditionContainer.parentElement.querySelectorAll(`.${randomId}`)
+                const containers = startConditionContainer.parentElement.querySelectorAll(`.${id}`)
                 containers.forEach((container) => {
                     container.remove()
                 })
@@ -80,27 +86,49 @@ export const getConditionContainers = (randomId, conditionText, type = 'if') => 
         }
     })
 
-    ifConditionContainer.setAttribute('contenteditable', 'false');
-
-    const endifConditionContainer = document.createElement('span');
-    endifConditionContainer.classList.add('condition-end', randomId)
-    endifConditionContainer.classList.add(randomId)
+    const endConditionContainer = createWrapper('condition-end');
     new ConditionComponent({
-        target: endifConditionContainer,
+        target: endConditionContainer,
         props: {
-            statement: type === 'if' ? 'ENDIF' : 'ENDFOR',
+            statement: ('end' + type).toUpperCase(),
             inline: true,
             isEndBlock: true
         }
     })
 
-    endifConditionContainer.setAttribute('contenteditable', 'false')
-
     return {
-        ifConditionContainer,
-        endifConditionContainer
+        startConditionContainer,
+        endConditionContainer
     }
 
+}
+
+
+export const reapplyConditionsToBlocks = (api) => {
+
+    const blockCount = api.blocks.getBlocksCount();
+    const shouldApplyConditionsToBlock = (block) => block.name === 'header' || block.name === 'paragraph'
+
+    for (let i = 0; i < blockCount; i++) {
+        const block = api.blocks.getBlockByIndex(i);
+
+        if (shouldApplyConditionsToBlock(block)) {
+
+            block.holder.querySelectorAll('.condition-start').forEach(element => {
+                const statement = element.firstElementChild.getAttribute('data-statement')
+                const condition = element.querySelector('.condition-input-edit').textContent
+                const id = Array.from(element.classList).find(className => className.includes(startOfIdForInlineConditionContainers))
+                const { startConditionContainer, endConditionContainer } = getInlineConditionContainers(id, condition, statement.toLowerCase())
+
+                const currentEnd = block.holder.querySelector('.condition-end.' + id)
+                element.replaceWith(startConditionContainer)
+                currentEnd.replaceWith(endConditionContainer)
+
+                onRemoveObserver(startConditionContainer, id)
+            });
+
+        }
+    }
 }
 
 export const onRemoveObserver = (el, randomId) => {

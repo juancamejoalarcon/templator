@@ -61,7 +61,7 @@ export class EndCondition {
         for (let i = 0; i < blockCount; i++) {
             const block = this.api.blocks.getBlockByIndex(i);
 
-            const blockName = this.type === 'if' ? getBlockNames('if') : getBlockNames('for')
+            const blockName = getBlockNames(this.type)
             if (block?.name === blockName) return i
         }
     }

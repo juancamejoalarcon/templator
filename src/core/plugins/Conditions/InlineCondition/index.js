@@ -1,5 +1,4 @@
-import ConditionComponent from '@/components/ConditionComponent.svelte'
-import { getConditionContainers, onRemoveObserver } from '@/services/condition.service'
+import { getIdForInlineConditionContainers, getInlineConditionContainers, onRemoveObserver } from '@/services/condition.service'
 import { insertNodeAfter } from '@/services/dom-utils.service'
 
 import './index.scss'
@@ -26,18 +25,19 @@ export class InlineCondition {
 
     surround(range) {
 
-
-        const randomId = 'condition-id-' + (Math.random() + 1).toString(36).substring(7);
+        const id = getIdForInlineConditionContainers();
         const selectedText = range.extractContents();
 
-        const { ifConditionContainer, endifConditionContainer } = getConditionContainers(randomId, null, this.type)
+        const { startConditionContainer, endConditionContainer } = getInlineConditionContainers(id, null, this.type)
 
-        range.insertNode(ifConditionContainer);
+        range.insertNode(startConditionContainer);
 
-        insertNodeAfter(endifConditionContainer, ifConditionContainer)
-        insertNodeAfter(selectedText, ifConditionContainer)
+        insertNodeAfter(endConditionContainer, startConditionContainer)
+        insertNodeAfter(selectedText, startConditionContainer)
 
-        onRemoveObserver(ifConditionContainer, randomId)
+        onRemoveObserver(startConditionContainer, id)
     }
+
+    checkState() {}
 
 }
