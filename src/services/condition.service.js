@@ -1,3 +1,4 @@
+import state from '@/services/state.service';
 import ConditionComponent from '@/components/ConditionComponent.svelte'
 
 /**
@@ -50,6 +51,9 @@ export const getIdForInlineConditionContainers = () => {
     return startOfIdForInlineConditionContainers + (Math.random() + 1).toString(36).substring(7);
 }
 
+export const startOfInlineConditionClassName = 'condition-start'
+export const endOfInlineConditionClassName = 'condition-end'
+
 /**
  * @param {(string)} id - is used to coordinate all condition containers of the same closure
  * @param {(string)} conditionText
@@ -70,7 +74,7 @@ export const getInlineConditionContainers = (id, conditionText, type = 'if') => 
         return wrapper
     };
 
-    const startConditionContainer = createWrapper('condition-start');
+    const startConditionContainer = createWrapper(startOfInlineConditionClassName);
     new ConditionComponent({
         target: startConditionContainer,
         props: {
@@ -86,7 +90,7 @@ export const getInlineConditionContainers = (id, conditionText, type = 'if') => 
         }
     })
 
-    const endConditionContainer = createWrapper('condition-end');
+    const endConditionContainer = createWrapper(endOfInlineConditionClassName);
     new ConditionComponent({
         target: endConditionContainer,
         props: {
@@ -103,8 +107,12 @@ export const getInlineConditionContainers = (id, conditionText, type = 'if') => 
 
 }
 
-
-export const reapplyConditionsToBlocks = (api) => {
+/**
+ * Raw HTML needs to be replaced with elements with listeners
+ * @returns {void}
+ */
+export const reapplyConditionsToBlocks = () => {
+    const api = state.api
 
     const blockCount = api.blocks.getBlocksCount();
     const shouldApplyConditionsToBlock = (block) => block.name === 'header' || block.name === 'paragraph'
@@ -114,13 +122,15 @@ export const reapplyConditionsToBlocks = (api) => {
 
         if (shouldApplyConditionsToBlock(block)) {
 
-            block.holder.querySelectorAll('.condition-start').forEach(element => {
+            block.holder.querySelectorAll('.' + startOfInlineConditionClassName).forEach(element => {
+                
                 const statement = element.firstElementChild.getAttribute('data-statement')
                 const condition = element.querySelector('.condition-input-edit').textContent
                 const id = Array.from(element.classList).find(className => className.includes(startOfIdForInlineConditionContainers))
+
                 const { startConditionContainer, endConditionContainer } = getInlineConditionContainers(id, condition, statement.toLowerCase())
 
-                const currentEnd = block.holder.querySelector('.condition-end.' + id)
+                const currentEnd = block.holder.querySelector(`.${endOfInlineConditionClassName}.${id}`)
                 element.replaceWith(startConditionContainer)
                 currentEnd.replaceWith(endConditionContainer)
 
@@ -131,15 +141,20 @@ export const reapplyConditionsToBlocks = (api) => {
     }
 }
 
-export const onRemoveObserver = (el, randomId) => {
-    const observer = new MutationObserver(function (mutations_list) {
-        mutations_list.forEach(function (mutation) {
-            mutation.removedNodes.forEach(function (removed_node) {
-                if (removed_node.classList.contains(randomId)) {
-                    const containers = el.parentElement?.querySelectorAll(`.${randomId}`)
-                    containers?.forEach((container) => {
-                        container.remove()
-                    })
+/**
+ * When element is removed from DOM all elements with
+ * same id should be deleted too
+ * @param {(HTMLElement)} el
+ * @param {(string)} id
+ * @returns {void}
+ */
+export const onRemoveObserver = (el, id) => {
+    const observer = new MutationObserver((mutations_list) => {
+        mutations_list.forEach((mutation) => {
+            mutation.removedNodes.forEach((removed_node) => {
+                if (removed_node.classList.contains(id)) {
+                    const containers = el.parentElement?.querySelectorAll(`.${id}`)
+                    containers?.forEach((container) => container.remove())
                     observer.disconnect()
                 }
             });

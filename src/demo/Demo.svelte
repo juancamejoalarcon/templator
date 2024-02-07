@@ -1,8 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import lorem from "./data/lorem.json";
-  import contrato from "./data/contrato.json";
-  import indent from "./data/indent.json";
+  import { allDemos } from "./data";
   import { Templator } from "@/core/Templator";
   import { transform } from "@/services/transform";
   import { downloadHTML } from "./download";
@@ -10,11 +8,6 @@
   let selected;
   let editor = null;
   const placeholder = "Start writing here";
-  const demos = [
-    { title: "indent", data: indent },
-    { title: "contrato", data: contrato },
-    { title: "lorem", data: lorem },
-  ];
 
   let demoData = {};
 
@@ -23,7 +16,7 @@
     const demo = urlParams.get("demo");
     if (demo) {
       selected = demo;
-      demoData = demos.find((demo) => demo.title === selected)?.data;
+      demoData = allDemos.find((demo) => demo.title === selected)?.data;
     }
     startDemo();
   });
@@ -33,11 +26,14 @@
       holder: "editorjs",
       placeholder,
       data: demoData,
+      config: {
+        indent: true,
+      },
     });
   };
 
   const onSelectDemo = () => {
-    demoData = demos.find((demo) => demo.title === selected)?.data;
+    demoData = allDemos.find((demo) => demo.title === selected)?.data;
     editor?.destroy();
     startDemo();
 
@@ -70,7 +66,7 @@
         on:change={onSelectDemo}
       >
         <option value="empty">Empty</option>
-        {#each demos as demo}
+        {#each allDemos as demo}
           <option value={demo.title}>
             {demo.title}
           </option>

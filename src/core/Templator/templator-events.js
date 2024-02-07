@@ -3,20 +3,20 @@ import { indent } from '@/services/indent'
 import { onSelectionChanged } from '@/services/selection.service'
 import { reapplyConditionsToBlocks } from '@/services/condition.service'
 
-export const setEventListeners = (editor) => {
+export const setEventListeners = (editor, config = {}) => {
 
     editor.on('block changed', ({ event }) => {
         const { type } = event
         if (type === 'block-moved' || type === 'block-removed' || type === 'block-added') {
-            if (state.api) indent(state.api)
+            if (state.api && config.indent) indent(state.api)
         }
     })
 
-    document.addEventListener("mouseup", () => onSelectionChanged(state.api), false);
+    document.addEventListener("mouseup", () => onSelectionChanged(), false);
 
     setTimeout(() => {
-        indent(state.api)
-        reapplyConditionsToBlocks(state.api)
+        if (config.indent) indent(state.api)
+        reapplyConditionsToBlocks()
     }, 50);
 
 }

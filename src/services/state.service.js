@@ -7,6 +7,8 @@ class State {
          * @type {boolean}
          */
         this.preventDestroyFunctToFireFlag = false
+
+        this.classNameOfEditorJs = 'codex-editor'
     }
 
     setApi(API) {
