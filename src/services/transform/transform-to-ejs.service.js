@@ -1,4 +1,5 @@
 import edjsHTML from 'editorjs-html'
+import {DOMParser, parseHTML} from 'linkedom';
 
 
 const replaceVariablesInElement = (element) => {
@@ -19,6 +20,9 @@ const replaceSpecialChars = (html) => {
 
 export const transformToEjs = async (editor) => {
 
+    const jsDOM = parseHTML('');
+
+
     try {
         
         const outputData = await editor.save();
@@ -26,7 +30,7 @@ export const transformToEjs = async (editor) => {
 
         cloneData.blocks.forEach(block => {
             if (block.type === 'header' || block.type === 'paragraph') {
-                const parsedText = document.createElement('div')
+                const parsedText = jsDOM.document.createElement('div')
                 parsedText.innerHTML = block.data.text
 
                 parsedText.querySelectorAll('.condition-start').forEach((conditionEl) => {
@@ -34,12 +38,12 @@ export const transformToEjs = async (editor) => {
                     const condition = conditionEl.querySelector('.condition-input-edit').textContent
                     const startBracket = statement === 'FOR' ? '(const ' : '('
                     const endBracket = ')'
-                    let textNode = document.createTextNode(`<% ${statement.toLowerCase()} ${startBracket}${condition}${endBracket} { %>`);
+                    let textNode = jsDOM.document.createTextNode(`<% ${statement.toLowerCase()} ${startBracket}${condition}${endBracket} { %>`);
                     conditionEl.replaceWith(textNode)
                 })
                 parsedText.querySelectorAll('.condition-end').forEach((conditionEl) => {
                     const statement = conditionEl.firstElementChild.getAttribute('data-statement')
-                    let textNode = document.createTextNode(`<% ${statement.toLowerCase()} %>`);
+                    let textNode = jsDOM.document.createTextNode(`<% ${statement.toLowerCase()} %>`);
                     conditionEl.replaceWith(textNode)
                 })
 

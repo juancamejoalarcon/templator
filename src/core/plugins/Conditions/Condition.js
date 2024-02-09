@@ -26,7 +26,7 @@ export class Condition {
         return getBlockNames('end' + this.type)
     }
 
-    constructor({ api, data = { skipEndBlock: false, condition: '' }, config = { type: 'if' }}) {
+    constructor({ api, data = { skipEndBlock: false, condition: '' }, config = { type: 'if' } }) {
         state.setApi(api)
 
         /**
@@ -40,13 +40,20 @@ export class Condition {
          * a block of tpye "endfor" should be added or not depending on this value
          * @type {boolean}
          */
-        this.skipEndBlock = Boolean(data.skipEndBlock)
+        this.skipEndBlock = data.skipEndBlock !== undefined ? data.skipEndBlock : !this.dataObjectIsEmpty(data)
         /**
          * Value inside the parentheses of the statement
          * (For example: if (condition))
          * @type {string}
         **/
         this.condition = data.condition || getDefaultCondition(this.type)
+    }
+
+    dataObjectIsEmpty(data) {
+        for (const prop in data) {
+            if (Object.hasOwn(data, prop)) return false;
+        }
+        return true;
     }
 
     render() {
@@ -78,7 +85,7 @@ export class Condition {
     */
     addEndBlock() {
         const index = this.api.blocks.getCurrentBlockIndex() + 1
-        this.api.blocks.insert(this.endConditionBlockName, { type: this.type }, { }, index, true);
+        this.api.blocks.insert(this.endConditionBlockName, { type: this.type }, {}, index, true);
     }
 
     destroy() {

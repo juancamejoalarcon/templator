@@ -3,7 +3,7 @@ class State {
     constructor() {
         /**
          * When a block is deleted the destroy function is fired
-         * this flagg is used to prevent this to happen
+         * this flag is used to prevent this to happen
          * @type {boolean}
          */
         this.preventDestroyFunctToFireFlag = false
@@ -17,6 +17,14 @@ class State {
 
     setPreventDestroyFunctToFire(value) {
         this.preventDestroyFunctToFireFlag = value
+    }
+
+    /**
+     * Returns the element that contains the editor
+     * @returns {HTMLElement}
+     */
+    getEditorRoot() {
+        return document.querySelector('.' + this.classNameOfEditorJs)
     }
 }
 

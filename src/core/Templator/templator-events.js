@@ -1,6 +1,6 @@
 import state from '@/services/state.service';
 import { indent } from '@/services/indent'
-import { onSelectionChanged } from '@/services/selection.service'
+import { onSelectionChanged } from '@/services/selection'
 import { reapplyConditionsToBlocks } from '@/services/condition.service'
 
 export const setEventListeners = (editor, config = {}) => {
@@ -12,7 +12,7 @@ export const setEventListeners = (editor, config = {}) => {
         }
     })
 
-    document.addEventListener("mouseup", () => onSelectionChanged(), false);
+    onSelectionChanged();
 
     setTimeout(() => {
         if (config.indent) indent(state.api)
