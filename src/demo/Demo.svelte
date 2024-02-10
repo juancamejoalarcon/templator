@@ -1,25 +1,21 @@
 <script>
   import { onMount } from "svelte";
-  import { allDemos } from "./data";
   import { Templator } from "@/core/Templator";
+  import { getQueryParam } from "./services/query-params";
   import { transform } from "@/services/transform";
   import { downloadHTML } from "./download";
+
+  import IndentButton from "./components/IndentButton.svelte";
+  import SelectDemoButton from "./components/SelectDemo/SelectDemoButton.svelte";
 
   let selected;
   let editor = null;
   const placeholder = "Start writing here";
+  let indent = getQueryParam("indent") === "true";
 
   let demoData = {};
 
-  onMount(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const demo = urlParams.get("demo");
-    if (demo) {
-      selected = demo;
-      demoData = allDemos.find((demo) => demo.title === selected)?.data;
-    }
-    startDemo();
-  });
+  onMount(() => {});
 
   const startDemo = () => {
     editor = new Templator({
@@ -27,21 +23,16 @@
       placeholder,
       data: demoData,
       config: {
-        indent: true,
+        indent,
       },
     });
   };
 
-  const onSelectDemo = () => {
-    demoData = allDemos.find((demo) => demo.title === selected)?.data;
+  const onSelectDemo = (data) => {
+    demoData = data ? data : demoData;
     editor?.destroy();
-    startDemo();
 
-    if ("URLSearchParams" in window) {
-      var searchParams = new URLSearchParams(window.location.search);
-      searchParams.set("demo", selected);
-      window.location.search = searchParams.toString();
-    }
+    setTimeout(() => startDemo(), 100);
   };
 
   const logData = () => {
@@ -58,20 +49,16 @@
 <div class="demo">
   <div class="top-menu">
     <div class="menu-button">
-      <label for="demos">DEMO:</label>
-      <select
-        name="demos"
-        id="demos"
-        bind:value={selected}
-        on:change={onSelectDemo}
-      >
-        <option value="empty">Empty</option>
-        {#each allDemos as demo}
-          <option value={demo.title}>
-            {demo.title}
-          </option>
-        {/each}
-      </select>
+      <SelectDemoButton {selected} {onSelectDemo} />
+    </div>
+    <div class="menu-button">
+      <IndentButton
+        {indent}
+        setIndent={(indentValue) => {
+          indent = indentValue;
+          onSelectDemo();
+        }}
+      />
     </div>
     <div class="menu-button">
       <button on:click={downloadEJS}> Export to EJS </button>

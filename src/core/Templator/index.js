@@ -12,17 +12,19 @@ import './index.scss'
 export class Templator {
 
     /**
-     * @param {{ 
-     * holder?:string,
-     * placeholder?:string,
-     * onReady?:() => void,
-     * onChange?:() => void,
-     * tools?:Object,
-     * data?:Object,
-     * config?:Object,
-     * }} params
+     * @typedef {Object} Config
+     * @property {boolean} [indent] - enable indentation
+     * @typedef {Object} TemplatorParams
+     * @property {string} holder
+     * @property {string} [placeholder]
+     * @property {() => void} [onReady]
+     * @property {() => void} [onChange]
+     * @property {Object} [tools]
+     * @property {Object} [data]
+     * @property {Config} [config]
+     * @param {TemplatorParams} params
      */
-    constructor(params = {}) {
+    constructor(params = { holder: ''}) {
 
         const { 
             holder,
@@ -31,9 +33,7 @@ export class Templator {
             onChange = () => {},
             tools = {},
             data = {},
-            config = {
-                indent: false
-            }
+            config = {}
          } = params
 
         if (!holder) throw new Error('Missing holder container')

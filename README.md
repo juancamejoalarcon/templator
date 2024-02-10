@@ -9,3 +9,8 @@ Live demo: [HERE](https://juancamejoalarcon.github.io/templator/dist/index.html)
 - Transform to jinja
 - Add property to enable/disable indent and add it to DEMO
 - Move all library code to 'lib' folder
+
+
+## TECH
+
+Built using Vanilla, Jsdoc, Svelte 
