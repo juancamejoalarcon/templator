@@ -1,14 +1,14 @@
 <script>
   import CloseIcon from "@/assets/icons/xmark-solid.svg?raw";
+  import { getDefaultCondition } from "@/services/condition.service";
   export let inline = false;
   export let conditionChanged = (condition) => {};
   export let onRemove = null;
   export let statement = "IF";
-  export let condition =
-    statement === "IF" ? "condicion == resultado" : "item in items";
+  export let condition = getDefaultCondition(statement.toLowerCase());
   export let isEndBlock = false;
 
-  const remove = onRemove || function () {};
+  //   const remove = onRemove || function () {};
 
   const startCondition = "[";
   const endCondition = "]";
@@ -57,6 +57,7 @@
 
 <style lang="scss">
   .condition-container {
+    font-family: monospace;
     cursor: default;
 
     &:hover,
@@ -75,7 +76,6 @@
   }
   .condition-input {
     background-color: #eff0f1;
-    font-family: monospace;
     cursor: default;
     &-edit {
       border: 1px solid transparent;

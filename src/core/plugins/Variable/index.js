@@ -1,8 +1,9 @@
+import { variableContainerClassName } from '@/services/variable.service'
 import VariableComponent from '@/components/VariableComponent.svelte'
 
 import './index.scss'
 
-export class InsertVariable {
+export class Variable {
     static get isInline() {
         return true;
     }
@@ -27,8 +28,16 @@ export class InsertVariable {
         const selectedText = range.extractContents();
 
         const ifConditionContainer = document.createElement('span');
-        ifConditionContainer.classList.add('templator-variable')
-        new VariableComponent({ target: ifConditionContainer, props: { text: selectedText } })
+        ifConditionContainer.classList.add(variableContainerClassName)
+        new VariableComponent({ 
+            target: ifConditionContainer, 
+            props: { 
+                text: selectedText,
+                onRemove: () => {
+                    ifConditionContainer.remove()
+                }
+            } 
+        })
 
 
         range.insertNode(ifConditionContainer);

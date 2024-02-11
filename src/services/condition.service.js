@@ -53,6 +53,7 @@ export const getIdForInlineConditionContainers = () => {
 
 export const startOfInlineConditionClassName = 'condition-start'
 export const endOfInlineConditionClassName = 'condition-end'
+export const conditionContentClassName = 'condition-input-edit'
 
 /**
  * @param {(string)} id - is used to coordinate all condition containers of the same closure
@@ -125,7 +126,7 @@ export const reapplyConditionsToBlocks = () => {
             block.holder.querySelectorAll('.' + startOfInlineConditionClassName).forEach(element => {
                 
                 const statement = element.firstElementChild.getAttribute('data-statement')
-                const condition = element.querySelector('.condition-input-edit').textContent
+                const condition = element.querySelector('.' + conditionContentClassName).textContent
                 const id = Array.from(element.classList).find(className => className.includes(startOfIdForInlineConditionContainers))
 
                 const { startConditionContainer, endConditionContainer } = getInlineConditionContainers(id, condition, statement.toLowerCase())

@@ -621,7 +621,7 @@ export default class Table {
    */
   isConditionRow(rowIndex) {
     const content = this.data && this.data.content;
-    const isCondition = ['if', 'endif'].find((condition) => content[rowIndex][0] === condition)
+    const isCondition = ['if', 'endif'].find((condition) => content[rowIndex] && content[rowIndex][0] === condition)
     return Boolean(isCondition)
   }
 

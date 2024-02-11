@@ -10,7 +10,7 @@ import { Condition } from '@/core/plugins/Conditions/Condition';
 import { ElseCondition } from '@/core/plugins/Conditions/ElseCondition';
 import { EndCondition } from '@/core/plugins/Conditions/EndCondition';
 import { InlineCondition } from '@/core/plugins/Conditions/InlineCondition';
-import { InsertVariable } from '@/core/plugins/InsertVariable';
+import { Variable } from '@/core/plugins/Variable';
 
 export const tools = {
     header: {
@@ -129,6 +129,6 @@ export const tools = {
     },
     // Columns,
     Variable: {
-        class: InsertVariable,
+        class: Variable,
     },
 }

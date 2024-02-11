@@ -18,6 +18,5 @@ export const setQueryParam = (key, value) => {
 export const getQueryParam = (key) => {
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get(key);
-    console.log(param)
     return param
 }
