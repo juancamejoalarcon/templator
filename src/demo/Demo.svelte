@@ -7,6 +7,7 @@
 
   import IndentButton from "./components/IndentButton.svelte";
   import SelectDemoButton from "./components/SelectDemo/SelectDemoButton.svelte";
+  import Export from "./components/Export.svelte";
 
   let selected;
   let editor = null;
@@ -36,12 +37,12 @@
   };
 
   const logData = () => {
-    // editor.save().then((data) => console.log(data));
-    transform.toEJS(editor).then((data) => console.log(data));
+    editor.save().then((data) => console.log(data));
   };
 
-  const downloadEJS = async () => {
-    const ejs = await transform.toEJS(editor);
+  const download = async (type) => {
+    const editorOutputData = await editor.save();
+    const ejs = await transform(editorOutputData, type);
     downloadHTML(ejs);
   };
 </script>
@@ -61,7 +62,7 @@
       />
     </div>
     <div class="menu-button">
-      <button on:click={downloadEJS}> Export to EJS </button>
+      <Export {download} />
     </div>
     <div class="menu-button">
       <button on:click={logData}> Log data</button>

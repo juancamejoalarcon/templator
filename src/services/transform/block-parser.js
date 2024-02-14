@@ -7,31 +7,31 @@ export const buildBlockParser = (engineType) => {
     const parser = {
         [getBlockNames('if')]: {
             'ejs': ({ data }) => `<% if (${data.condition}) { %>`,
-            'jinja': () => {},
+            'jinja': ({ data }) => `{% if ${data.condition} %}`,
         },
         [getBlockNames('elseif')]: {
             'ejs': ({ data }) => `<% } else if (${data.condition}) { %>`,
-            'jinja': () => {},
+            'jinja': ({ data }) => `{% elif ${data.condition} %}`,
         },
         [getBlockNames('else')]: {
             'ejs': ({ data }) => `<% } else { %>`,
-            'jinja': () => {},
+            'jinja': ({ data }) => `{% else %}`,
         },
         [getBlockNames('endif')]: {
             'ejs': ({ data }) => `<% } %>`,
-            'jinja': () => {},
+            'jinja': ({ data }) => `{% endif %}`,
         },
         [getBlockNames('for')]: {
             'ejs': ({ data }) => `<% for (const ${data.condition}) { %>`,
-            'jinja': () => {},
+            'jinja': ({ data }) => `{% for ${data.condition}) %}`,
         },
         [getBlockNames('endfor')]: {
             'ejs': ({ data }) => `<% } %>`,
-            'jinja': () => {},
+            'jinja': () => `{% endfor %}`,
         },
         table: {
             'ejs': ({ data }) => transformTable(data, engineType),
-            'jinja': () => {},
+            'jinja': ({ data }) => transformTable(data, engineType),
         },
     }
 
