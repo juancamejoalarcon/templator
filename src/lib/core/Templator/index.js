@@ -7,6 +7,8 @@ import { setEventListeners } from './templator-events';
 
 import state from '@/lib/services/state.service';
 
+import { transform as transformService } from "@/lib/services/transform";
+
 import './index.scss'
 
 export class Templator {
@@ -66,3 +68,5 @@ export class Templator {
     }
 
 }
+
+export const transform = transformService
