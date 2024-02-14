@@ -1,8 +1,8 @@
 <script>
   import { onMount } from "svelte";
-  import { Templator } from "@/core/Templator";
+  import { Templator } from "@/lib/core/Templator";
   import { getQueryParam } from "./services/query-params";
-  import { transform } from "@/services/transform";
+  import { transform } from "@/lib/services/transform";
   import { downloadHTML } from "./download";
 
   import IndentButton from "./components/IndentButton.svelte";
