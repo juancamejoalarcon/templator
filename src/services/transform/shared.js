@@ -10,12 +10,13 @@ import { variableEditContainerClassName, variableContainerClassName } from '@/se
  * Finds all variables component in element and replaces
  * @param {(HTMLElement)} el
  * @param {(Document)} doc - document window object
+ * @param {(string)} engineType - jinja, ejs,...
  * @returns {void}
  */
-export const replaceVariablesInElement = (el, doc) => {
+export const replaceVariablesInElement = (el, doc, engineType) => {
     el.querySelectorAll('.' + variableContainerClassName).forEach((variable) => {
         const content = variable.querySelector('.' + variableEditContainerClassName).textContent
-        let textNode = doc.createTextNode(buildVariable(content, 'ejs'));
+        let textNode = doc.createTextNode(buildVariable(content, engineType));
         variable.replaceWith(textNode)
     })
 }
@@ -74,7 +75,7 @@ export const buildEndCondition = (statement, engineType) => {
 }
 
 /**
- * @param {(string)} html - if, for,...
+ * @param {(string)} html
  * @returns {string}
  */
 export const replaceSpecialCharsInHtml = (html) => {
@@ -89,15 +90,16 @@ export const replaceSpecialCharsInHtml = (html) => {
  * and replaces it with a string
  * @param {(HTMLElement)} el
  * @param {(Document)} doc - document window object
+ * @param {(string)} engineType - jinja, ejs,...
  * @returns {void}
  */
-export const findAndReplaceStartOfCondition = (el, doc) => {
+export const findAndReplaceStartOfCondition = (el, doc, engineType) => {
     el.querySelectorAll('.' + startOfInlineConditionClassName).forEach((conditionEl) => {
 
         const statement = conditionEl.firstElementChild.getAttribute('data-statement')
         const condition = conditionEl.querySelector('.' + conditionContentClassName).textContent
 
-        let textNode = doc.createTextNode(buildStartCondition(statement, condition, 'ejs'));
+        let textNode = doc.createTextNode(buildStartCondition(statement, condition, engineType));
         conditionEl.replaceWith(textNode)
     })
 }
@@ -107,13 +109,14 @@ export const findAndReplaceStartOfCondition = (el, doc) => {
  * and replaces it with a string
  * @param {(HTMLElement)} el
  * @param {(Document)} doc - document window object
+ * @param {(string)} engineType - jinja, ejs,...
  * @returns {void}
  */
-export const findAndReplaceEndOfCondition = (el, doc) => {
+export const findAndReplaceEndOfCondition = (el, doc, engineType) => {
     el.querySelectorAll('.' + endOfInlineConditionClassName).forEach((conditionEl) => {
 
         const statement = conditionEl.firstElementChild.getAttribute('data-statement')
-        let textNode = doc.createTextNode(buildEndCondition(statement, 'ejs'));
+        let textNode = doc.createTextNode(buildEndCondition(statement, engineType));
         conditionEl.replaceWith(textNode)
     })
 }

@@ -3,16 +3,17 @@ import {
     getNameOfEndStatement
 } from '@/services/condition.service'
 
-import { replaceVariablesInElement, buildStartCondition, buildEndCondition, replaceSpecialCharsInHtml } from './shared'
+import { replaceVariablesInElement, buildStartCondition, buildEndCondition, replaceSpecialCharsInHtml } from './shared'
 
 /**
  * @typedef {Object} data
  * @property {boolean} [withHeadings] - if true first row is the heading of table
  * @property {object} content - content of table
  * @param {data} data
+ * @param {(string)} engineType - jinja, ejs,...
  * @returns {string}
  */
-export const transformTable = (data) => {
+export const transformTable = (data, engineType) => {
 
     const jsDOM = parseHTML('');
 
@@ -25,7 +26,7 @@ export const transformTable = (data) => {
         headerRow.forEach(cellContent => {
             const cell = jsDOM.document.createElement('th')
             cell.innerHTML = cleanCellHtml(cellContent)
-            replaceVariablesInElement(cell, jsDOM.document)
+            replaceVariablesInElement(cell, jsDOM.document, engineType)
             headerContent += cell.outerHTML
         });
         header = makeHeader(headerContent)
@@ -35,14 +36,14 @@ export const transformTable = (data) => {
     content.forEach((row, index) => {
         if (index === 0 && withHeadings) return
         if (isConditionRow(row)) {
-            bodyContent += getRowCondition(row)
+            bodyContent += getRowCondition(row, engineType)
             return
         }
         let rowContent = ''
         row.forEach(cellContent => {
             const cell = document.createElement('td')
             cell.innerHTML = cleanCellHtml(cellContent)
-            replaceVariablesInElement(cell, jsDOM.document)
+            replaceVariablesInElement(cell, jsDOM.document, engineType)
             rowContent += cell.outerHTML
         });
         bodyContent += makeRow(rowContent)
@@ -77,14 +78,15 @@ const isConditionRow = (row) => {
 
 /**
  * @param {Array} row
+ * @param {(string)} engineType - jinja, ejs,...
  * @returns {string}
  */
-const getRowCondition = (row) => {
+const getRowCondition = (row, engineType) => {
     const statement = row[0]
     const condition = row[1]
     
-    if (!statement.includes('end')) return buildStartCondition(statement, condition, 'ejs')
-    if (statement.includes('end')) return buildEndCondition(statement, 'ejs')
+    if (!statement.includes('end')) return buildStartCondition(statement, condition, engineType)
+    if (statement.includes('end')) return buildEndCondition(statement, engineType)
 
     return ''
 }

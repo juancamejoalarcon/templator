@@ -1,6 +1,5 @@
 import edjsHTML from 'editorjs-html'
-import {DOMParser, parseHTML} from 'linkedom';
-
+import { parseHTML } from 'linkedom';
 
 import { 
     replaceVariablesInElement, 
@@ -9,7 +8,8 @@ import {
     findAndReplaceEndOfCondition
 } from './shared'
 
-import { transformTable } from './transform-table'
+
+import { buildBlockParser } from './block-parser'
 
 
 
@@ -30,11 +30,11 @@ export const transformToEjs = async (editor) => {
                 const ephemeralElement = jsDOM.document.createElement('div')
                 ephemeralElement.innerHTML = block.data.text
 
-                findAndReplaceStartOfCondition(ephemeralElement, jsDOM.document)
+                findAndReplaceStartOfCondition(ephemeralElement, jsDOM.document, 'ejs')
 
-                findAndReplaceEndOfCondition(ephemeralElement, jsDOM.document)
+                findAndReplaceEndOfCondition(ephemeralElement, jsDOM.document, 'ejs')
 
-                replaceVariablesInElement(ephemeralElement, jsDOM.document)
+                replaceVariablesInElement(ephemeralElement, jsDOM.document, 'ejs')
 
                 let inner = replaceSpecialCharsInHtml(ephemeralElement.innerHTML)
 
@@ -42,16 +42,10 @@ export const transformToEjs = async (editor) => {
             }
         });
 
+        const parser = buildBlockParser('ejs');
 
-        const edjsParser = edjsHTML({
-            IfCondition: ({ data }) => `<% if (${data.condition}) { %>`,
-            IfElseCondition: ({ data }) => `<% } else if (${data.condition}) { %>`,
-            ElseCondition: ({ data }) => `<% } else { %>`,
-            IfEndCondition: ({ data }) => `<% } %>`,
-            ForCondition: ({ data }) => `<% for (const ${data.condition}) { %>`,
-            ForEndCondition: ({ data }) => `<% } %>`,
-            table: ({ data }) => transformTable(data) 
-        });
+
+        const edjsParser = edjsHTML(parser);
 
         const parsed = edjsParser.parse(cloneData);
 

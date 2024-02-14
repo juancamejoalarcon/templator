@@ -25,7 +25,7 @@ export class EndCondition {
          * @type {string}
          */
         this.type = data.type || config.type
-        this.type = this.type.replace('END', '').toLowerCase()
+        this.type = this.type.replace('end', '').replace('END', '').toLowerCase()
     }
 
     render() {
