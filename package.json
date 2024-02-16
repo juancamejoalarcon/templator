@@ -18,13 +18,13 @@
     "dev": "vite",
     "build": "vite build && vite build --mode=demo",
     "preview": "vite preview",
-    "test:ui": "npx playwright test --ui"
+    "test:ui": "cypress open"
   },
   "devDependencies": {
-    "@playwright/test": "^1.41.2",
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "@types/eslint": "^8.56.2",
     "@types/node": "^20.11.18",
+    "cypress": "^13.6.4",
     "eslint": "^8.56.0",
     "eslint-plugin-svelte": "^2.35.1",
     "sass": "^1.70.0",
