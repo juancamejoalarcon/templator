@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, command }) => {
 
     const common = {
         base: "./",
@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
         return {
             ...common,
             build: {
-                outDir: './demo'
+                outDir: './dist/demo'
             }
         }
     }
@@ -33,6 +33,7 @@ export default defineConfig(({ mode }) => {
                 name: 'Templator',
                 fileName: 'templator',
             },
+            outDir: './dist/lib',
             rollupOptions: {
                 // make sure to externalize deps that shouldn't be bundled
                 // into your library

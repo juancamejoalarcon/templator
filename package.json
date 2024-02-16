@@ -3,23 +3,28 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "files": ["dist"],
-  "main": "./dist/templator.umd.cjs",
-  "module": "./dist/templator.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/lib/templator.umd.cjs",
+  "module": "./dist/lib/templator.js",
   "exports": {
     ".": {
-      "import": "./dist/templator.js",
-      "require": "./dist/templator.umd.cjs"
+      "import": "./dist/lib/templator.js",
+      "require": "./dist/lib/templator.umd.cjs"
     }
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build && vite build --mode=demo",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:ui": "npx playwright test --ui"
   },
   "devDependencies": {
+    "@playwright/test": "^1.41.2",
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "@types/eslint": "^8.56.2",
+    "@types/node": "^20.11.18",
     "eslint": "^8.56.0",
     "eslint-plugin-svelte": "^2.35.1",
     "sass": "^1.70.0",
