@@ -1,4 +1,4 @@
-Live demo: [HERE](https://juancamejoalarcon.github.io/templator/demo/index.html)
+Live demo: [HERE](https://juancamejoalarcon.github.io/templator/dist/demo/index.html)
 
 ## TO DO
 
