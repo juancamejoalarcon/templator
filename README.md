@@ -1,3 +1,10 @@
+<p align="center">
+    <picture>
+      <source srcset="https://raw.githubusercontent.com/juancamejoalarcon/templator/main/public/logo.svg?sanitize=true" width="500px" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
+      <img srcset="https://raw.githubusercontent.com/juancamejoalarcon/templator/main/public/logo.svg?sanitize=true" width="500px" />
+    </picture>
+</p>
+
 Live demo: [HERE](https://juancamejoalarcon.github.io/templator/dist/demo/index.html)
 
 ## TO DO
