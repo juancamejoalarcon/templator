@@ -1,6 +1,7 @@
 const url = 'http://127.0.0.1:5173/'
 const editorId = '#editorjs'
 
+
 describe('template spec', () => {
   it('should create 2 paragraphs and wrapp them in a condition', () => {
 
@@ -30,9 +31,16 @@ describe('template spec', () => {
 
     cy.wait(200);
 
-    cy.get(editorId).get('.condition-input-edit').clear().type('foo === "ok"');
+    cy.get(editorId).get('[data-statement="ENDIF"]').should('be.visible')
 
+    // Edit condition input
+    const condition = 'foo === "ok"'
+    cy.get(editorId).get('.condition-input-edit').clear().type(condition);
+    cy.get(editorId).get('.condition-input-edit').should("have.text", condition);
 
+    // Delete condition
+    cy.get(editorId).get('.close-icon').click({ force: true });
+    cy.get(editorId).get('[data-statement="ENDIF"]').should('not.exist');
 
   })
 })
