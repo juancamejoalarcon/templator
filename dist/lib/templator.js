@@ -60,7 +60,7 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(n) {
   clearTimeout(n);
 };
 let oc = (n = 21) => crypto.getRandomValues(new Uint8Array(n)).reduce((e, t) => (t &= 63, t < 36 ? e += t.toString(36) : t < 62 ? e += (t - 26).toString(36).toUpperCase() : t > 62 ? e += "-" : e += "_", e), "");
-var Vr = /* @__PURE__ */ ((n) => (n.VERBOSE = "VERBOSE", n.INFO = "INFO", n.WARN = "WARN", n.ERROR = "ERROR", n))(Vr || {});
+var zr = /* @__PURE__ */ ((n) => (n.VERBOSE = "VERBOSE", n.INFO = "INFO", n.WARN = "WARN", n.ERROR = "ERROR", n))(zr || {});
 const q = {
   BACKSPACE: 8,
   TAB: 9,
@@ -139,16 +139,16 @@ function wt(n) {
 function rc(n) {
   return Ot(n) === "boolean";
 }
-function Ms(n) {
+function Is(n) {
   return Ot(n) === "number";
 }
-function Is(n) {
+function Rs(n) {
   return Ot(n) === "undefined";
 }
 function Fe(n) {
   return n ? Object.keys(n).length === 0 && n.constructor === Object : !0;
 }
-function zr(n) {
+function Gr(n) {
   return n > 47 && n < 58 || // number keys
   n === 32 || n === 13 || // Space bar & return key(s)
   n === 229 || // processing key input for certain languages — Chinese, Japanese, etc.
@@ -162,14 +162,14 @@ async function ac(n, e = () => {
 }) {
   async function o(i, s, r) {
     try {
-      await i.function(i.data), await s(Is(i.data) ? {} : i.data);
+      await i.function(i.data), await s(Rs(i.data) ? {} : i.data);
     } catch {
-      r(Is(i.data) ? {} : i.data);
+      r(Rs(i.data) ? {} : i.data);
     }
   }
   return n.reduce(async (i, s) => (await i, o(s, e, t)), Promise.resolve());
 }
-function Gr(n) {
+function Wr(n) {
   return Array.prototype.slice.call(n);
 }
 function Xn(n, e) {
@@ -184,7 +184,7 @@ function uc(n) {
 function lc(n) {
   return /^[-\w]+\/([-+\w]+|\*)$/.test(n);
 }
-function Rs(n, e, t) {
+function _s(n, e, t) {
   let o;
   return (...i) => {
     const s = this, r = () => {
@@ -263,11 +263,11 @@ function on(n, e, t) {
   }
   return t;
 }
-const Wr = 650;
+const Kr = 650;
 function Mt() {
-  return window.matchMedia(`(max-width: ${Wr}px)`).matches;
+  return window.matchMedia(`(max-width: ${Kr}px)`).matches;
 }
-const _s = typeof window < "u" && window.navigator && window.navigator.platform && (/iP(ad|hone|od)/.test(window.navigator.platform) || window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1);
+const Os = typeof window < "u" && window.navigator && window.navigator.platform && (/iP(ad|hone|od)/.test(window.navigator.platform) || window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1);
 function gc(n, e) {
   const t = Array.isArray(n) || ye(n), o = Array.isArray(e) || ye(e);
   return t || o ? JSON.stringify(n) === JSON.stringify(e) : n === e;
@@ -409,7 +409,7 @@ let m = class Ee {
    * @param holder - element where to find inputs
    */
   static findAllInputs(e) {
-    return Gr(e.querySelectorAll(Ee.allInputsSelector)).reduce((t, o) => Ee.isNativeInput(o) || Ee.containsOnlyInlineElements(o) ? [...t, o] : [...t, ...Ee.getDeepestBlockElements(o)], []);
+    return Wr(e.querySelectorAll(Ee.allInputsSelector)).reduce((t, o) => Ee.isNativeInput(o) || Ee.containsOnlyInlineElements(o) ? [...t, o] : [...t, ...Ee.getDeepestBlockElements(o)], []);
   }
   /**
    * Search for deepest node which is Leaf.
@@ -444,7 +444,7 @@ let m = class Ee {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static isElement(e) {
-    return Ms(e) ? !1 : e && e.nodeType && e.nodeType === Node.ELEMENT_NODE;
+    return Is(e) ? !1 : e && e.nodeType && e.nodeType === Node.ELEMENT_NODE;
   }
   /**
    * Check if object is DocumentFragment node
@@ -454,7 +454,7 @@ let m = class Ee {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static isFragment(e) {
-    return Ms(e) ? !1 : e && e.nodeType && e.nodeType === Node.DOCUMENT_FRAGMENT_NODE;
+    return Is(e) ? !1 : e && e.nodeType && e.nodeType === Node.DOCUMENT_FRAGMENT_NODE;
   }
   /**
    * Check if passed element is contenteditable
@@ -712,7 +712,7 @@ const bc = {
   moveDown: {
     "Move down": ""
   }
-}, Kr = {
+}, Zr = {
   ui: bc,
   toolNames: mc,
   tools: xc,
@@ -768,8 +768,8 @@ const bc = {
   }
 };
 let Me = Gt;
-Me.currentDictionary = Kr;
-class Zr extends Error {
+Me.currentDictionary = Zr;
+class Yr extends Error {
 }
 class po {
   constructor() {
@@ -1075,7 +1075,7 @@ class Li {
     return this.allListeners.find((t) => t.id === e);
   }
 }
-let K = class Yr {
+let K = class Xr {
   /**
    * @class
    * @param options - Module options
@@ -1105,7 +1105,7 @@ let K = class Yr {
           this.listeners.offById(o);
         this.mutableListenerIds = [];
       }
-    }, this.mutableListenerIds = [], new.target === Yr)
+    }, this.mutableListenerIds = [], new.target === Xr)
       throw new TypeError("Constructors for abstract class Module are not allowed.");
     this.config = e, this.eventsDispatcher = t;
   }
@@ -1423,8 +1423,8 @@ function yc(n, e) {
   const r = Array.from(i).some((u) => e.contains(u)), a = Array.from(s).some((u) => e.contains(u));
   return r || a;
 }
-const ti = "redactor dom changed", Xr = "block changed", Jr = "fake cursor is about to be toggled", Qr = "fake cursor have been set";
-function Os(n, e) {
+const ti = "redactor dom changed", Jr = "block changed", Qr = "fake cursor is about to be toggled", ea = "fake cursor have been set";
+function Ds(n, e) {
   return n.mergeable && n.name === e.name;
 }
 function wc(n, e) {
@@ -1620,7 +1620,7 @@ class xe extends po {
     var t, o;
     this.holder.classList.toggle(xe.CSS.selected, e);
     const i = e === !0 && _.isRangeInsideContainer(this.holder), s = e === !1 && _.isFakeCursorInsideContainer(this.holder);
-    (i || s) && ((t = this.editorEventBus) == null || t.emit(Jr, { state: e }), i ? _.addFakeCursor() : _.removeFakeCursor(this.holder), (o = this.editorEventBus) == null || o.emit(Qr, { state: e }));
+    (i || s) && ((t = this.editorEventBus) == null || t.emit(Qr, { state: e }), i ? _.addFakeCursor() : _.removeFakeCursor(this.holder), (o = this.editorEventBus) == null || o.emit(ea, { state: e }));
   }
   /**
    * Returns True if it is Selected
@@ -2775,7 +2775,7 @@ var oi = {}, _c = {
   });
 })(_c);
 const Oc = oi;
-function ea(n, e) {
+function ta(n, e) {
   return n.map((t) => {
     const o = ie(e) ? e(t.tool) : e;
     return Fe(o) || (t.data = Mi(t.data, o)), t;
@@ -3220,18 +3220,18 @@ class Yc extends K {
     };
   }
 }
-function ta(n, e) {
+function na(n, e) {
   const t = {};
   return Object.entries(n).forEach(([o, i]) => {
     if (ye(i)) {
       const s = e ? `${e}.${o}` : o;
-      Object.values(i).every((r) => wt(r)) ? t[o] = s : t[o] = ta(i, s);
+      Object.values(i).every((r) => wt(r)) ? t[o] = s : t[o] = na(i, s);
       return;
     }
     t[o] = i;
   }), t;
 }
-const Ve = ta(Kr);
+const Ve = na(Zr);
 function Xc(n, e) {
   const t = {};
   return Object.keys(n).forEach((o) => {
@@ -3239,7 +3239,7 @@ function Xc(n, e) {
     i !== void 0 ? t[i] = n[o] : t[o] = n[o];
   }), t;
 }
-const Jc = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M9 12L9 7.1C9 7.04477 9.04477 7 9.1 7H10.4C11.5 7 14 7.1 14 9.5C14 9.5 14 12 11 12M9 12V16.8C9 16.9105 9.08954 17 9.2 17H12.5C14 17 15 16 15 14.5C15 11.7046 11 12 11 12M9 12H11"/></svg>', na = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7 10L11.8586 14.8586C11.9367 14.9367 12.0633 14.9367 12.1414 14.8586L17 10"/></svg>', Qc = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7 15L11.8586 10.1414C11.9367 10.0633 12.0633 10.0633 12.1414 10.1414L17 15"/></svg>', ed = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8 8L12 12M12 12L16 16M12 12L16 8M12 12L8 16"/></svg>', td = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/></svg>', nd = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M13.34 10C12.4223 12.7337 11 17 11 17"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M14.21 7H14.2"/></svg>', Ds = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7.69998 12.6L7.67896 12.62C6.53993 13.7048 6.52012 15.5155 7.63516 16.625V16.625C8.72293 17.7073 10.4799 17.7102 11.5712 16.6314L13.0263 15.193C14.0703 14.1609 14.2141 12.525 13.3662 11.3266L13.22 11.12"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M16.22 11.12L16.3564 10.9805C17.2895 10.0265 17.3478 8.5207 16.4914 7.49733V7.49733C15.5691 6.39509 13.9269 6.25143 12.8271 7.17675L11.3901 8.38588C10.0935 9.47674 9.95706 11.4241 11.0888 12.6852L11.12 12.72"/></svg>', od = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.40999 7.29999H9.4"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M14.6 7.29999H14.59"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.30999 12H9.3"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M14.6 12H14.59"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.40999 16.7H9.4"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M14.6 16.7H14.59"/></svg>', id = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 7V12M12 17V12M17 12H12M12 12H7"/></svg>', sd = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5" stroke="currentColor" stroke-width="2"/><line x1="15.4142" x2="19" y1="15" y2="18.5858" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>', rd = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M15.7795 11.5C15.7795 11.5 16.053 11.1962 16.5497 10.6722C17.4442 9.72856 17.4701 8.2475 16.5781 7.30145V7.30145C15.6482 6.31522 14.0873 6.29227 13.1288 7.25073L11.8796 8.49999"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8.24517 12.3883C8.24517 12.3883 7.97171 12.6922 7.47504 13.2161C6.58051 14.1598 6.55467 15.6408 7.44666 16.5869V16.5869C8.37653 17.5731 9.93744 17.5961 10.8959 16.6376L12.1452 15.3883"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M17.7802 15.1032L16.597 14.9422C16.0109 14.8624 15.4841 15.3059 15.4627 15.8969L15.4199 17.0818"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M6.39064 9.03238L7.58432 9.06668C8.17551 9.08366 8.6522 8.58665 8.61056 7.99669L8.5271 6.81397"/><line x1="12.1142" x2="11.7" y1="12.2" y2="11.7858" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>', ad = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><rect width="14" height="14" x="5" y="5" stroke="currentColor" stroke-width="2" rx="4"/><line x1="12" x2="12" y1="9" y2="12" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 15.02V15.01"/></svg>';
+const Jc = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M9 12L9 7.1C9 7.04477 9.04477 7 9.1 7H10.4C11.5 7 14 7.1 14 9.5C14 9.5 14 12 11 12M9 12V16.8C9 16.9105 9.08954 17 9.2 17H12.5C14 17 15 16 15 14.5C15 11.7046 11 12 11 12M9 12H11"/></svg>', oa = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7 10L11.8586 14.8586C11.9367 14.9367 12.0633 14.9367 12.1414 14.8586L17 10"/></svg>', Qc = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7 15L11.8586 10.1414C11.9367 10.0633 12.0633 10.0633 12.1414 10.1414L17 15"/></svg>', ed = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8 8L12 12M12 12L16 16M12 12L16 8M12 12L8 16"/></svg>', td = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/></svg>', nd = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M13.34 10C12.4223 12.7337 11 17 11 17"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M14.21 7H14.2"/></svg>', Ps = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7.69998 12.6L7.67896 12.62C6.53993 13.7048 6.52012 15.5155 7.63516 16.625V16.625C8.72293 17.7073 10.4799 17.7102 11.5712 16.6314L13.0263 15.193C14.0703 14.1609 14.2141 12.525 13.3662 11.3266L13.22 11.12"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M16.22 11.12L16.3564 10.9805C17.2895 10.0265 17.3478 8.5207 16.4914 7.49733V7.49733C15.5691 6.39509 13.9269 6.25143 12.8271 7.17675L11.3901 8.38588C10.0935 9.47674 9.95706 11.4241 11.0888 12.6852L11.12 12.72"/></svg>', od = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.40999 7.29999H9.4"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M14.6 7.29999H14.59"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.30999 12H9.3"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M14.6 12H14.59"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.40999 16.7H9.4"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M14.6 16.7H14.59"/></svg>', id = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 7V12M12 17V12M17 12H12M12 12H7"/></svg>', sd = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5" stroke="currentColor" stroke-width="2"/><line x1="15.4142" x2="19" y1="15" y2="18.5858" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>', rd = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M15.7795 11.5C15.7795 11.5 16.053 11.1962 16.5497 10.6722C17.4442 9.72856 17.4701 8.2475 16.5781 7.30145V7.30145C15.6482 6.31522 14.0873 6.29227 13.1288 7.25073L11.8796 8.49999"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8.24517 12.3883C8.24517 12.3883 7.97171 12.6922 7.47504 13.2161C6.58051 14.1598 6.55467 15.6408 7.44666 16.5869V16.5869C8.37653 17.5731 9.93744 17.5961 10.8959 16.6376L12.1452 15.3883"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M17.7802 15.1032L16.597 14.9422C16.0109 14.8624 15.4841 15.3059 15.4627 15.8969L15.4199 17.0818"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M6.39064 9.03238L7.58432 9.06668C8.17551 9.08366 8.6522 8.58665 8.61056 7.99669L8.5271 6.81397"/><line x1="12.1142" x2="11.7" y1="12.2" y2="11.7858" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>', ad = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><rect width="14" height="14" x="5" y="5" stroke="currentColor" stroke-width="2" rx="4"/><line x1="12" x2="12" y1="9" y2="12" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 15.02V15.01"/></svg>';
 class ae {
   /**
    * Constructs popover item instance
@@ -3733,13 +3733,13 @@ const mn = class {
    * Locks body element scroll
    */
   lock() {
-    _s ? this.lockHard() : document.body.classList.add(mn.CSS.scrollLocked);
+    Os ? this.lockHard() : document.body.classList.add(mn.CSS.scrollLocked);
   }
   /**
    * Unlocks body element scroll
    */
   unlock() {
-    _s ? this.unlockHard() : document.body.classList.remove(mn.CSS.scrollLocked);
+    Os ? this.unlockHard() : document.body.classList.remove(mn.CSS.scrollLocked);
   }
   /**
    * Locks scroll in a hard way (via setting fixed position to body element)
@@ -3757,8 +3757,8 @@ const mn = class {
     document.body.classList.remove(mn.CSS.scrollLockedHard), this.scrollPosition !== null && window.scrollTo(0, this.scrollPosition), this.scrollPosition = null;
   }
 };
-let oa = mn;
-oa.CSS = {
+let ia = mn;
+ia.CSS = {
   scrollLocked: "ce-scroll-locked",
   scrollLockedHard: "ce-scroll-locked--hard"
 };
@@ -3774,7 +3774,7 @@ const be = class extends po {
    * @param params - popover construction params
    */
   constructor(n) {
-    super(), this.scopeElement = document.body, this.listeners = new Li(), this.scrollLocker = new oa(), this.nodes = {
+    super(), this.scopeElement = document.body, this.listeners = new Li(), this.scrollLocker = new ia(), this.nodes = {
       wrapper: null,
       popover: null,
       nothingFoundMessage: null,
@@ -4393,12 +4393,12 @@ class bd {
   }
 }
 const en = new bd();
-var md = Object.defineProperty, xd = Object.getOwnPropertyDescriptor, ia = (n, e, t, o) => {
+var md = Object.defineProperty, xd = Object.getOwnPropertyDescriptor, sa = (n, e, t, o) => {
   for (var i = o > 1 ? void 0 : o ? xd(e, t) : e, s = n.length - 1, r; s >= 0; s--)
     (r = n[s]) && (i = (o ? r(e, t, i) : r(i)) || i);
   return o && i && md(e, t, i), i;
 }, Vn = /* @__PURE__ */ ((n) => (n.Opened = "toolbox-opened", n.Closed = "toolbox-closed", n.BlockAdded = "toolbox-block-added", n))(Vn || {});
-const sa = class extends po {
+const ra = class extends po {
   /**
    * Toolbox constructor
    *
@@ -4446,7 +4446,7 @@ const sa = class extends po {
         search: this.i18nLabels.filter
       },
       items: this.toolboxItemsToBeDisplayed
-    }), this.popover.on(Sn.Close, this.onPopoverClose), this.enableShortcuts(), this.nodes.toolbox = this.popover.getElement(), this.nodes.toolbox.classList.add(sa.CSS.toolbox), this.nodes.toolbox;
+    }), this.popover.on(Sn.Close, this.onPopoverClose), this.enableShortcuts(), this.nodes.toolbox = this.popover.getElement(), this.nodes.toolbox.classList.add(ra.CSS.toolbox), this.nodes.toolbox;
   }
   /**
    * Returns true if the Toolbox has the Flipper activated and the Flipper has selected button
@@ -4591,14 +4591,14 @@ const sa = class extends po {
     }), this.api.toolbar.close();
   }
 };
-let _i = sa;
-ia([
+let _i = ra;
+sa([
   on
 ], _i.prototype, "toolsToBeDisplayed", 1);
-ia([
+sa([
   on
 ], _i.prototype, "toolboxItemsToBeDisplayed", 1);
-const ra = "block hovered";
+const aa = "block hovered";
 class vd extends K {
   /**
    * @class
@@ -4801,7 +4801,7 @@ class vd extends K {
     this.readOnlyMutableListeners.on(this.nodes.settingsToggler, "mousedown", (e) => {
       var t;
       e.stopPropagation(), this.settingsTogglerClicked(), (t = this.toolboxInstance) != null && t.opened && this.toolboxInstance.close(), si(!0);
-    }, !0), Mt() || this.eventsDispatcher.on(ra, (e) => {
+    }, !0), Mt() || this.eventsDispatcher.on(aa, (e) => {
       var t;
       this.Editor.BlockSettings.opened || (t = this.toolboxInstance) != null && t.opened || this.moveAndOpen(e.block);
     });
@@ -4840,7 +4840,7 @@ class vd extends K {
     this.removeAllNodes(), this.toolboxInstance && this.toolboxInstance.destroy();
   }
 }
-var fo = /* @__PURE__ */ ((n) => (n[n.Block = 0] = "Block", n[n.Inline = 1] = "Inline", n[n.Tune = 2] = "Tune", n))(fo || {}), zn = /* @__PURE__ */ ((n) => (n.Shortcut = "shortcut", n.Toolbox = "toolbox", n.EnabledInlineTools = "inlineToolbar", n.EnabledBlockTunes = "tunes", n.Config = "config", n))(zn || {}), aa = /* @__PURE__ */ ((n) => (n.Shortcut = "shortcut", n.SanitizeConfig = "sanitize", n))(aa || {}), Kt = /* @__PURE__ */ ((n) => (n.IsEnabledLineBreaks = "enableLineBreaks", n.Toolbox = "toolbox", n.ConversionConfig = "conversionConfig", n.IsReadOnlySupported = "isReadOnlySupported", n.PasteConfig = "pasteConfig", n))(Kt || {}), Oi = /* @__PURE__ */ ((n) => (n.IsInline = "isInline", n.Title = "title", n))(Oi || {}), ua = /* @__PURE__ */ ((n) => (n.IsTune = "isTune", n))(ua || {});
+var fo = /* @__PURE__ */ ((n) => (n[n.Block = 0] = "Block", n[n.Inline = 1] = "Inline", n[n.Tune = 2] = "Tune", n))(fo || {}), zn = /* @__PURE__ */ ((n) => (n.Shortcut = "shortcut", n.Toolbox = "toolbox", n.EnabledInlineTools = "inlineToolbar", n.EnabledBlockTunes = "tunes", n.Config = "config", n))(zn || {}), ua = /* @__PURE__ */ ((n) => (n.Shortcut = "shortcut", n.SanitizeConfig = "sanitize", n))(ua || {}), Kt = /* @__PURE__ */ ((n) => (n.IsEnabledLineBreaks = "enableLineBreaks", n.Toolbox = "toolbox", n.ConversionConfig = "conversionConfig", n.IsReadOnlySupported = "isReadOnlySupported", n.PasteConfig = "pasteConfig", n))(Kt || {}), Oi = /* @__PURE__ */ ((n) => (n.IsInline = "isInline", n.Title = "title", n))(Oi || {}), la = /* @__PURE__ */ ((n) => (n.IsTune = "isTune", n))(la || {});
 class Di {
   /**
    * @class
@@ -5058,7 +5058,7 @@ class yd extends K {
   addConversionToggler() {
     this.nodes.conversionToggler = m.make("div", this.CSS.conversionToggler), this.nodes.conversionTogglerContent = m.make("div", this.CSS.conversionTogglerContent);
     const e = m.make("div", this.CSS.conversionTogglerArrow, {
-      innerHTML: na
+      innerHTML: oa
     });
     this.nodes.conversionToggler.appendChild(this.nodes.conversionTogglerContent), this.nodes.conversionToggler.appendChild(e), this.nodes.togglerAndButtonsWrapper.appendChild(this.nodes.conversionToggler), this.listeners.on(this.nodes.conversionToggler, "click", () => {
       this.Editor.ConversionToolbar.toggle((t) => {
@@ -5142,7 +5142,7 @@ class yd extends K {
    */
   getToolShortcut(e) {
     const { Tools: t } = this.Editor, o = t.inlineTools.get(e), i = t.internal.inlineTools;
-    return Array.from(i.keys()).includes(e) ? this.inlineTools[e][aa.Shortcut] : o.shortcut;
+    return Array.from(i.keys()).includes(e) ? this.inlineTools[e][ua.Shortcut] : o.shortcut;
   }
   /**
    * Enable Tool shortcut with Editor Shortcuts Module
@@ -5240,7 +5240,7 @@ class wd extends K {
    * @param {KeyboardEvent} event - keydown
    */
   beforeKeydownProcessing(e) {
-    this.needToolbarClosing(e) && zr(e.keyCode) && (this.Editor.Toolbar.close(), this.Editor.ConversionToolbar.close(), e.ctrlKey || e.metaKey || e.altKey || e.shiftKey || this.Editor.BlockSelection.clearSelection(e));
+    this.needToolbarClosing(e) && Gr(e.keyCode) && (this.Editor.Toolbar.close(), this.Editor.ConversionToolbar.close(), e.ctrlKey || e.metaKey || e.altKey || e.shiftKey || this.Editor.BlockSelection.clearSelection(e));
   }
   /**
    * Key up on Block:
@@ -5348,7 +5348,7 @@ class wd extends K {
           o.setToBlock(r, o.positions.END);
           return;
         }
-        Os(i, s) ? this.mergeBlocks(s, i) : o.setToBlock(s, o.positions.END);
+        Ds(i, s) ? this.mergeBlocks(s, i) : o.setToBlock(s, o.positions.END);
       }
     }
   }
@@ -5375,7 +5375,7 @@ class wd extends K {
           t.removeBlock(i), o.setToBlock(s, o.positions.START);
           return;
         }
-        Os(i, s) ? this.mergeBlocks(i, s) : o.setToBlock(s, o.positions.START);
+        Ds(i, s) ? this.mergeBlocks(i, s) : o.setToBlock(s, o.positions.START);
       }
     }
   }
@@ -5493,7 +5493,7 @@ class Ao {
    * @returns {HTMLElement[]}
    */
   get nodes() {
-    return Gr(this.workingArea.children);
+    return Wr(this.workingArea.children);
   }
   /**
    * Proxy trap to implement array-like setter
@@ -5671,7 +5671,7 @@ class Ao {
     });
   }
 }
-const Ps = "block-removed", Hs = "block-added", kd = "block-moved", Fs = "block-changed";
+const Hs = "block-removed", Fs = "block-added", kd = "block-moved", qs = "block-changed";
 class Sd {
   constructor() {
     this.completed = Promise.resolve();
@@ -5872,9 +5872,9 @@ class Cd extends K {
       data: o,
       tunes: a
     });
-    return r && this.blockDidMutated(Ps, this.getBlockByIndex(u), {
+    return r && this.blockDidMutated(Hs, this.getBlockByIndex(u), {
       index: u
-    }), this._blocks.insert(u, l, r), this.blockDidMutated(Hs, l, {
+    }), this._blocks.insert(u, l, r), this.blockDidMutated(Fs, l, {
       index: u
     }), s ? this.currentBlockIndex = u : u <= this.currentBlockIndex && this.currentBlockIndex++, l;
   }
@@ -5903,7 +5903,7 @@ class Cd extends K {
       data: Object.assign({}, o, t),
       tunes: e.tunes
     }), s = this.getBlockIndex(e);
-    return this._blocks.replace(s, i), this.blockDidMutated(Fs, i, {
+    return this._blocks.replace(s, i), this.blockDidMutated(qs, i, {
       index: s
     }), i;
   }
@@ -5955,7 +5955,7 @@ class Cd extends K {
    */
   insertDefaultBlockAtIndex(e, t = !1) {
     const o = this.composeBlock({ tool: this.config.defaultBlock });
-    return this._blocks[e] = o, this.blockDidMutated(Hs, o, {
+    return this._blocks[e] = o, this.blockDidMutated(Fs, o, {
       index: e
     }), t ? this.currentBlockIndex = e : e <= this.currentBlockIndex && this.currentBlockIndex++, o;
   }
@@ -5989,7 +5989,7 @@ class Cd extends K {
       const i = this._blocks.indexOf(e);
       if (!this.validateIndex(i))
         throw new Error("Can't find a Block to remove");
-      e.destroy(), this._blocks.remove(i), this.blockDidMutated(Ps, e, {
+      e.destroy(), this._blocks.remove(i), this.blockDidMutated(Hs, e, {
         index: i
       }), this.currentBlockIndex >= i && this.currentBlockIndex--, this.blocks.length ? i === 0 && (this.currentBlockIndex = 0) : (this.currentBlockIndex = -1, t && this.insert()), o();
     });
@@ -6192,7 +6192,7 @@ class Cd extends K {
       t.dragOver(o);
     }), this.readOnlyMutableListeners.on(e.holder, "dragleave", (o) => {
       t.dragLeave(o);
-    }), e.on("didMutated", (o) => this.blockDidMutated(Fs, o, {
+    }), e.on("didMutated", (o) => this.blockDidMutated(qs, o, {
       index: this.getBlockIndex(o)
     }));
   }
@@ -6237,7 +6237,7 @@ class Cd extends K {
         ...o
       }
     });
-    return this.eventsDispatcher.emit(Xr, {
+    return this.eventsDispatcher.emit(Jr, {
       event: i
     }), t;
   }
@@ -6361,7 +6361,7 @@ class Ed extends K {
   clearSelection(e, t = !1) {
     const { BlockManager: o, Caret: i, RectangleSelection: s } = this.Editor;
     this.needToSelectAll = !1, this.nativeInputSelected = !1, this.readyToBlockSelection = !1;
-    const r = e && e instanceof KeyboardEvent, a = r && zr(e.keyCode);
+    const r = e && e instanceof KeyboardEvent, a = r && Gr(e.keyCode);
     if (this.anyBlockSelected && r && a && !_.isSelectionExists) {
       const u = o.removeSelectedBlocks();
       o.insertDefaultBlockAtIndex(u, !0), i.setToBlock(o.currentBlock), Xn(() => {
@@ -6935,11 +6935,11 @@ class Ad extends K {
       eventsDispatcher: t
     }), this.disabled = !1, this.batchingTimeout = null, this.batchingOnChangeQueue = /* @__PURE__ */ new Map(), this.batchTime = 400, this.mutationObserver = new MutationObserver((o) => {
       this.redactorChanged(o);
-    }), this.eventsDispatcher.on(Xr, (o) => {
+    }), this.eventsDispatcher.on(Jr, (o) => {
       this.particularBlockChanged(o.event);
-    }), this.eventsDispatcher.on(Jr, () => {
-      this.disable();
     }), this.eventsDispatcher.on(Qr, () => {
+      this.disable();
+    }), this.eventsDispatcher.on(ea, () => {
       this.enable();
     });
   }
@@ -6985,7 +6985,7 @@ class Ad extends K {
     });
   }
 }
-const la = class extends K {
+const ca = class extends K {
   constructor() {
     super(...arguments), this.MIME_TYPE = "application/x-editor-js", this.toolsTags = {}, this.tagsByTool = {}, this.toolsPatterns = [], this.toolsFiles = {}, this.exceptionList = [], this.processTool = (n) => {
       try {
@@ -7294,7 +7294,7 @@ const la = class extends K {
    */
   async processInlinePaste(n) {
     const { BlockManager: e, Caret: t } = this.Editor, { content: o } = n;
-    if (e.currentBlock && e.currentBlock.tool.isDefault && o.textContent.length < la.PATTERN_PROCESSING_MAX_LENGTH) {
+    if (e.currentBlock && e.currentBlock.tool.isDefault && o.textContent.length < ca.PATTERN_PROCESSING_MAX_LENGTH) {
       const i = await this.processPattern(o.textContent);
       if (i) {
         const s = e.currentBlock && e.currentBlock.tool.isDefault && e.currentBlock.isEmpty, r = e.paste(i.tool, i.event, s);
@@ -7355,7 +7355,7 @@ const la = class extends K {
    */
   insertEditorJSData(n) {
     const { BlockManager: e, Caret: t, Tools: o } = this.Editor;
-    ea(
+    ta(
       n,
       (i) => o.blockTools.get(i).sanitizeConfig
     ).forEach(({ tool: i, data: s }, r) => {
@@ -7429,8 +7429,8 @@ const la = class extends K {
     });
   }
 };
-let ca = la;
-ca.PATTERN_PROCESSING_MAX_LENGTH = 450;
+let da = ca;
+da.PATTERN_PROCESSING_MAX_LENGTH = 450;
 class Ld extends K {
   constructor() {
     super(...arguments), this.toolsDontSupportReadOnly = [], this.readOnlyEnabled = !1;
@@ -7471,7 +7471,7 @@ class Ld extends K {
    * Throws an error about tools which don't support read-only mode
    */
   throwCriticalError() {
-    throw new Zr(
+    throw new Yr(
       `To enable read-only mode all connected tools should support it. Tools ${this.toolsDontSupportReadOnly.join(", ")} don't support read-only mode.`
     );
   }
@@ -7796,7 +7796,7 @@ class Md extends K {
       o.forEach((a) => {
         i.push(this.getSavedData(a));
       });
-      const s = await Promise.all(i), r = await ea(s, (a) => t.blockTools.get(a).sanitizeConfig);
+      const s = await Promise.all(i), r = await ta(s, (a) => t.blockTools.get(a).sanitizeConfig);
       return this.makeOutput(r);
     } catch (s) {
       je("Saving failed due to the Error %o", "error", s);
@@ -8191,7 +8191,7 @@ class qi {
    * Create button for Inline Toolbar
    */
   render() {
-    return this.nodes.button = document.createElement("button"), this.nodes.button.type = "button", this.nodes.button.classList.add(this.CSS.button, this.CSS.buttonModifier), this.nodes.button.innerHTML = Ds, this.nodes.button;
+    return this.nodes.button = document.createElement("button"), this.nodes.button.type = "button", this.nodes.button.classList.add(this.CSS.button, this.CSS.buttonModifier), this.nodes.button.innerHTML = Ps, this.nodes.button;
   }
   /**
    * Input for the link
@@ -8227,7 +8227,7 @@ class qi {
       const t = e.getAttribute("href");
       this.nodes.input.value = t !== "null" ? t : "", this.selection.save();
     } else
-      this.nodes.button.innerHTML = Ds, this.nodes.button.classList.remove(this.CSS.buttonUnlink), this.nodes.button.classList.remove(this.CSS.buttonActive);
+      this.nodes.button.innerHTML = Ps, this.nodes.button.classList.remove(this.CSS.buttonUnlink), this.nodes.button.classList.remove(this.CSS.buttonActive);
     return !!e;
   }
   /**
@@ -8335,7 +8335,7 @@ class qi {
 }
 qi.isInline = !0;
 qi.title = "Link";
-class da {
+class ha {
   /**
    * @param options - constructor options
    * @param options.data - stub tool data
@@ -8379,7 +8379,7 @@ class da {
     return e.innerHTML = t, o.appendChild(i), o.appendChild(s), e.appendChild(o), e;
   }
 }
-da.isReadOnlySupported = !0;
+ha.isReadOnlySupported = !0;
 class Rd extends Di {
   constructor() {
     super(...arguments), this.type = fo.Inline;
@@ -8456,7 +8456,7 @@ class we extends Map {
     return new we(e);
   }
 }
-var Od = Object.defineProperty, Dd = Object.getOwnPropertyDescriptor, ha = (n, e, t, o) => {
+var Od = Object.defineProperty, Dd = Object.getOwnPropertyDescriptor, pa = (n, e, t, o) => {
   for (var i = o > 1 ? void 0 : o ? Dd(e, t) : e, s = n.length - 1, r; s >= 0; s--)
     (r = n[s]) && (i = (o ? r(e, t, i) : r(i)) || i);
   return o && i && Od(e, t, i), i;
@@ -8563,10 +8563,10 @@ class $i extends Di {
     return Array.from(this.inlineTools.values()).forEach((t) => Object.assign(e, t.sanitizeConfig)), Array.from(this.tunes.values()).forEach((t) => Object.assign(e, t.sanitizeConfig)), e;
   }
 }
-ha([
+pa([
   on
 ], $i.prototype, "sanitizeConfig", 1);
-ha([
+pa([
   on
 ], $i.prototype, "baseSanitizeConfig", 1);
 class Pd {
@@ -8605,14 +8605,14 @@ class Pd {
     switch (!0) {
       case e[Oi.IsInline]:
         return Rd;
-      case e[ua.IsTune]:
+      case e[la.IsTune]:
         return _d;
       default:
         return $i;
     }
   }
 }
-class pa {
+class fa {
   /**
    * MoveDownTune constructor
    *
@@ -8628,7 +8628,7 @@ class pa {
    */
   render() {
     return {
-      icon: na,
+      icon: oa,
       title: this.api.i18n.t("Move down"),
       onActivate: () => this.handleClick(),
       name: "move-down"
@@ -8646,8 +8646,8 @@ class pa {
     i.top < window.innerHeight && (s = window.scrollY + o.offsetHeight), window.scrollTo(0, s), this.api.blocks.move(e + 1), this.api.toolbar.toggleBlockSettings(!0);
   }
 }
-pa.isTune = !0;
-class fa {
+fa.isTune = !0;
+class ga {
   /**
    * DeleteTune constructor
    *
@@ -8677,8 +8677,8 @@ class fa {
     this.api.blocks.delete();
   }
 }
-fa.isTune = !0;
-class ga {
+ga.isTune = !0;
+class ba {
   /**
    * MoveUpTune constructor
    *
@@ -8712,13 +8712,13 @@ class ga {
     a.top > 0 ? u = Math.abs(r.top) - Math.abs(a.top) : u = Math.abs(r.top) + a.height, window.scrollBy(0, -1 * u), this.api.blocks.move(e - 1), this.api.toolbar.toggleBlockSettings(!0);
   }
 }
-ga.isTune = !0;
+ba.isTune = !0;
 var Hd = Object.defineProperty, Fd = Object.getOwnPropertyDescriptor, qd = (n, e, t, o) => {
   for (var i = o > 1 ? void 0 : o ? Fd(e, t) : e, s = n.length - 1, r; s >= 0; s--)
     (r = n[s]) && (i = (o ? r(e, t, i) : r(i)) || i);
   return o && i && Hd(e, t, i), i;
 };
-class ba extends K {
+class ma extends K {
   constructor() {
     super(...arguments), this.stubTool = "stub", this.toolsAvailable = new we(), this.toolsUnavailable = new we();
   }
@@ -8823,19 +8823,19 @@ class ba extends K {
         isInternal: !0
       },
       stub: {
-        class: da,
+        class: ha,
         isInternal: !0
       },
       moveUp: {
-        class: ga,
+        class: ba,
         isInternal: !0
       },
       delete: {
-        class: fa,
+        class: ga,
         isInternal: !0
       },
       moveDown: {
-        class: pa,
+        class: fa,
         isInternal: !0
       }
     };
@@ -8965,12 +8965,12 @@ class ba extends K {
 }
 qd([
   on
-], ba.prototype, "getAllInlineToolsSanitizeConfig", 1);
+], ma.prototype, "getAllInlineToolsSanitizeConfig", 1);
 const $d = `:root{--selectionColor: #e1f2ff;--inlineSelectionColor: #d4ecff;--bg-light: #eff2f5;--grayText: #707684;--color-dark: #1D202B;--color-active-icon: #388AE5;--color-gray-border: rgba(201, 201, 204, .48);--content-width: 650px;--narrow-mode-right-padding: 50px;--toolbox-buttons-size: 26px;--toolbox-buttons-size--mobile: 36px;--icon-size: 20px;--icon-size--mobile: 28px;--block-padding-vertical: .4em;--color-line-gray: #EFF0F1 }.codex-editor{position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;z-index:1}.codex-editor .hide{display:none}.codex-editor__redactor [contenteditable]:empty:after{content:"\\feff"}@media (min-width: 651px){.codex-editor--narrow .codex-editor__redactor{margin-right:50px}}@media (min-width: 651px){.codex-editor--narrow.codex-editor--rtl .codex-editor__redactor{margin-left:50px;margin-right:0}}@media (min-width: 651px){.codex-editor--narrow .ce-toolbar__actions{right:-5px}}.codex-editor-copyable{position:absolute;height:1px;width:1px;top:-400%;opacity:.001}.codex-editor-overlay{position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:999;pointer-events:none;overflow:hidden}.codex-editor-overlay__container{position:relative;pointer-events:auto;z-index:0}.codex-editor-overlay__rectangle{position:absolute;pointer-events:none;background-color:#2eaadc33;border:1px solid transparent}.codex-editor svg{max-height:100%}.codex-editor path{stroke:currentColor}.codex-editor ::-moz-selection{background-color:#d4ecff}.codex-editor ::selection{background-color:#d4ecff}.codex-editor--toolbox-opened [contentEditable=true][data-placeholder]:focus:before{opacity:0!important}.ce-scroll-locked{overflow:hidden}.ce-scroll-locked--hard{overflow:hidden;top:calc(-1 * var(--window-scroll-offset));position:fixed;width:100%}.ce-toolbar{position:absolute;left:0;right:0;top:0;-webkit-transition:opacity .1s ease;transition:opacity .1s ease;will-change:opacity,top;display:none}.ce-toolbar--opened{display:block}.ce-toolbar__content{max-width:650px;margin:0 auto;position:relative}.ce-toolbar__plus{color:#1d202b;cursor:pointer;width:26px;height:26px;border-radius:7px;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-ms-flex-negative:0;flex-shrink:0}@media (max-width: 650px){.ce-toolbar__plus{width:36px;height:36px}}@media (hover: hover){.ce-toolbar__plus:hover{background-color:#eff2f5}}.ce-toolbar__plus--active{background-color:#eff2f5;-webkit-animation:bounceIn .75s 1;animation:bounceIn .75s 1;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}.ce-toolbar__plus-shortcut{opacity:.6;word-spacing:-2px;margin-top:5px}@media (max-width: 650px){.ce-toolbar__plus{position:absolute;background-color:#fff;border:1px solid #E8E8EB;-webkit-box-shadow:0 3px 15px -3px rgba(13,20,33,.13);box-shadow:0 3px 15px -3px #0d142121;border-radius:6px;z-index:2;position:static}.ce-toolbar__plus--left-oriented:before{left:15px;margin-left:0}.ce-toolbar__plus--right-oriented:before{left:auto;right:15px;margin-left:0}}.ce-toolbar__actions{position:absolute;right:100%;opacity:0;display:-webkit-box;display:-ms-flexbox;display:flex;padding-right:5px}.ce-toolbar__actions--opened{opacity:1}@media (max-width: 650px){.ce-toolbar__actions{right:auto}}.ce-toolbar__settings-btn{color:#1d202b;width:26px;height:26px;border-radius:7px;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;margin-left:3px;cursor:pointer;user-select:none}@media (max-width: 650px){.ce-toolbar__settings-btn{width:36px;height:36px}}@media (hover: hover){.ce-toolbar__settings-btn:hover{background-color:#eff2f5}}.ce-toolbar__settings-btn--active{background-color:#eff2f5;-webkit-animation:bounceIn .75s 1;animation:bounceIn .75s 1;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}@media (min-width: 651px){.ce-toolbar__settings-btn{width:24px}}.ce-toolbar__settings-btn--hidden{display:none}@media (max-width: 650px){.ce-toolbar__settings-btn{position:absolute;background-color:#fff;border:1px solid #E8E8EB;-webkit-box-shadow:0 3px 15px -3px rgba(13,20,33,.13);box-shadow:0 3px 15px -3px #0d142121;border-radius:6px;z-index:2;position:static}.ce-toolbar__settings-btn--left-oriented:before{left:15px;margin-left:0}.ce-toolbar__settings-btn--right-oriented:before{left:auto;right:15px;margin-left:0}}.ce-toolbar__plus svg,.ce-toolbar__settings-btn svg{width:24px;height:24px}@media (min-width: 651px){.codex-editor--narrow .ce-toolbar__plus{left:5px}}@media (min-width: 651px){.codex-editor--narrow .ce-toolbox .ce-popover{right:0;left:auto;left:initial}}.ce-inline-toolbar{--y-offset: 8px;position:absolute;background-color:#fff;border:1px solid #E8E8EB;-webkit-box-shadow:0 3px 15px -3px rgba(13,20,33,.13);box-shadow:0 3px 15px -3px #0d142121;border-radius:6px;z-index:2;opacity:0;visibility:hidden;-webkit-transition:opacity .25s ease;transition:opacity .25s ease;will-change:opacity,left,top;top:0;left:0;z-index:3}.ce-inline-toolbar--left-oriented:before{left:15px;margin-left:0}.ce-inline-toolbar--right-oriented:before{left:auto;right:15px;margin-left:0}.ce-inline-toolbar--showed{opacity:1;visibility:visible}.ce-inline-toolbar [hidden]{display:none!important}.ce-inline-toolbar__toggler-and-button-wrapper{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;padding:0 6px}.ce-inline-toolbar__buttons{display:-webkit-box;display:-ms-flexbox;display:flex}.ce-inline-toolbar__dropdown{display:-webkit-box;display:-ms-flexbox;display:flex;padding:6px;margin:0 6px 0 -6px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer;border-right:1px solid rgba(201,201,204,.48);-webkit-box-sizing:border-box;box-sizing:border-box}@media (hover: hover){.ce-inline-toolbar__dropdown:hover{background:#eff2f5}}.ce-inline-toolbar__dropdown--hidden{display:none}.ce-inline-toolbar__dropdown-content,.ce-inline-toolbar__dropdown-arrow{display:-webkit-box;display:-ms-flexbox;display:flex}.ce-inline-toolbar__dropdown-content svg,.ce-inline-toolbar__dropdown-arrow svg{width:20px;height:20px}.ce-inline-toolbar__shortcut{opacity:.6;word-spacing:-3px;margin-top:3px}.ce-inline-tool{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:6px 1px;cursor:pointer;border:0;outline:none;background-color:transparent;vertical-align:bottom;color:inherit;margin:0;border-radius:0;line-height:normal}.ce-inline-tool svg{width:20px;height:20px}@media (max-width: 650px){.ce-inline-tool svg{width:28px;height:28px}}@media (hover: hover){.ce-inline-tool:hover{background-color:#eff2f5}}.ce-inline-tool--active{color:#388ae5}.ce-inline-tool--focused{background:rgba(34,186,255,.08)!important}.ce-inline-tool--focused{-webkit-box-shadow:inset 0 0 0px 1px rgba(7,161,227,.08);box-shadow:inset 0 0 0 1px #07a1e314}.ce-inline-tool--focused-animated{-webkit-animation-name:buttonClicked;animation-name:buttonClicked;-webkit-animation-duration:.25s;animation-duration:.25s}.ce-inline-tool--link .icon--unlink,.ce-inline-tool--unlink .icon--link{display:none}.ce-inline-tool--unlink .icon--unlink{display:inline-block;margin-bottom:-1px}.ce-inline-tool-input{outline:none;border:0;border-radius:0 0 4px 4px;margin:0;font-size:13px;padding:10px;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;display:none;font-weight:500;border-top:1px solid rgba(201,201,204,.48);-webkit-appearance:none;font-family:inherit}@media (max-width: 650px){.ce-inline-tool-input{font-size:15px;font-weight:500}}.ce-inline-tool-input::-webkit-input-placeholder{color:#707684}.ce-inline-tool-input::-moz-placeholder{color:#707684}.ce-inline-tool-input:-ms-input-placeholder{color:#707684}.ce-inline-tool-input::-ms-input-placeholder{color:#707684}.ce-inline-tool-input::placeholder{color:#707684}.ce-inline-tool-input--showed{display:block}.ce-conversion-toolbar{position:absolute;background-color:#fff;border:1px solid #E8E8EB;-webkit-box-shadow:0 3px 15px -3px rgba(13,20,33,.13);box-shadow:0 3px 15px -3px #0d142121;border-radius:6px;z-index:2;opacity:0;visibility:hidden;will-change:transform,opacity;-webkit-transition:opacity .1s ease,-webkit-transform .1s ease;transition:opacity .1s ease,-webkit-transform .1s ease;transition:transform .1s ease,opacity .1s ease;transition:transform .1s ease,opacity .1s ease,-webkit-transform .1s ease;-webkit-transform:translateY(-8px);transform:translateY(-8px);left:-1px;width:190px;margin-top:5px;-webkit-box-sizing:content-box;box-sizing:content-box}.ce-conversion-toolbar--left-oriented:before{left:15px;margin-left:0}.ce-conversion-toolbar--right-oriented:before{left:auto;right:15px;margin-left:0}.ce-conversion-toolbar--showed{opacity:1;visibility:visible;-webkit-transform:none;transform:none}.ce-conversion-toolbar [hidden]{display:none!important}.ce-conversion-toolbar__buttons{display:-webkit-box;display:-ms-flexbox;display:flex}.ce-conversion-toolbar__label{color:#707684;font-size:11px;font-weight:500;letter-spacing:.33px;padding:10px 10px 5px;text-transform:uppercase}.ce-conversion-tool{display:-webkit-box;display:-ms-flexbox;display:flex;padding:5px 10px;font-size:14px;line-height:20px;font-weight:500;cursor:pointer;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.ce-conversion-tool--hidden{display:none}.ce-conversion-tool--focused{background:rgba(34,186,255,.08)!important}.ce-conversion-tool--focused{-webkit-box-shadow:inset 0 0 0px 1px rgba(7,161,227,.08);box-shadow:inset 0 0 0 1px #07a1e314}.ce-conversion-tool--focused-animated{-webkit-animation-name:buttonClicked;animation-name:buttonClicked;-webkit-animation-duration:.25s;animation-duration:.25s}.ce-conversion-tool:hover{background:#eff2f5}.ce-conversion-tool__icon{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;width:26px;height:26px;-webkit-box-shadow:0 0 0 1px rgba(201,201,204,.48);box-shadow:0 0 0 1px #c9c9cc7a;border-radius:5px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;background:#fff;-webkit-box-sizing:content-box;box-sizing:content-box;-ms-flex-negative:0;flex-shrink:0;margin-right:10px}.ce-conversion-tool__icon svg{width:20px;height:20px}@media (max-width: 650px){.ce-conversion-tool__icon{width:36px;height:36px;border-radius:8px}.ce-conversion-tool__icon svg{width:28px;height:28px}}.ce-conversion-tool--last{margin-right:0!important}.ce-conversion-tool--active{color:#388ae5!important}.ce-conversion-tool--active{-webkit-animation:bounceIn .75s 1;animation:bounceIn .75s 1;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards}.ce-conversion-tool__secondary-label{color:#707684;font-size:12px;margin-left:auto;white-space:nowrap;letter-spacing:-.1em;padding-right:5px;margin-bottom:-2px;opacity:.6}@media (max-width: 650px){.ce-conversion-tool__secondary-label{display:none}}.ce-settings__button{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:6px 1px;border-radius:3px;cursor:pointer;border:0;outline:none;background-color:transparent;vertical-align:bottom;color:inherit;margin:0;line-height:32px}.ce-settings__button svg{width:20px;height:20px}@media (max-width: 650px){.ce-settings__button svg{width:28px;height:28px}}@media (hover: hover){.ce-settings__button:hover{background-color:#eff2f5}}.ce-settings__button--active{color:#388ae5}.ce-settings__button--focused{background:rgba(34,186,255,.08)!important}.ce-settings__button--focused{-webkit-box-shadow:inset 0 0 0px 1px rgba(7,161,227,.08);box-shadow:inset 0 0 0 1px #07a1e314}.ce-settings__button--focused-animated{-webkit-animation-name:buttonClicked;animation-name:buttonClicked;-webkit-animation-duration:.25s;animation-duration:.25s}.ce-settings__button:not(:nth-child(3n+3)){margin-right:3px}.ce-settings__button:nth-child(n+4){margin-top:3px}.ce-settings__button--disabled{cursor:not-allowed!important}.ce-settings__button--disabled{opacity:.3}.ce-settings__button--selected{color:#388ae5}@media (min-width: 651px){.codex-editor--narrow .ce-settings .ce-popover{right:0;left:auto;left:initial}}@-webkit-keyframes fade-in{0%{opacity:0}to{opacity:1}}@keyframes fade-in{0%{opacity:0}to{opacity:1}}.ce-block{-webkit-animation:fade-in .3s ease;animation:fade-in .3s ease;-webkit-animation-fill-mode:none;animation-fill-mode:none;-webkit-animation-fill-mode:initial;animation-fill-mode:initial}.ce-block:first-of-type{margin-top:0}.ce-block--selected .ce-block__content{background:#e1f2ff}.ce-block--selected .ce-block__content [contenteditable]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.ce-block--selected .ce-block__content img,.ce-block--selected .ce-block__content .ce-stub{opacity:.55}.ce-block--stretched .ce-block__content{max-width:none}.ce-block__content{position:relative;max-width:650px;margin:0 auto;-webkit-transition:background-color .15s ease;transition:background-color .15s ease}.ce-block--drop-target .ce-block__content:before{content:"";position:absolute;top:100%;left:-20px;margin-top:-1px;height:8px;width:8px;border:solid #388AE5;border-width:1px 1px 0 0;-webkit-transform-origin:right;transform-origin:right;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.ce-block--drop-target .ce-block__content:after{content:"";position:absolute;top:100%;height:1px;width:100%;color:#388ae5;background:repeating-linear-gradient(90deg,#388AE5,#388AE5 1px,#fff 1px,#fff 6px)}.ce-block a{cursor:pointer;-webkit-text-decoration:underline;text-decoration:underline}.ce-block b{font-weight:700}.ce-block i{font-style:italic}@-webkit-keyframes bounceIn{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}20%{-webkit-transform:scale3d(1.03,1.03,1.03);transform:scale3d(1.03,1.03,1.03)}60%{-webkit-transform:scale3d(1,1,1);transform:scaleZ(1)}}@keyframes bounceIn{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}20%{-webkit-transform:scale3d(1.03,1.03,1.03);transform:scale3d(1.03,1.03,1.03)}60%{-webkit-transform:scale3d(1,1,1);transform:scaleZ(1)}}@-webkit-keyframes selectionBounce{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}50%{-webkit-transform:scale3d(1.01,1.01,1.01);transform:scale3d(1.01,1.01,1.01)}70%{-webkit-transform:scale3d(1,1,1);transform:scaleZ(1)}}@keyframes selectionBounce{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}50%{-webkit-transform:scale3d(1.01,1.01,1.01);transform:scale3d(1.01,1.01,1.01)}70%{-webkit-transform:scale3d(1,1,1);transform:scaleZ(1)}}@-webkit-keyframes buttonClicked{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{-webkit-transform:scale3d(.95,.95,.95);transform:scale3d(.95,.95,.95)}60%{-webkit-transform:scale3d(1.02,1.02,1.02);transform:scale3d(1.02,1.02,1.02)}80%{-webkit-transform:scale3d(1,1,1);transform:scaleZ(1)}}@keyframes buttonClicked{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{-webkit-transform:scale3d(.95,.95,.95);transform:scale3d(.95,.95,.95)}60%{-webkit-transform:scale3d(1.02,1.02,1.02);transform:scale3d(1.02,1.02,1.02)}80%{-webkit-transform:scale3d(1,1,1);transform:scaleZ(1)}}.cdx-block{padding:.4em 0}.cdx-block::-webkit-input-placeholder{line-height:normal!important}.cdx-input{border:1px solid rgba(201,201,204,.48);-webkit-box-shadow:inset 0 1px 2px 0 rgba(35,44,72,.06);box-shadow:inset 0 1px 2px #232c480f;border-radius:3px;padding:10px 12px;outline:none;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box}.cdx-input[data-placeholder]:before{position:static!important}.cdx-input[data-placeholder]:before{display:inline-block;width:0;white-space:nowrap;pointer-events:none}.cdx-settings-button{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:6px 1px;border-radius:3px;cursor:pointer;border:0;outline:none;background-color:transparent;vertical-align:bottom;color:inherit;margin:0;min-width:26px;min-height:26px}.cdx-settings-button svg{width:20px;height:20px}@media (max-width: 650px){.cdx-settings-button svg{width:28px;height:28px}}@media (hover: hover){.cdx-settings-button:hover{background-color:#eff2f5}}.cdx-settings-button--focused{background:rgba(34,186,255,.08)!important}.cdx-settings-button--focused{-webkit-box-shadow:inset 0 0 0px 1px rgba(7,161,227,.08);box-shadow:inset 0 0 0 1px #07a1e314}.cdx-settings-button--focused-animated{-webkit-animation-name:buttonClicked;animation-name:buttonClicked;-webkit-animation-duration:.25s;animation-duration:.25s}.cdx-settings-button--active{color:#388ae5}.cdx-settings-button svg{width:auto;height:auto}@media (max-width: 650px){.cdx-settings-button{width:36px;height:36px;border-radius:8px}}.cdx-loader{position:relative;border:1px solid rgba(201,201,204,.48)}.cdx-loader:before{content:"";position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-11px 0 0 -11px;border:2px solid rgba(201,201,204,.48);border-left-color:#388ae5;border-radius:50%;-webkit-animation:cdxRotation 1.2s infinite linear;animation:cdxRotation 1.2s infinite linear}@-webkit-keyframes cdxRotation{0%{-webkit-transform:rotate(0deg);transform:rotate(0)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes cdxRotation{0%{-webkit-transform:rotate(0deg);transform:rotate(0)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.cdx-button{padding:13px;border-radius:3px;border:1px solid rgba(201,201,204,.48);font-size:14.9px;background:#fff;-webkit-box-shadow:0 2px 2px 0 rgba(18,30,57,.04);box-shadow:0 2px 2px #121e390a;color:#707684;text-align:center;cursor:pointer}@media (hover: hover){.cdx-button:hover{background:#FBFCFE;-webkit-box-shadow:0 1px 3px 0 rgba(18,30,57,.08);box-shadow:0 1px 3px #121e3914}}.cdx-button svg{height:20px;margin-right:.2em;margin-top:-2px}.ce-stub{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:12px 18px;margin:10px 0;border-radius:10px;background:#eff2f5;border:1px solid #EFF0F1;color:#707684;font-size:14px}.ce-stub svg{width:20px;height:20px}.ce-stub__info{margin-left:14px}.ce-stub__title{font-weight:500;text-transform:capitalize}.codex-editor.codex-editor--rtl{direction:rtl}.codex-editor.codex-editor--rtl .cdx-list{padding-left:0;padding-right:40px}.codex-editor.codex-editor--rtl .ce-toolbar__plus{right:-26px;left:auto}.codex-editor.codex-editor--rtl .ce-toolbar__actions{right:auto;left:-26px}@media (max-width: 650px){.codex-editor.codex-editor--rtl .ce-toolbar__actions{margin-left:0;margin-right:auto;padding-right:0;padding-left:10px}}.codex-editor.codex-editor--rtl .ce-settings{left:5px;right:auto}.codex-editor.codex-editor--rtl .ce-settings:before{right:auto;left:25px}.codex-editor.codex-editor--rtl .ce-settings__button:not(:nth-child(3n+3)){margin-left:3px;margin-right:0}.codex-editor.codex-editor--rtl .ce-conversion-tool__icon{margin-right:0;margin-left:10px}.codex-editor.codex-editor--rtl .ce-inline-toolbar__dropdown{border-right:0px solid transparent;border-left:1px solid rgba(201,201,204,.48);margin:0 -6px 0 6px}.codex-editor.codex-editor--rtl .ce-inline-toolbar__dropdown .icon--toggler-down{margin-left:0;margin-right:4px}@media (min-width: 651px){.codex-editor--narrow.codex-editor--rtl .ce-toolbar__plus{left:0px;right:5px}}@media (min-width: 651px){.codex-editor--narrow.codex-editor--rtl .ce-toolbar__actions{left:-5px}}.cdx-search-field{--icon-margin-right: 10px;background:rgba(232,232,235,.49);border:1px solid rgba(226,226,229,.2);border-radius:6px;padding:2px;display:grid;grid-template-columns:auto auto 1fr;grid-template-rows:auto}.cdx-search-field__icon{width:26px;height:26px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-right:var(--icon-margin-right)}.cdx-search-field__icon svg{width:20px;height:20px;color:#707684}.cdx-search-field__input{font-size:14px;outline:none;font-weight:500;font-family:inherit;border:0;background:transparent;margin:0;padding:0;line-height:22px;min-width:calc(100% - 26px - var(--icon-margin-right))}.cdx-search-field__input::-webkit-input-placeholder{color:#707684;font-weight:500}.cdx-search-field__input::-moz-placeholder{color:#707684;font-weight:500}.cdx-search-field__input:-ms-input-placeholder{color:#707684;font-weight:500}.cdx-search-field__input::-ms-input-placeholder{color:#707684;font-weight:500}.cdx-search-field__input::placeholder{color:#707684;font-weight:500}.ce-popover{--border-radius: 6px;--width: 200px;--max-height: 270px;--padding: 6px;--offset-from-target: 8px;--color-border: #e8e8eb;--color-shadow: rgba(13,20,33,.13);--color-background: white;--color-text-primary: black;--color-text-secondary: #707684;--color-border-icon: rgba(201, 201, 204, .48);--color-border-icon-disabled: #EFF0F1;--color-text-icon-active: #388AE5;--color-background-icon-active: rgba(56, 138, 229, .1);--color-background-item-focus: rgba(34, 186, 255, .08);--color-shadow-item-focus: rgba(7, 161, 227, .08);--color-background-item-hover: #eff2f5;--color-background-item-confirm: #E24A4A;--color-background-item-confirm-hover: #CE4343;min-width:var(--width);width:var(--width);max-height:var(--max-height);border-radius:var(--border-radius);overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-box-shadow:0 3px 15px -3px var(--color-shadow);box-shadow:0 3px 15px -3px var(--color-shadow);position:absolute;left:0;top:calc(100% + var(--offset-from-target));background:var(--color-background);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;z-index:4;opacity:0;max-height:0;pointer-events:none;padding:0;border:none}.ce-popover--opened{opacity:1;padding:var(--padding);max-height:var(--max-height);pointer-events:auto;-webkit-animation:panelShowing .1s ease;animation:panelShowing .1s ease;border:1px solid var(--color-border)}@media (max-width: 650px){.ce-popover--opened{-webkit-animation:panelShowingMobile .25s ease;animation:panelShowingMobile .25s ease}}.ce-popover__items{overflow-y:auto;-ms-scroll-chaining:none;overscroll-behavior:contain}@media (max-width: 650px){.ce-popover__overlay{position:fixed;top:0;bottom:0;left:0;right:0;background:#1D202B;z-index:3;opacity:.5;-webkit-transition:opacity .12s ease-in;transition:opacity .12s ease-in;will-change:opacity;visibility:visible}}.ce-popover__overlay--hidden{display:none}.ce-popover--open-top{top:calc(-1 * (var(--offset-from-target) + var(--popover-height)))}@media (max-width: 650px){.ce-popover{--offset: 5px;position:fixed;max-width:none;min-width:calc(100% - var(--offset) * 2);left:var(--offset);right:var(--offset);bottom:calc(var(--offset) + env(safe-area-inset-bottom));top:auto;border-radius:10px}.ce-popover .ce-popover__search{display:none}}.ce-popover__search,.ce-popover__custom-content:not(:empty){margin-bottom:5px}.ce-popover__nothing-found-message{color:#707684;display:none;cursor:default;padding:3px;font-size:14px;line-height:20px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ce-popover__nothing-found-message--displayed{display:block}.ce-popover__custom-content:not(:empty){padding:4px}@media (min-width: 651px){.ce-popover__custom-content:not(:empty){padding:0}}.ce-popover__custom-content--hidden{display:none}.ce-popover-item{--border-radius: 6px;--icon-size: 20px;--icon-size-mobile: 28px;border-radius:var(--border-radius);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:3px;color:var(--color-text-primary);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}@media (max-width: 650px){.ce-popover-item{padding:4px}}.ce-popover-item:not(:last-of-type){margin-bottom:1px}.ce-popover-item__icon{border-radius:5px;width:26px;height:26px;-webkit-box-shadow:0 0 0 1px var(--color-border-icon);box-shadow:0 0 0 1px var(--color-border-icon);background:#fff;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-right:10px}.ce-popover-item__icon svg{width:20px;height:20px}@media (max-width: 650px){.ce-popover-item__icon{width:36px;height:36px;border-radius:8px}.ce-popover-item__icon svg{width:var(--icon-size-mobile);height:var(--icon-size-mobile)}}.ce-popover-item__title{font-size:14px;line-height:20px;font-weight:500;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}@media (max-width: 650px){.ce-popover-item__title{font-size:16px}}.ce-popover-item__secondary-title{color:var(--color-text-secondary);font-size:12px;margin-left:auto;white-space:nowrap;letter-spacing:-.1em;padding-right:5px;margin-bottom:-2px;opacity:.6}@media (max-width: 650px){.ce-popover-item__secondary-title{display:none}}.ce-popover-item--active{background:var(--color-background-icon-active);color:var(--color-text-icon-active)}.ce-popover-item--active .ce-popover-item__icon{-webkit-box-shadow:none;box-shadow:none}.ce-popover-item--disabled{color:var(--color-text-secondary);cursor:default;pointer-events:none}.ce-popover-item--disabled .ce-popover-item__icon{-webkit-box-shadow:0 0 0 1px var(--color-border-icon-disabled);box-shadow:0 0 0 1px var(--color-border-icon-disabled)}.ce-popover-item--focused:not(.ce-popover-item--no-focus){background:var(--color-background-item-focus)!important}.ce-popover-item--focused:not(.ce-popover-item--no-focus){-webkit-box-shadow:inset 0 0 0px 1px var(--color-shadow-item-focus);box-shadow:inset 0 0 0 1px var(--color-shadow-item-focus)}.ce-popover-item--hidden{display:none}@media (hover: hover){.ce-popover-item:hover{cursor:pointer}.ce-popover-item:hover:not(.ce-popover-item--no-hover){background-color:var(--color-background-item-hover)}.ce-popover-item:hover .ce-popover-item__icon{-webkit-box-shadow:none;box-shadow:none}}.ce-popover-item--confirmation{background:var(--color-background-item-confirm)}.ce-popover-item--confirmation .ce-popover-item__icon{color:var(--color-background-item-confirm)}.ce-popover-item--confirmation .ce-popover-item__title{color:#fff}@media (hover: hover){.ce-popover-item--confirmation:not(.ce-popover-item--no-hover):hover{background:var(--color-background-item-confirm-hover)}}.ce-popover-item--confirmation:not(.ce-popover-item--no-focus).ce-popover-item--focused{background:var(--color-background-item-confirm-hover)!important}.ce-popover-item--confirmation .ce-popover-item__icon,.ce-popover-item--active .ce-popover-item__icon,.ce-popover-item--focused .ce-popover-item__icon{-webkit-box-shadow:none;box-shadow:none}@-webkit-keyframes panelShowing{0%{opacity:0;-webkit-transform:translateY(-8px) scale(.9);transform:translateY(-8px) scale(.9)}70%{opacity:1;-webkit-transform:translateY(2px);transform:translateY(2px)}to{-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes panelShowing{0%{opacity:0;-webkit-transform:translateY(-8px) scale(.9);transform:translateY(-8px) scale(.9)}70%{opacity:1;-webkit-transform:translateY(2px);transform:translateY(2px)}to{-webkit-transform:translateY(0);transform:translateY(0)}}@-webkit-keyframes panelShowingMobile{0%{opacity:0;-webkit-transform:translateY(14px) scale(.98);transform:translateY(14px) scale(.98)}70%{opacity:1;-webkit-transform:translateY(-4px);transform:translateY(-4px)}to{-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes panelShowingMobile{0%{opacity:0;-webkit-transform:translateY(14px) scale(.98);transform:translateY(14px) scale(.98)}70%{opacity:1;-webkit-transform:translateY(-4px);transform:translateY(-4px)}to{-webkit-transform:translateY(0);transform:translateY(0)}}.wobble{-webkit-animation-name:wobble;animation-name:wobble;-webkit-animation-duration:.4s;animation-duration:.4s}@-webkit-keyframes wobble{0%{-webkit-transform:translate3d(0,0,0);transform:translateZ(0)}15%{-webkit-transform:translate3d(-9%,0,0);transform:translate3d(-9%,0,0)}30%{-webkit-transform:translate3d(9%,0,0);transform:translate3d(9%,0,0)}45%{-webkit-transform:translate3d(-4%,0,0);transform:translate3d(-4%,0,0)}60%{-webkit-transform:translate3d(4%,0,0);transform:translate3d(4%,0,0)}75%{-webkit-transform:translate3d(-1%,0,0);transform:translate3d(-1%,0,0)}to{-webkit-transform:translate3d(0,0,0);transform:translateZ(0)}}@keyframes wobble{0%{-webkit-transform:translate3d(0,0,0);transform:translateZ(0)}15%{-webkit-transform:translate3d(-9%,0,0);transform:translate3d(-9%,0,0)}30%{-webkit-transform:translate3d(9%,0,0);transform:translate3d(9%,0,0)}45%{-webkit-transform:translate3d(-4%,0,0);transform:translate3d(-4%,0,0)}60%{-webkit-transform:translate3d(4%,0,0);transform:translate3d(4%,0,0)}75%{-webkit-transform:translate3d(-1%,0,0);transform:translate3d(-1%,0,0)}to{-webkit-transform:translate3d(0,0,0);transform:translateZ(0)}}
 `;
 class Ud extends K {
   constructor() {
-    super(...arguments), this.isMobile = !1, this.contentRectCache = void 0, this.resizeDebouncer = Rs(() => {
+    super(...arguments), this.isMobile = !1, this.contentRectCache = void 0, this.resizeDebouncer = _s(() => {
       this.windowResize();
     }, 200);
   }
@@ -9068,7 +9068,7 @@ class Ud extends K {
    * Check for mobile mode and cache a result
    */
   checkIsMobile() {
-    this.isMobile = window.innerWidth < Wr;
+    this.isMobile = window.innerWidth < Kr;
   }
   /**
    * Makes Editor.js interface
@@ -9113,7 +9113,7 @@ class Ud extends K {
     }, !0), this.readOnlyMutableListeners.on(document, "mousedown", (t) => {
       this.documentClicked(t);
     }, !0);
-    const e = Rs(() => {
+    const e = _s(() => {
       this.selectionChanged();
     }, 180);
     this.readOnlyMutableListeners.on(document, "selectionchange", e, !0), this.readOnlyMutableListeners.on(window, "resize", () => {
@@ -9129,7 +9129,7 @@ class Ud extends K {
     let e;
     this.readOnlyMutableListeners.on(this.nodes.redactor, "mousemove", Jo((t) => {
       const o = t.target.closest(".ce-block");
-      this.Editor.BlockSelection.anyBlockSelected || o && e !== o && (e = o, this.eventsDispatcher.emit(ra, {
+      this.Editor.BlockSelection.anyBlockSelected || o && e !== o && (e = o, this.eventsDispatcher.emit(aa, {
         block: this.Editor.BlockManager.getBlockByChildNode(o)
       }));
     }, 20), {
@@ -9353,12 +9353,12 @@ const jd = {
   CrossBlockSelection: Td,
   DragNDrop: Bd,
   ModificationsObserver: Ad,
-  Paste: ca,
+  Paste: da,
   ReadOnly: Ld,
   RectangleSelection: xn,
   Renderer: Nd,
   Saver: Md,
-  Tools: ba,
+  Tools: ma,
   UI: Ud
 };
 class Vd {
@@ -9389,7 +9389,7 @@ class Vd {
       ...e
     } : this.config = {
       holder: e
-    }, ei(!!this.config.holderId, "config.holderId", "config.holder"), this.config.holderId && !this.config.holder && (this.config.holder = this.config.holderId, this.config.holderId = null), this.config.holder == null && (this.config.holder = "editorjs"), this.config.logLevel || (this.config.logLevel = Vr.VERBOSE), sc(this.config.logLevel), ei(!!this.config.initialBlock, "config.initialBlock", "config.defaultBlock"), this.config.defaultBlock = this.config.defaultBlock || this.config.initialBlock || "paragraph", this.config.minHeight = this.config.minHeight !== void 0 ? this.config.minHeight : 300;
+    }, ei(!!this.config.holderId, "config.holderId", "config.holder"), this.config.holderId && !this.config.holder && (this.config.holder = this.config.holderId, this.config.holderId = null), this.config.holder == null && (this.config.holder = "editorjs"), this.config.logLevel || (this.config.logLevel = zr.VERBOSE), sc(this.config.logLevel), ei(!!this.config.initialBlock, "config.initialBlock", "config.defaultBlock"), this.config.defaultBlock = this.config.defaultBlock || this.config.initialBlock || "paragraph", this.config.minHeight = this.config.minHeight !== void 0 ? this.config.minHeight : 300;
     const i = {
       type: this.config.defaultBlock,
       data: {}
@@ -9452,7 +9452,7 @@ class Vd {
         try {
           await this.moduleInstances[t].prepare();
         } catch (o) {
-          if (o instanceof Zr)
+          if (o instanceof Yr)
             throw new Error(o.message);
           X(`Module ${t} was skipped because of %o`, "warn", o);
         }
@@ -9589,7 +9589,7 @@ function Gd(n) {
     });
   }), t;
 }
-var ma = { exports: {} };
+var xa = { exports: {} };
 (function(n, e) {
   (function(t, o) {
     n.exports = o();
@@ -9918,8 +9918,8 @@ var ma = { exports: {} };
       })(), s.default;
     })();
   });
-})(ma);
-var Wd = ma.exports;
+})(xa);
+var Wd = xa.exports;
 const Kd = /* @__PURE__ */ An(Wd);
 (function() {
   try {
@@ -10231,7 +10231,7 @@ class nh {
     };
   }
 }
-var xa = { exports: {} };
+var va = { exports: {} };
 (function(n, e) {
   (function(t, o) {
     n.exports = o();
@@ -11493,9 +11493,9 @@ var xa = { exports: {} };
       typeof Symbol < "u" && Symbol.toStringTag && Object.defineProperty(s, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(s, "__esModule", { value: !0 });
     }, i.nc = void 0, i(138);
   })());
-})(xa);
-var oh = xa.exports;
-const qs = /* @__PURE__ */ An(oh);
+})(va);
+var oh = va.exports;
+const $s = /* @__PURE__ */ An(oh);
 (function() {
   try {
     if (typeof document < "u") {
@@ -11506,7 +11506,7 @@ const qs = /* @__PURE__ */ An(oh);
     console.error("vite-plugin-css-injected-by-js", e);
   }
 })();
-const $s = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><line x1="9" x2="19" y1="7" y2="7" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><line x1="9" x2="19" y1="12" y2="12" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><line x1="9" x2="19" y1="17" y2="17" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5.00001 17H4.99002"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5.00001 12H4.99002"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5.00001 7H4.99002"/></svg>', ih = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><line x1="12" x2="19" y1="7" y2="7" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><line x1="12" x2="19" y1="12" y2="12" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><line x1="12" x2="19" y1="17" y2="17" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7.79999 14L7.79999 7.2135C7.79999 7.12872 7.7011 7.0824 7.63597 7.13668L4.79999 9.5"/></svg>';
+const Us = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><line x1="9" x2="19" y1="7" y2="7" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><line x1="9" x2="19" y1="12" y2="12" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><line x1="9" x2="19" y1="17" y2="17" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5.00001 17H4.99002"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5.00001 12H4.99002"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5.00001 7H4.99002"/></svg>', ih = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><line x1="12" x2="19" y1="7" y2="7" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><line x1="12" x2="19" y1="12" y2="12" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><line x1="12" x2="19" y1="17" y2="17" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7.79999 14L7.79999 7.2135C7.79999 7.12872 7.7011 7.0824 7.63597 7.13668L4.79999 9.5"/></svg>';
 class sh {
   /**
    * Notify core that read-only mode is supported
@@ -11534,7 +11534,7 @@ class sh {
    */
   static get toolbox() {
     return {
-      icon: $s,
+      icon: Us,
       title: "List"
     };
   }
@@ -11554,7 +11554,7 @@ class sh {
       {
         name: "unordered",
         label: this.api.i18n.t("Unordered"),
-        icon: $s,
+        icon: Us,
         default: t.defaultStyle === "unordered" || !1
       },
       {
@@ -11822,7 +11822,7 @@ function Te(n, e, t = {}) {
     Object.prototype.hasOwnProperty.call(t, i) && (o[i] = t[i]);
   return o;
 }
-function Us(n) {
+function js(n) {
   const e = n.getBoundingClientRect();
   return {
     y1: Math.floor(e.top + window.pageYOffset),
@@ -11831,8 +11831,8 @@ function Us(n) {
     y2: Math.floor(e.bottom + window.pageYOffset)
   };
 }
-function js(n, e) {
-  const t = Us(n), o = Us(e);
+function Vs(n, e) {
+  const t = js(n), o = js(e);
   return {
     fromTopBorder: o.y1 - t.y1,
     fromLeftBorder: o.x1 - t.x1,
@@ -11967,7 +11967,7 @@ class Ae {
     });
   }
 }
-const Vs = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8 8L12 12M12 12L16 16M12 12L16 8M12 12L8 16"/></svg>', ah = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.8833 9.16666L18.2167 12.5M18.2167 12.5L14.8833 15.8333M18.2167 12.5H10.05C9.16594 12.5 8.31809 12.1488 7.69297 11.5237C7.06785 10.8986 6.71666 10.0507 6.71666 9.16666"/></svg>', uh = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.9167 14.9167L11.5833 18.25M11.5833 18.25L8.25 14.9167M11.5833 18.25L11.5833 10.0833C11.5833 9.19928 11.9345 8.35143 12.5596 7.72631C13.1848 7.10119 14.0326 6.75 14.9167 6.75"/></svg>', lh = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.13333 14.9167L12.4667 18.25M12.4667 18.25L15.8 14.9167M12.4667 18.25L12.4667 10.0833C12.4667 9.19928 12.1155 8.35143 11.4904 7.72631C10.8652 7.10119 10.0174 6.75 9.13333 6.75"/></svg>', ch = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.8833 15.8333L18.2167 12.5M18.2167 12.5L14.8833 9.16667M18.2167 12.5L10.05 12.5C9.16595 12.5 8.31811 12.8512 7.69299 13.4763C7.06787 14.1014 6.71667 14.9493 6.71667 15.8333"/></svg>', dh = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.41 9.66H9.4"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M14.6 9.66H14.59"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.31 14.36H9.3"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M14.6 14.36H14.59"/></svg>', zs = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 7V12M12 17V12M17 12H12M12 12H7"/></svg>', hh = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="M5 10H19"/><rect width="14" height="14" x="5" y="5" stroke="currentColor" stroke-width="2" rx="4"/></svg>', ph = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="M10 5V18.5"/><path stroke="currentColor" stroke-width="2" d="M14 5V18.5"/><path stroke="currentColor" stroke-width="2" d="M5 10H19"/><path stroke="currentColor" stroke-width="2" d="M5 14H19"/><rect width="14" height="14" x="5" y="5" stroke="currentColor" stroke-width="2" rx="4"/></svg>', fh = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="M10 5V18.5"/><path stroke="currentColor" stroke-width="2" d="M5 10H19"/><rect width="14" height="14" x="5" y="5" stroke="currentColor" stroke-width="2" rx="4"/></svg>';
+const zs = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8 8L12 12M12 12L16 16M12 12L16 8M12 12L8 16"/></svg>', ah = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.8833 9.16666L18.2167 12.5M18.2167 12.5L14.8833 15.8333M18.2167 12.5H10.05C9.16594 12.5 8.31809 12.1488 7.69297 11.5237C7.06785 10.8986 6.71666 10.0507 6.71666 9.16666"/></svg>', uh = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.9167 14.9167L11.5833 18.25M11.5833 18.25L8.25 14.9167M11.5833 18.25L11.5833 10.0833C11.5833 9.19928 11.9345 8.35143 12.5596 7.72631C13.1848 7.10119 14.0326 6.75 14.9167 6.75"/></svg>', lh = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.13333 14.9167L12.4667 18.25M12.4667 18.25L15.8 14.9167M12.4667 18.25L12.4667 10.0833C12.4667 9.19928 12.1155 8.35143 11.4904 7.72631C10.8652 7.10119 10.0174 6.75 9.13333 6.75"/></svg>', ch = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.8833 15.8333L18.2167 12.5M18.2167 12.5L14.8833 9.16667M18.2167 12.5L10.05 12.5C9.16595 12.5 8.31811 12.8512 7.69299 13.4763C7.06787 14.1014 6.71667 14.9493 6.71667 15.8333"/></svg>', dh = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.41 9.66H9.4"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M14.6 9.66H14.59"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.31 14.36H9.3"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M14.6 14.36H14.59"/></svg>', Gs = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 7V12M12 17V12M17 12H12M12 12H7"/></svg>', hh = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="M5 10H19"/><rect width="14" height="14" x="5" y="5" stroke="currentColor" stroke-width="2" rx="4"/></svg>', ph = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="M10 5V18.5"/><path stroke="currentColor" stroke-width="2" d="M14 5V18.5"/><path stroke="currentColor" stroke-width="2" d="M5 10H19"/><path stroke="currentColor" stroke-width="2" d="M5 14H19"/><rect width="14" height="14" x="5" y="5" stroke="currentColor" stroke-width="2" rx="4"/></svg>', fh = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="M10 5V18.5"/><path stroke="currentColor" stroke-width="2" d="M5 10H19"/><rect width="14" height="14" x="5" y="5" stroke="currentColor" stroke-width="2" rx="4"/></svg>';
 class gt {
   /**
    * Creates toolbox buttons and toolbox menus
@@ -12073,14 +12073,14 @@ function gh(n, e) {
 }
 function at() {
 }
-function va(n) {
+function ya(n) {
   return n();
 }
-function Gs() {
+function Ws() {
   return /* @__PURE__ */ Object.create(null);
 }
 function sn(n) {
-  n.forEach(va);
+  n.forEach(ya);
 }
 function Dt(n) {
   return typeof n == "function";
@@ -12112,7 +12112,7 @@ function Lt(n) {
 function It() {
   return Lt(" ");
 }
-function ya() {
+function wa() {
   return Lt("");
 }
 function tn(n, e, t, o) {
@@ -12124,7 +12124,7 @@ function ve(n, e, t) {
 function xh(n) {
   return Array.from(n.childNodes);
 }
-function wa(n, e) {
+function ka(n, e) {
   e = "" + e, n.data !== e && (n.data = /** @type {string} */
   e);
 }
@@ -12135,10 +12135,10 @@ function vh(n, e) {
 function Ze(n, e, t, o) {
   t == null ? n.style.removeProperty(e) : n.style.setProperty(e, t, o ? "important" : "");
 }
-function Ws(n, e, t) {
+function Ks(n, e, t) {
   n.classList.toggle(e, !!t);
 }
-class ka {
+class Sa {
   constructor(e = !1) {
     /**
      * @private
@@ -12214,17 +12214,17 @@ function vn(n) {
 }
 const Zt = [], ai = [];
 let Jt = [];
-const Ks = [], yh = /* @__PURE__ */ Promise.resolve();
+const Zs = [], yh = /* @__PURE__ */ Promise.resolve();
 let ui = !1;
 function wh() {
-  ui || (ui = !0, yh.then(Sa));
+  ui || (ui = !0, yh.then(Ca));
 }
 function li(n) {
   Jt.push(n);
 }
 const No = /* @__PURE__ */ new Set();
 let jt = 0;
-function Sa() {
+function Ca() {
   if (jt !== 0)
     return;
   const n = ji;
@@ -12245,8 +12245,8 @@ function Sa() {
     }
     Jt.length = 0;
   } while (Zt.length);
-  for (; Ks.length; )
-    Ks.pop()();
+  for (; Zs.length; )
+    Zs.pop()();
   ui = !1, No.clear(), vn(n);
 }
 function kh(n) {
@@ -12267,7 +12267,7 @@ function Eh(n, e) {
 function Th(n, e, t) {
   const { fragment: o, after_update: i } = n.$$;
   o && o.m(e, t), li(() => {
-    const s = n.$$.on_mount.map(va).filter(Dt);
+    const s = n.$$.on_mount.map(ya).filter(Dt);
     n.$$.on_destroy ? n.$$.on_destroy.push(...s) : sn(s), n.$$.on_mount = [];
   }), i.forEach(li);
 }
@@ -12288,7 +12288,7 @@ function Vi(n, e, t, o, i, s, r = null, a = [-1]) {
     props: s,
     update: at,
     not_equal: i,
-    bound: Gs(),
+    bound: Ws(),
     // lifecycle
     on_mount: [],
     on_destroy: [],
@@ -12297,7 +12297,7 @@ function Vi(n, e, t, o, i, s, r = null, a = [-1]) {
     after_update: [],
     context: new Map(e.context || (u ? u.$$.context : [])),
     // everything else
-    callbacks: Gs(),
+    callbacks: Ws(),
     dirty: a,
     skip_bound: !1,
     root: e.target || u.$$.root
@@ -12313,7 +12313,7 @@ function Vi(n, e, t, o, i, s, r = null, a = [-1]) {
       l.fragment && l.fragment.l(d), d.forEach(Ke);
     } else
       l.fragment && l.fragment.c();
-    e.intro && Eh(n.$$.fragment), Th(n, e.target, e.anchor), Sa();
+    e.intro && Eh(n.$$.fragment), Th(n, e.target, e.anchor), Ca();
   }
   vn(u);
 }
@@ -12365,7 +12365,7 @@ class zi {
 }
 const Lh = "4";
 typeof window < "u" && (window.__svelte || (window.__svelte = { v: /* @__PURE__ */ new Set() })).v.add(Lh);
-const Ca = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
+const Ea = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
 let Nh = class {
   constructor() {
     this.preventDestroyFunctToFireFlag = !1, this.classNameOfEditorJs = "codex-editor";
@@ -12399,7 +12399,7 @@ const se = new Nh(), go = (n) => ({
   endif: "IfEndCondition",
   for: "ForCondition",
   endfor: "ForEndCondition"
-})[n], Ea = "condition-id-", Mh = () => Ea + (Math.random() + 1).toString(36).substring(7), Gi = "condition-start", Wi = "condition-end", Ta = "condition-input-edit", Ba = (n, e, t = "if") => {
+})[n], Ta = "condition-id-", Mh = () => Ta + (Math.random() + 1).toString(36).substring(7), Gi = "condition-start", Wi = "condition-end", Ki = "condition-input-edit", Ba = (n, e, t = "if") => {
   const o = e || go(t), i = (a) => {
     const u = document.createElement("span");
     return u.classList.add(a, n), u.setAttribute("contenteditable", "false"), u;
@@ -12434,7 +12434,7 @@ const se = new Nh(), go = (n) => ({
   for (let o = 0; o < e; o++) {
     const i = n.blocks.getBlockByIndex(o);
     t(i) && i.holder.querySelectorAll("." + Gi).forEach((s) => {
-      const r = s.firstElementChild.getAttribute("data-statement"), a = s.querySelector("." + Ta).textContent, u = Array.from(s.classList).find((h) => h.includes(Ea)), { startConditionContainer: l, endConditionContainer: c } = Ba(u, a, r.toLowerCase()), d = i.holder.querySelector(`.${Wi}.${u}`);
+      const r = s.firstElementChild.getAttribute("data-statement"), a = s.querySelector("." + Ki).textContent, u = Array.from(s.classList).find((h) => h.includes(Ta)), { startConditionContainer: l, endConditionContainer: c } = Ba(u, a, r.toLowerCase()), d = i.holder.querySelector(`.${Wi}.${u}`);
       s.replaceWith(l), d.replaceWith(c), Aa(l, u);
     });
   }
@@ -12459,14 +12459,14 @@ function Rh(n) {
       e = Ie("span"), t = Lt(
         /*statement*/
         n[3]
-      ), ve(e, "class", "condition-input svelte-1qoh4dp");
+      ), ve(e, "class", "condition-input svelte-1jefebm");
     },
     m(o, i) {
       tt(o, e, i), de(e, t);
     },
     p(o, i) {
       i & /*statement*/
-      8 && wa(
+      8 && ka(
         t,
         /*statement*/
         o[3]
@@ -12487,7 +12487,7 @@ function _h(n) {
       ), o = It(), i = Lt(Hh), s = Ie("span"), r = Lt(
         /*condition*/
         n[0]
-      ), a = Lt(Fh), ve(s, "class", "condition-input-edit svelte-1qoh4dp"), ve(s, "contenteditable", "true"), ve(e, "class", "condition-input svelte-1qoh4dp");
+      ), a = Lt(Fh), ve(s, "class", "condition-input-edit svelte-1jefebm"), ve(s, "contenteditable", "true"), ve(e, "class", "condition-input svelte-1jefebm");
     },
     m(c, d) {
       tt(c, e, d), de(e, t), de(e, o), de(e, i), de(e, s), de(s, r), de(e, a), u || (l = tn(
@@ -12499,7 +12499,7 @@ function _h(n) {
     },
     p(c, d) {
       d & /*statement*/
-      8 && wa(
+      8 && ka(
         t,
         /*statement*/
         c[3]
@@ -12515,14 +12515,14 @@ function _h(n) {
     }
   };
 }
-function Zs(n) {
+function Ys(n) {
   let e, t, o;
   return {
     c() {
-      e = Ie("span"), ve(e, "class", "close-icon svelte-1qoh4dp"), ve(e, "role", "button"), ve(e, "tabindex", "0");
+      e = Ie("span"), ve(e, "class", "close-icon svelte-1jefebm"), ve(e, "role", "button"), ve(e, "tabindex", "0");
     },
     m(i, s) {
-      tt(i, e, s), e.innerHTML = Ca, t || (o = [
+      tt(i, e, s), e.innerHTML = Ea, t || (o = [
         tn(e, "click", function() {
           Dt(
             /*onRemove*/
@@ -12554,16 +12554,16 @@ function Oh(n) {
   }
   let u = a(n), l = u(n), c = (
     /*onRemove*/
-    n[2] && Zs(n)
+    n[2] && Ys(n)
   );
   return {
     c() {
-      e = Ie("span"), t = Ie("span"), t.textContent = `${Dh}`, o = It(), l.c(), i = It(), s = Ie("span"), s.textContent = `${Ph}`, r = It(), c && c.c(), ve(e, "class", "condition-container svelte-1qoh4dp"), ve(
+      e = Ie("span"), t = Ie("span"), t.textContent = `${Dh}`, o = It(), l.c(), i = It(), s = Ie("span"), s.textContent = `${Ph}`, r = It(), c && c.c(), ve(e, "class", "condition-container svelte-1jefebm"), ve(
         e,
         "data-statement",
         /*statement*/
         n[3]
-      ), Ws(
+      ), Ks(
         e,
         "inline",
         /*inline*/
@@ -12575,14 +12575,14 @@ function Oh(n) {
     },
     p(d, [h]) {
       u === (u = a(d)) && l ? l.p(d, h) : (l.d(1), l = u(d), l && (l.c(), l.m(e, i))), /*onRemove*/
-      d[2] ? c ? c.p(d, h) : (c = Zs(d), c.c(), c.m(e, null)) : c && (c.d(1), c = null), h & /*statement*/
+      d[2] ? c ? c.p(d, h) : (c = Ys(d), c.c(), c.m(e, null)) : c && (c.d(1), c = null), h & /*statement*/
       8 && ve(
         e,
         "data-statement",
         /*statement*/
         d[3]
       ), h & /*inline*/
-      2 && Ws(
+      2 && Ks(
         e,
         "inline",
         /*inline*/
@@ -12596,7 +12596,7 @@ function Oh(n) {
     }
   };
 }
-const Dh = "[", Ph = "]", Hh = "(", Fh = ")";
+const Dh = "", Ph = "", Hh = "(", Fh = ")";
 function qh(n, e, t) {
   let { inline: o = !1 } = e, { conditionChanged: i = (c) => {
   } } = e, { onRemove: s = null } = e, { statement: r = "IF" } = e, { condition: a = go(r.toLowerCase()) } = e, { isEndBlock: u = !1 } = e;
@@ -12705,7 +12705,7 @@ class $h {
         },
         {
           label: this.api.i18n.t("Delete column"),
-          icon: Vs,
+          icon: zs,
           hideIf: () => this.numberOfColumns === 1,
           confirmationRequired: !0,
           onClick: () => {
@@ -12754,7 +12754,7 @@ class $h {
         },
         {
           label: this.api.i18n.t("Delete row"),
-          icon: Vs,
+          icon: zs,
           hideIf: () => this.numberOfRows === 1,
           confirmationRequired: !0,
           onClick: () => {
@@ -12931,9 +12931,9 @@ class $h {
   createTableWrapper() {
     if (this.wrapper = Te("div", W.wrapper), this.table = Te("div", W.table), this.readOnly && this.wrapper.classList.add(W.wrapperReadOnly), this.wrapper.appendChild(this.toolboxRow.element), this.wrapper.appendChild(this.toolboxColumn.element), this.wrapper.appendChild(this.table), !this.readOnly) {
       const e = Te("div", W.addColumn, {
-        innerHTML: zs
+        innerHTML: Gs
       }), t = Te("div", W.addRow, {
-        innerHTML: zs
+        innerHTML: Gs
       });
       this.wrapper.appendChild(e), this.wrapper.appendChild(t);
     }
@@ -13203,7 +13203,7 @@ class $h {
     this.isColumnMenuShowing || t > 0 && t <= this.numberOfColumns && this.toolboxColumn.show(() => ({
       left: `calc((100% - var(--cell-size)) / (${this.numberOfColumns} * 2) * (1 + (${t} - 1) * 2))`
     })), this.isRowMenuShowing || e > 0 && e <= this.numberOfRows && this.toolboxRow.show(() => {
-      const o = this.getRow(e), { fromTopBorder: i } = js(this.table, o), { height: s } = o.getBoundingClientRect();
+      const o = this.getRow(e), { fromTopBorder: i } = Vs(this.table, o), { height: s } = o.getBoundingClientRect();
       return {
         top: `${Math.ceil(i + s / 2)}px`
       };
@@ -13316,7 +13316,7 @@ class $h {
     let s = 0, r = e + 1, a = 0, u;
     for (; s < r - 1 && a < 10; ) {
       u = Math.ceil((s + r) / 2);
-      const l = t(u), c = js(this.table, l);
+      const l = t(u), c = Vs(this.table, l);
       if (o(c))
         r = u;
       else if (i(c))
@@ -13339,7 +13339,7 @@ class $h {
       if (i.every((l) => !l.querySelector(`.${W.cellContent}`).textContent.trim()))
         continue;
       const r = o.querySelector(".if");
-      r && e.push(["if", r.querySelector(".condition-input-edit").textContent]);
+      r && e.push(["if", r.querySelector("." + Ki).textContent]);
       const a = (l) => l.style.display === "none", u = (l) => l.replaceAll("<br>", `
 `);
       e.push(i.filter((l) => !a(l)).map((l) => u(l.querySelector(`.${W.cellContent}`).innerHTML))), r && e.push(["endif", ""]);
@@ -13722,7 +13722,7 @@ class Kh {
     });
   }
 }
-class Ys {
+class Xs {
   /**
    * @returns {object} api - Editor.js API
   */
@@ -13754,7 +13754,7 @@ class Ys {
     this.api.blocks.insert(o, {}, {}, e + 2, !0);
   }
 }
-class Xs {
+class Js {
   static get toolbox() {
     return {
       icon: bo
@@ -13834,7 +13834,7 @@ class Xs {
     };
   }
 }
-class Js {
+class Qs {
   static get toolbox() {
     return {
       icon: bo
@@ -13908,7 +13908,7 @@ class Js {
     };
   }
 }
-class Qs {
+class er {
   /**
    * @returns {object} api - Editor.js API
   */
@@ -13953,13 +13953,13 @@ class Qs {
     };
   }
 }
-const er = (n, e) => {
+const tr = (n, e) => {
   e.parentNode.insertBefore(n, e.nextSibling);
 }, Zh = (n) => {
   var e = n.getBoundingClientRect(), t = Math.max(document.documentElement.clientHeight, window.innerHeight);
   return !(e.bottom < 0 || e.top - t >= 0);
 };
-class tr {
+class nr {
   static get isInline() {
     return !0;
   }
@@ -13971,20 +13971,20 @@ class tr {
   }
   surround(e) {
     const t = Mh(), o = e.extractContents(), { startConditionContainer: i, endConditionContainer: s } = Ba(t, null, this.type);
-    e.insertNode(i), er(s, i), er(o, i), Aa(i, t);
+    e.insertNode(i), tr(s, i), tr(o, i), Aa(i, t);
   }
   checkState() {
   }
 }
 const La = "templator-variable", Yh = "variable-edit-container";
-function nr(n) {
+function or(n) {
   let e, t, o;
   return {
     c() {
-      e = Ie("span"), ve(e, "class", "close-icon svelte-17eyboj"), ve(e, "role", "button"), ve(e, "tabindex", "0");
+      e = Ie("span"), ve(e, "class", "close-icon svelte-1pxwm8t"), ve(e, "role", "button"), ve(e, "tabindex", "0");
     },
     m(i, s) {
-      tt(i, e, s), e.innerHTML = Ca, t || (o = [
+      tt(i, e, s), e.innerHTML = Ea, t || (o = [
         tn(e, "click", function() {
           Dt(
             /*onRemove*/
@@ -14010,18 +14010,18 @@ function nr(n) {
 function Xh(n) {
   let e, t, o, i, s, r, a, u = (
     /*onRemove*/
-    n[0] && nr(n)
+    n[0] && or(n)
   );
   return {
     c() {
-      e = Ie("span"), t = Ie("span"), t.textContent = `${Jh}`, o = It(), i = Ie("span"), s = It(), u && u.c(), r = It(), a = Ie("span"), a.textContent = `${Qh}`, ve(i, "contenteditable", "true"), ve(i, "class", "variable-edit-container svelte-17eyboj"), ve(e, "contenteditable", "false"), ve(e, "class", "variable-container svelte-17eyboj");
+      e = Ie("span"), t = Ie("span"), t.textContent = `${Jh}`, o = It(), i = Ie("span"), s = It(), u && u.c(), r = It(), a = Ie("span"), a.textContent = `${Qh}`, ve(i, "contenteditable", "true"), ve(i, "class", "variable-edit-container svelte-1pxwm8t"), ve(e, "contenteditable", "false"), ve(e, "class", "variable-container svelte-1pxwm8t");
     },
     m(l, c) {
       tt(l, e, c), de(e, t), de(e, o), de(e, i), n[3](i), de(e, s), u && u.m(e, null), de(e, r), de(e, a);
     },
     p(l, [c]) {
       /*onRemove*/
-      l[0] ? u ? u.p(l, c) : (u = nr(l), u.c(), u.m(e, r)) : u && (u.d(1), u = null);
+      l[0] ? u ? u.p(l, c) : (u = or(l), u.c(), u.m(e, r)) : u && (u.d(1), u = null);
     },
     i: at,
     o: at,
@@ -14094,7 +14094,7 @@ const o0 = {
     }
   },
   Color: {
-    class: qs,
+    class: $s,
     config: {
       colorCollections: ["#000000", "#EC7878", "#9C27B0", "#673AB7", "#3F51B5", "#0070FF", "#03A9F4", "#00BCD4", "#4CAF50", "#8BC34A", "#CDDC39", "#FFF"],
       defaultColor: "#000000",
@@ -14104,7 +14104,7 @@ const o0 = {
     }
   },
   Marker: {
-    class: qs,
+    class: $s,
     config: {
       defaultColor: "#FFBF00",
       type: "marker",
@@ -14120,31 +14120,31 @@ const o0 = {
   },
   image: Kh,
   If: {
-    class: tr,
+    class: nr,
     config: {
       type: "if"
     }
   },
   For: {
-    class: tr,
+    class: nr,
     config: {
       type: "for"
     }
   },
   IfConditionTune: {
-    class: Ys,
+    class: Xs,
     config: {
       type: "if"
     }
   },
   ForConditionTune: {
-    class: Ys,
+    class: Xs,
     config: {
       type: "for"
     }
   },
   IfCondition: {
-    class: Xs,
+    class: Js,
     config: {
       type: "if"
     },
@@ -14153,7 +14153,7 @@ const o0 = {
     }
   },
   IfElseCondition: {
-    class: Js,
+    class: Qs,
     config: {
       type: "else if"
     },
@@ -14162,7 +14162,7 @@ const o0 = {
     }
   },
   ElseCondition: {
-    class: Js,
+    class: Qs,
     config: {
       type: "else"
     },
@@ -14171,7 +14171,7 @@ const o0 = {
     }
   },
   ForCondition: {
-    class: Xs,
+    class: Js,
     config: {
       type: "for"
     },
@@ -14180,13 +14180,13 @@ const o0 = {
     }
   },
   IfEndCondition: {
-    class: Qs,
+    class: er,
     config: {
       type: "ENDIF"
     }
   },
   ForEndCondition: {
-    class: Qs,
+    class: er,
     config: {
       type: "ENDFOR"
     }
@@ -14195,7 +14195,7 @@ const o0 = {
   Variable: {
     class: n0
   }
-}, or = (n) => {
+}, ir = (n) => {
   const e = n.blocks.getBlocksCount();
   let t = 0;
   for (let o = 0; o < e; o++) {
@@ -14209,7 +14209,7 @@ function r0(n) {
   let e, t;
   return {
     c() {
-      e = new ka(!1), t = ya(), e.a = t;
+      e = new Sa(!1), t = wa(), e.a = t;
     },
     m(o, i) {
       e.m(s0, o, i), tt(o, t, i);
@@ -14223,7 +14223,7 @@ function a0(n) {
   let e, t;
   return {
     c() {
-      e = new ka(!1), t = ya(), e.a = t;
+      e = new Sa(!1), t = wa(), e.a = t;
     },
     m(o, i) {
       e.m(i0, o, i), tt(o, t, i);
@@ -14359,9 +14359,9 @@ const d0 = () => {
 }, m0 = (n, e = {}) => {
   n.on("block changed", ({ event: t }) => {
     const { type: o } = t;
-    (o === "block-moved" || o === "block-removed" || o === "block-added") && se.api && e.indent && or(se.api);
+    (o === "block-moved" || o === "block-removed" || o === "block-added") && se.api && e.indent && ir(se.api);
   }), b0(), setTimeout(() => {
-    e.indent && or(se.api), Ih();
+    e.indent && ir(se.api), Ih();
   }, 50);
 };
 var x0 = ["left", "right", "center", "justify"], v0 = { delimiter: function() {
@@ -15113,7 +15113,7 @@ const zt = /* @__PURE__ */ new Set([
   "button",
   "datalist",
   "textarea"
-]), ee = /* @__PURE__ */ new Set(["p"]), ir = /* @__PURE__ */ new Set(["thead", "tbody"]), sr = /* @__PURE__ */ new Set(["dd", "dt"]), rr = /* @__PURE__ */ new Set(["rt", "rp"]), N0 = /* @__PURE__ */ new Map([
+]), ee = /* @__PURE__ */ new Set(["p"]), sr = /* @__PURE__ */ new Set(["thead", "tbody"]), rr = /* @__PURE__ */ new Set(["dd", "dt"]), ar = /* @__PURE__ */ new Set(["rt", "rp"]), N0 = /* @__PURE__ */ new Map([
   ["tr", /* @__PURE__ */ new Set(["tr", "th", "td"])],
   ["th", /* @__PURE__ */ new Set(["th"])],
   ["td", /* @__PURE__ */ new Set(["thead", "th", "td"])],
@@ -15134,8 +15134,8 @@ const zt = /* @__PURE__ */ new Set([
   ["textarea", zt],
   ["option", /* @__PURE__ */ new Set(["option"])],
   ["optgroup", /* @__PURE__ */ new Set(["optgroup", "option"])],
-  ["dd", sr],
-  ["dt", sr],
+  ["dd", rr],
+  ["dt", rr],
   ["address", ee],
   ["article", ee],
   ["aside", ee],
@@ -15157,10 +15157,10 @@ const zt = /* @__PURE__ */ new Set([
   ["section", ee],
   ["table", ee],
   ["ul", ee],
-  ["rt", rr],
-  ["rp", rr],
-  ["tbody", ir],
-  ["tfoot", ir]
+  ["rt", ar],
+  ["rp", ar],
+  ["tbody", sr],
+  ["tfoot", sr]
 ]), M0 = /* @__PURE__ */ new Set([
   "area",
   "base",
@@ -15181,7 +15181,7 @@ const zt = /* @__PURE__ */ new Set([
   "source",
   "track",
   "wbr"
-]), ar = /* @__PURE__ */ new Set(["math", "svg"]), ur = /* @__PURE__ */ new Set([
+]), ur = /* @__PURE__ */ new Set(["math", "svg"]), lr = /* @__PURE__ */ new Set([
   "mi",
   "mo",
   "mn",
@@ -15231,7 +15231,7 @@ let mo = class {
         const a = this.stack.shift();
         (o = (t = this.cbs).onclosetag) === null || o === void 0 || o.call(t, a, !0);
       }
-    this.isVoidElement(e) || (this.stack.unshift(e), this.htmlMode && (ar.has(e) ? this.foreignContext.unshift(!0) : ur.has(e) && this.foreignContext.unshift(!1))), (s = (i = this.cbs).onopentagname) === null || s === void 0 || s.call(i, e), this.cbs.onopentag && (this.attribs = {});
+    this.isVoidElement(e) || (this.stack.unshift(e), this.htmlMode && (ur.has(e) ? this.foreignContext.unshift(!0) : lr.has(e) && this.foreignContext.unshift(!1))), (s = (i = this.cbs).onopentagname) === null || s === void 0 || s.call(i, e), this.cbs.onopentag && (this.attribs = {});
   }
   endOpenTag(e) {
     var t, o;
@@ -15246,7 +15246,7 @@ let mo = class {
     var o, i, s, r, a, u, l, c;
     this.endIndex = t;
     let d = this.getSlice(e, t);
-    if (this.lowerCaseTagNames && (d = d.toLowerCase()), this.htmlMode && (ar.has(d) || ur.has(d)) && this.foreignContext.shift(), this.isVoidElement(d))
+    if (this.lowerCaseTagNames && (d = d.toLowerCase()), this.htmlMode && (ur.has(d) || lr.has(d)) && this.foreignContext.shift(), this.isVoidElement(d))
       this.htmlMode && d === "br" && ((r = (s = this.cbs).onopentagname) === null || r === void 0 || r.call(s, "br"), (u = (a = this.cbs).onopentag) === null || u === void 0 || u.call(a, "br", {}, !0), (c = (l = this.cbs).onclosetag) === null || c === void 0 || c.call(l, "br", !1));
     else {
       const h = this.stack.indexOf(d);
@@ -15489,7 +15489,7 @@ let Wa = class {
     return Qa(this, e);
   }
 };
-class Ki extends Wa {
+class Zi extends Wa {
   /**
    * @param data The content of the data node
    */
@@ -15507,14 +15507,14 @@ class Ki extends Wa {
     this.data = e;
   }
 }
-let fi = class extends Ki {
+let fi = class extends Zi {
   constructor() {
     super(...arguments), this.type = Y.Text;
   }
   get nodeType() {
     return 3;
   }
-}, Ka = class extends Ki {
+}, Ka = class extends Zi {
   constructor() {
     super(...arguments), this.type = Y.Comment;
   }
@@ -15522,7 +15522,7 @@ let fi = class extends Ki {
     return 8;
   }
 };
-class Za extends Ki {
+class Za extends Zi {
   constructor(e, t) {
     super(t), this.name = e, this.type = Y.Directive;
   }
@@ -15530,7 +15530,7 @@ class Za extends Ki {
     return 1;
   }
 }
-class Zi extends Wa {
+class Yi extends Wa {
   /**
    * @param children Children of the node. Only certain node types can have children.
    */
@@ -15558,7 +15558,7 @@ class Zi extends Wa {
     this.children = e;
   }
 }
-class Ya extends Zi {
+class Ya extends Yi {
   constructor() {
     super(...arguments), this.type = Y.CDATA;
   }
@@ -15566,14 +15566,14 @@ class Ya extends Zi {
     return 4;
   }
 }
-let gi = class extends Zi {
+let gi = class extends Yi {
   constructor() {
     super(...arguments), this.type = Y.Root;
   }
   get nodeType() {
     return 9;
   }
-}, Xa = class extends Zi {
+}, Xa = class extends Yi {
   /**
    * @param name Name of the tag, eg. `div`, `span`.
    * @param attribs Object mapping attribute names to attribute values.
@@ -15617,7 +15617,7 @@ function xo(n) {
 function Ht(n) {
   return n.type === Y.Text;
 }
-function Yi(n) {
+function Xi(n) {
   return n.type === Y.Comment;
 }
 function _0(n) {
@@ -15633,7 +15633,7 @@ function Qa(n, e = !1) {
   let t;
   if (Ht(n))
     t = new fi(n.data);
-  else if (Yi(n))
+  else if (Xi(n))
     t = new Ka(n.data);
   else if (_e(n)) {
     const o = e ? Oo(n.children) : [], i = new Xa(n.name, { ...n.attribs }, o);
@@ -15657,7 +15657,7 @@ function Oo(n) {
     e[t].prev = e[t - 1], e[t - 1].next = e[t];
   return e;
 }
-const lr = {
+const cr = {
   withStartIndices: !1,
   withEndIndices: !1,
   xmlMode: !1
@@ -15669,7 +15669,7 @@ class Cn {
    * @param elementCB Callback whenever a tag is closed.
    */
   constructor(e, t, o) {
-    this.dom = [], this.root = new gi(this.dom), this.done = !1, this.tagStack = [this.root], this.lastNode = null, this.parser = null, typeof t == "function" && (o = t, t = lr), typeof e == "object" && (t = e, e = void 0), this.callback = e ?? null, this.options = t ?? lr, this.elementCB = o ?? null;
+    this.dom = [], this.root = new gi(this.dom), this.done = !1, this.tagStack = [this.root], this.lastNode = null, this.parser = null, typeof t == "function" && (o = t, t = cr), typeof e == "object" && (t = e, e = void 0), this.callback = e ?? null, this.options = t ?? cr, this.elementCB = o ?? null;
   }
   onparserinit(e) {
     this.parser = e;
@@ -15736,7 +15736,7 @@ class Cn {
     this.options.withStartIndices && (e.startIndex = this.parser.startIndex), this.options.withEndIndices && (e.endIndex = this.parser.endIndex), t.children.push(e), o && (e.prev = o, o.next = e), e.parent = t, this.lastNode = null;
   }
 }
-const cr = /["&'<>$\x80-\uFFFF]/g, O0 = /* @__PURE__ */ new Map([
+const dr = /["&'<>$\x80-\uFFFF]/g, O0 = /* @__PURE__ */ new Map([
   [34, "&quot;"],
   [38, "&amp;"],
   [39, "&apos;"],
@@ -15751,9 +15751,9 @@ const cr = /["&'<>$\x80-\uFFFF]/g, O0 = /* @__PURE__ */ new Map([
 );
 function eu(n) {
   let e = "", t = 0, o;
-  for (; (o = cr.exec(n)) !== null; ) {
+  for (; (o = dr.exec(n)) !== null; ) {
     const i = o.index, s = n.charCodeAt(i), r = O0.get(s);
-    r !== void 0 ? (e += n.substring(t, i) + r, t = i + 1) : (e += `${n.substring(t, i)}&#x${D0(n, i).toString(16)};`, t = cr.lastIndex += +((s & 64512) === 55296));
+    r !== void 0 ? (e += n.substring(t, i) + r, t = i + 1) : (e += `${n.substring(t, i)}&#x${D0(n, i).toString(16)};`, t = dr.lastIndex += +((s & 64512) === 55296));
   }
   return e + n.substr(t);
 }
@@ -15896,7 +15896,7 @@ function j0(n, e) {
     return e.xmlMode === "foreign" && (i = (r = q0.get(i)) !== null && r !== void 0 ? r : i), !e.emptyAttrs && !e.xmlMode && a === "" ? i : `${i}="${o(a)}"`;
   }).join(" ");
 }
-const dr = /* @__PURE__ */ new Set([
+const hr = /* @__PURE__ */ new Set([
   "area",
   "base",
   "basefont",
@@ -15917,7 +15917,7 @@ const dr = /* @__PURE__ */ new Set([
   "track",
   "wbr"
 ]);
-function Xi(n, e = {}) {
+function Ji(n, e = {}) {
   const t = "length" in n ? n : [n];
   let o = "";
   for (let i = 0; i < t.length; i++)
@@ -15927,7 +15927,7 @@ function Xi(n, e = {}) {
 function V0(n, e) {
   switch (n.type) {
     case Ha:
-      return Xi(n.children, e);
+      return Ji(n.children, e);
     case Ga:
     case qa:
       return K0(n);
@@ -15964,8 +15964,8 @@ function W0(n, e) {
     e.selfClosingTags !== !1
   ) : (
     // User explicitly asked for self-closing tags, even in HTML mode
-    e.selfClosingTags && dr.has(n.name)
-  )) ? (e.xmlMode || (o += " "), o += "/>") : (o += ">", n.children.length > 0 && (o += Xi(n.children, e)), (e.xmlMode || !dr.has(n.name)) && (o += `</${n.name}>`)), o;
+    e.selfClosingTags && hr.has(n.name)
+  )) ? (e.xmlMode || (o += " "), o += "/>") : (o += ">", n.children.length > 0 && (o += Ji(n.children, e)), (e.xmlMode || !hr.has(n.name)) && (o += `</${n.name}>`)), o;
 }
 function K0(n) {
   return `<${n.data}>`;
@@ -15982,7 +15982,7 @@ function X0(n) {
   return `<!--${n.data}-->`;
 }
 function nu(n, e) {
-  return Xi(n, e);
+  return Ji(n, e);
 }
 function J0(n, e) {
   return kt(n) ? n.children.map((t) => nu(t, e)).join("") : "";
@@ -15992,7 +15992,7 @@ function Wn(n) {
 ` : Wn(n.children) : xo(n) ? Wn(n.children) : Ht(n) ? n.data : "";
 }
 function eo(n) {
-  return Array.isArray(n) ? n.map(eo).join("") : kt(n) && !Yi(n) ? eo(n.children) : Ht(n) ? n.data : "";
+  return Array.isArray(n) ? n.map(eo).join("") : kt(n) && !Xi(n) ? eo(n.children) : Ht(n) ? n.data : "";
 }
 function bi(n) {
   return Array.isArray(n) ? n.map(bi).join("") : kt(n) && (n.type === Y.Tag || xo(n)) ? bi(n.children) : Ht(n) ? n.data : "";
@@ -16110,12 +16110,12 @@ function su(n, e, t, o) {
 function cp(n, e) {
   return e.find(n);
 }
-function Ji(n, e, t = !0) {
+function Qi(n, e, t = !0) {
   let o = null;
   for (let i = 0; i < e.length && !o; i++) {
     const s = e[i];
     if (_e(s))
-      n(s) ? o = s : t && s.children.length > 0 && (o = Ji(n, s.children, !0));
+      n(s) ? o = s : t && s.children.length > 0 && (o = Qi(n, s.children, !0));
     else
       continue;
   }
@@ -16170,7 +16170,7 @@ function fp(n, e, t, o = 1 / 0) {
   return i ? vo(i, e, t, o) : [];
 }
 function gp(n, e, t = !0) {
-  return Array.isArray(e) || (e = [e]), Ji(au("id", n), e, t);
+  return Array.isArray(e) || (e = [e]), Qi(au("id", n), e, t);
 }
 function an(n, e, t = !0, o = 1 / 0) {
   return vo(to.tag_name(n), e, t, o);
@@ -16222,7 +16222,7 @@ function xp(n) {
     return o & He.PRECEDING ? -1 : o & He.FOLLOWING ? 1 : 0;
   }), n;
 }
-function Qi(n) {
+function es(n) {
   const e = no(Sp, n);
   return e ? e.name === "feed" ? vp(e) : yp(e) : null;
 }
@@ -16300,7 +16300,7 @@ function Ne(n, e, t, o, i = !1) {
 function Sp(n) {
   return n === "rss" || n === "feed" || n === "rdf:RDF";
 }
-const es = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const ts = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   get DocumentPosition() {
     return He;
@@ -16312,7 +16312,7 @@ const es = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   filter: vo,
   find: su,
   findAll: dp,
-  findOne: Ji,
+  findOne: Qi,
   findOneChild: cp,
   getAttributeValue: ep,
   getChildren: ou,
@@ -16320,7 +16320,7 @@ const es = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   getElements: fp,
   getElementsByTagName: an,
   getElementsByTagType: bp,
-  getFeed: Qi,
+  getFeed: es,
   getInnerHTML: J0,
   getName: np,
   getOuterHTML: nu,
@@ -16331,7 +16331,7 @@ const es = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   hasChildren: kt,
   innerText: bi,
   isCDATA: xo,
-  isComment: Yi,
+  isComment: Xi,
   isDocument: Ja,
   isTag: _e,
   isText: Ht,
@@ -16363,13 +16363,13 @@ function Ep(n, e, t) {
 }
 const Tp = { xmlMode: !0 };
 function Bp(n, e = Tp) {
-  return Qi(hu(n, e));
+  return es(hu(n, e));
 }
 const Ap = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   DefaultHandler: Cn,
   DomHandler: Cn,
-  DomUtils: es,
+  DomUtils: ts,
   ElementType: R0,
   Parser: mo,
   get QuoteType() {
@@ -16378,11 +16378,11 @@ const Ap = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   Tokenizer: Da,
   createDocumentStream: Cp,
   createDomStream: Ep,
-  getFeed: Qi,
+  getFeed: es,
   parseDOM: hu,
   parseDocument: du,
   parseFeed: Bp
-}, Symbol.toStringTag, { value: "Module" })), St = -1, J = 1, me = 2, Ce = 3, ut = 4, lt = 8, Nt = 9, nn = 10, st = 11, Lp = /* @__PURE__ */ new Set(["ARTICLE", "ASIDE", "BLOCKQUOTE", "BODY", "BR", "BUTTON", "CANVAS", "CAPTION", "COL", "COLGROUP", "DD", "DIV", "DL", "DT", "EMBED", "FIELDSET", "FIGCAPTION", "FIGURE", "FOOTER", "FORM", "H1", "H2", "H3", "H4", "H5", "H6", "LI", "UL", "OL", "P"]), Np = -1, Mp = 1, Ip = 4, Rp = 8, _p = 128, Op = 1, hr = 2, pr = 4, Dp = 8, Pp = 16, Hp = 32, oo = "http://www.w3.org/2000/svg", {
+}, Symbol.toStringTag, { value: "Module" })), St = -1, J = 1, me = 2, Ce = 3, ut = 4, lt = 8, Nt = 9, nn = 10, st = 11, Lp = /* @__PURE__ */ new Set(["ARTICLE", "ASIDE", "BLOCKQUOTE", "BODY", "BR", "BUTTON", "CANVAS", "CAPTION", "COL", "COLGROUP", "DD", "DIV", "DL", "DT", "EMBED", "FIELDSET", "FIGCAPTION", "FIGURE", "FOOTER", "FORM", "H1", "H2", "H3", "H4", "H5", "H6", "LI", "UL", "OL", "P"]), Np = -1, Mp = 1, Ip = 4, Rp = 8, _p = 128, Op = 1, pr = 2, fr = 4, Dp = 8, Pp = 16, Hp = 32, oo = "http://www.w3.org/2000/svg", {
   assign: Fp,
   create: qp,
   defineProperties: $p,
@@ -16409,19 +16409,19 @@ const Xt = /* @__PURE__ */ new WeakMap(), Ft = /* @__PURE__ */ new WeakMap(), ko
     const o = Ft.get(t);
     o.connected !== e && t.isConnected === e && (o.connected = e, n in t && t[n]());
   }
-}, fr = gu("connectedCallback", !0), xi = (n) => {
-  if (wo) {
-    fr(n), vt.has(n) && (n = vt.get(n).shadowRoot);
-    let { [N]: e, [F]: t } = n;
-    for (; e !== t; )
-      e.nodeType === J && fr(e), e = e[N];
-  }
-}, gr = gu("disconnectedCallback", !1), zp = (n) => {
+}, gr = gu("connectedCallback", !0), xi = (n) => {
   if (wo) {
     gr(n), vt.has(n) && (n = vt.get(n).shadowRoot);
     let { [N]: e, [F]: t } = n;
     for (; e !== t; )
       e.nodeType === J && gr(e), e = e[N];
+  }
+}, br = gu("disconnectedCallback", !1), zp = (n) => {
+  if (wo) {
+    br(n), vt.has(n) && (n = vt.get(n).shadowRoot);
+    let { [N]: e, [F]: t } = n;
+    for (; e !== t; )
+      e.nodeType === J && br(e), e = e[N];
   }
 };
 class Gp {
@@ -16573,7 +16573,7 @@ const { Parser: Wp } = Ap, Tt = (n, e, t) => {
   for (const t of [].concat(n))
     io.set(t, e), io.set(t.toUpperCase(), e);
 };
-var br = {};
+var mr = {};
 const Zp = {}, Yp = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Zp
@@ -16581,9 +16581,9 @@ const Zp = {}, Yp = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineP
 var vi;
 try {
   const { performance: n } = Xp;
-  vi = br.performance = n;
+  vi = mr.performance = n;
 } catch {
-  vi = br.performance = { now() {
+  vi = mr.performance = { now() {
     return +/* @__PURE__ */ new Date();
   } };
 }
@@ -16622,7 +16622,7 @@ const mu = ({ [N]: n, [F]: e }, t) => {
   o.push(nn, n), e && o.push(e), t && o.push(t);
 }, wu = (n, e) => {
   e.push(J, n.localName), mu(n, e);
-}, ku = (n, e, t, o, i, s) => ({ type: n, target: e, addedNodes: t, removedNodes: o, attributeName: i, oldValue: s }), mr = (n, e, t, o, i, s) => {
+}, ku = (n, e, t, o, i, s) => ({ type: n, target: e, addedNodes: t, removedNodes: o, attributeName: i, oldValue: s }), xr = (n, e, t, o, i, s) => {
   if (!o || o.includes(t)) {
     const { callback: r, records: a, scheduled: u } = n;
     a.push(ku(
@@ -16636,7 +16636,7 @@ const mu = ({ [N]: n, [F]: e }, t) => {
       n.scheduled = !1, r(a.splice(0), n);
     }));
   }
-}, ts = (n, e, t) => {
+}, ns = (n, e, t) => {
   const { ownerDocument: o } = n, { active: i, observers: s } = o[bt];
   if (i) {
     for (const r of s)
@@ -16652,7 +16652,7 @@ const mu = ({ [N]: n, [F]: e }, t) => {
       ] of r.nodes)
         if (u) {
           if (l && (a === o || a.contains(n)) || !l && a.children.includes(n)) {
-            mr(
+            xr(
               r,
               n,
               e,
@@ -16663,7 +16663,7 @@ const mu = ({ [N]: n, [F]: e }, t) => {
             break;
           }
         } else if (c && a === n) {
-          mr(
+          xr(
             r,
             n,
             e,
@@ -16764,10 +16764,10 @@ const ef = /* @__PURE__ */ new Set([
   "truespeed"
 ]), yi = (n, e) => {
   const { [ne]: t, name: o } = e;
-  e.ownerElement = n, yo(n, e, n[N]), o === "class" && (n.className = t), ts(n, o, null), ko(n, o, null, t);
-}, xr = (n, e) => {
+  e.ownerElement = n, yo(n, e, n[N]), o === "class" && (n.className = t), ns(n, o, null), ko(n, o, null, t);
+}, vr = (n, e) => {
   const { [ne]: t, name: o } = e;
-  Ge(e[he], e[N]), e.ownerElement = e[he] = e[N] = null, o === "class" && (n[Yt] = null), ts(n, o, t), ko(n, o, t, null);
+  Ge(e[he], e[N]), e.ownerElement = e[he] = e[N] = null, o === "class" && (n[Yt] = null), ns(n, o, t), ko(n, o, t, null);
 }, Q = {
   get(n, e) {
     return n.hasAttribute(e);
@@ -16804,7 +16804,7 @@ function nf({ currentTarget: n, target: e }) {
     return delete this.currentTarget, delete this.target, this.cancelBubble;
   }
 }
-class ns {
+class os {
   constructor() {
     Kn.set(this, /* @__PURE__ */ new Map());
   }
@@ -16837,13 +16837,13 @@ class Xe extends Array {
     return e < this.length ? this[e] : null;
   }
 }
-const vr = ({ parentNode: n }) => {
+const yr = ({ parentNode: n }) => {
   let e = 0;
   for (; n; )
     e++, n = n.parentNode;
   return e;
 };
-let Ut = class extends ns {
+let Ut = class extends os {
   static get ELEMENT_NODE() {
     return J;
   }
@@ -17007,14 +17007,14 @@ let Ut = class extends ns {
   compareDocumentPosition(e) {
     let t = 0;
     if (this !== e) {
-      let o = vr(this), i = vr(e);
+      let o = yr(this), i = yr(e);
       if (o < i)
-        t += pr, this.contains(e) && (t += Pp);
+        t += fr, this.contains(e) && (t += Pp);
       else if (i < o)
-        t += hr, e.contains(this) && (t += Dp);
+        t += pr, e.contains(this) && (t += Dp);
       else if (o && i) {
         const { childNodes: s } = this.parentNode;
-        s.indexOf(this) < s.indexOf(e) ? t += pr : t += hr;
+        s.indexOf(this) < s.indexOf(e) ? t += fr : t += pr;
       }
       (!o || !i) && (t += Hp, t += Op);
     }
@@ -17063,7 +17063,7 @@ let Nn = class Su extends Ut {
   }
   set value(e) {
     const { [ne]: t, name: o, ownerElement: i } = this;
-    this[ne] = Rt(e), this[Qn] = !0, i && (ts(i, o, t), ko(i, o, t, this[ne]));
+    this[ne] = Rt(e), this[Qn] = !0, i && (ns(i, o, t), ko(i, o, t, this[ne]));
   }
   cloneNode() {
     const { ownerDocument: e, name: t, [ne]: o } = this;
@@ -17106,7 +17106,7 @@ const Cu = ({ ownerDocument: n, parentNode: e }) => {
 }, _t = (n) => {
   const e = Re(n)[N];
   return e && (e.nodeType === St ? null : e);
-}, os = (n) => {
+}, is = (n) => {
   let e = _t(n);
   for (; e && e.nodeType !== J; )
     e = _t(e);
@@ -17116,25 +17116,25 @@ const Cu = ({ ownerDocument: n, parentNode: e }) => {
   for (; e && e.nodeType !== J; )
     e = En(e);
   return e;
-}, is = (n, e) => {
+}, ss = (n, e) => {
   const t = n.createDocumentFragment();
   return t.append(...e), t;
 }, Bu = (n, e) => {
   const { ownerDocument: t, parentNode: o } = n;
   o && o.insertBefore(
-    is(t, e),
+    ss(t, e),
     n
   );
 }, Au = (n, e) => {
   const { ownerDocument: t, parentNode: o } = n;
   o && o.insertBefore(
-    is(t, e),
+    ss(t, e),
     Re(n)[N]
   );
-}, ss = (n, e) => {
+}, rs = (n, e) => {
   const { ownerDocument: t, parentNode: o } = n;
-  o && (e.includes(n) && ss(n, [n = n.cloneNode()]), o.insertBefore(
-    is(t, e),
+  o && (e.includes(n) && rs(n, [n = n.cloneNode()]), o.insertBefore(
+    ss(t, e),
     n
   ), n.remove());
 }, Lu = (n, e, t) => {
@@ -17162,7 +17162,7 @@ let Mn = class extends Ut {
     return Tu(this);
   }
   get nextElementSibling() {
-    return os(this);
+    return is(this);
   }
   before(...e) {
     Bu(this, e);
@@ -17171,7 +17171,7 @@ let Mn = class extends Ut {
     Au(this, e);
   }
   replaceWith(...e) {
-    ss(this, e);
+    rs(this, e);
   }
   remove() {
     Lu(this[he], this, this[N]);
@@ -17223,7 +17223,7 @@ let Mn = class extends Ut {
     const e = [];
     return vu(this, e), e;
   }
-}, rs = class Nu extends Mn {
+}, as = class Nu extends Mn {
   constructor(e, t = "") {
     super(e, "#cdatasection", ut, t);
   }
@@ -17234,7 +17234,7 @@ let Mn = class extends Ut {
   toString() {
     return `<![CDATA[${this[ne]}]]>`;
   }
-}, as = class Mu extends Mn {
+}, us = class Mu extends Mn {
   constructor(e, t = "") {
     super(e, "#comment", lt, t);
   }
@@ -17263,7 +17263,7 @@ var le;
 (function(n) {
   n.Any = "any", n.Element = "element", n.End = "end", n.Equals = "equals", n.Exists = "exists", n.Hyphen = "hyphen", n.Not = "not", n.Start = "start";
 })(le || (le = {}));
-const yr = /^[^\\#]?(?:\\(?:[\da-f]{1,6}\s?|.)|[\w\-\u00b0-\uFFFF])+/, rf = /\\([\da-f]{1,6}\s?|(\s)|.)/gi, af = /* @__PURE__ */ new Map([
+const wr = /^[^\\#]?(?:\\(?:[\da-f]{1,6}\s?|.)|[\w\-\u00b0-\uFFFF])+/, rf = /\\([\da-f]{1,6}\s?|(\s)|.)/gi, af = /* @__PURE__ */ new Map([
   [126, le.Element],
   [94, le.Start],
   [36, le.End],
@@ -17309,7 +17309,7 @@ function pn(n) {
 function Do(n) {
   return n === 39 || n === 34;
 }
-function wr(n) {
+function kr(n) {
   return n === 32 || n === 9 || n === 10 || n === 12 || n === 13;
 }
 function Iu(n) {
@@ -17321,14 +17321,14 @@ function Iu(n) {
 function Ru(n, e, t) {
   let o = [];
   function i(h) {
-    const g = e.slice(t + h).match(yr);
+    const g = e.slice(t + h).match(wr);
     if (!g)
       throw new Error(`Expected name, found ${e.slice(t)}`);
     const [f] = g;
     return t += h + f.length, pn(f);
   }
   function s(h) {
-    for (t += h; t < e.length && wr(e.charCodeAt(t)); )
+    for (t += h; t < e.length && kr(e.charCodeAt(t)); )
       t++;
   }
   function r() {
@@ -17435,7 +17435,7 @@ function Ru(n, e, t) {
               k = pn(e.slice(t + 1, I)), t = I + 1;
             } else {
               const L = t;
-              for (; t < e.length && (!wr(e.charCodeAt(t)) && e.charCodeAt(t) !== 93 || a(t)); )
+              for (; t < e.length && (!kr(e.charCodeAt(t)) && e.charCodeAt(t) !== 93 || a(t)); )
                 t += 1;
               k = pn(e.slice(L, t));
             }
@@ -17505,7 +17505,7 @@ function Ru(n, e, t) {
               l($.ColumnCombinator), s(2);
               break;
             }
-          } else if (yr.test(e.slice(t)))
+          } else if (wr.test(e.slice(t)))
             f = i(0);
           else
             break e;
@@ -17521,7 +17521,7 @@ const _u = /* @__PURE__ */ new Map([
   [$.Attribute, 1],
   [$.Pseudo, 0]
 ]);
-function us(n) {
+function ls(n) {
   return !_u.has(n.type);
 }
 const hf = /* @__PURE__ */ new Map([
@@ -17549,7 +17549,7 @@ function Ou(n) {
   return n.type === $.Attribute ? (o = (t = hf.get(n.action)) !== null && t !== void 0 ? t : 4, n.action === le.Equals && n.name === "id" && (o = 9), n.ignoreCase && (o >>= 1)) : n.type === $.Pseudo && (n.data ? n.name === "has" || n.name === "contains" ? o = 0 : Array.isArray(n.data) ? (o = Math.min(...n.data.map((i) => Math.min(...i.map(Ou)))), o < 0 && (o = 0)) : o = 2 : o = 3), o;
 }
 const ff = /[-[\]{}()*+?.,\\^$|#\s]/g;
-function kr(n) {
+function Sr(n) {
   return n.replace(ff, "\\$&");
 }
 const gf = /* @__PURE__ */ new Set([
@@ -17628,7 +17628,7 @@ const bf = {
     const { adapter: o } = t, { name: i, value: s } = e;
     if (/\s/.test(s))
       return V.falseFunc;
-    const r = new RegExp(`(?:^|\\s)${kr(s)}(?:$|\\s)`, Bt(e, t) ? "i" : "");
+    const r = new RegExp(`(?:^|\\s)${Sr(s)}(?:$|\\s)`, Bt(e, t) ? "i" : "");
     return function(u) {
       const l = o.getAttributeValue(u, i);
       return l != null && l.length >= s.length && r.test(l) && n(u);
@@ -17666,7 +17666,7 @@ const bf = {
     if (s === "")
       return V.falseFunc;
     if (Bt(e, t)) {
-      const r = new RegExp(kr(s), "i");
+      const r = new RegExp(Sr(s), "i");
       return function(u) {
         const l = o.getAttributeValue(u, i);
         return l != null && l.length >= s.length && r.test(l) && n(u);
@@ -17685,7 +17685,7 @@ const bf = {
       return (a == null || a.length !== s.length || a.toLowerCase() !== s) && n(r);
     }) : (r) => o.getAttributeValue(r, i) !== s && n(r);
   }
-}, mf = /* @__PURE__ */ new Set([9, 10, 12, 13, 32]), Sr = 48, xf = 57;
+}, mf = /* @__PURE__ */ new Set([9, 10, 12, 13, 32]), Cr = 48, xf = 57;
 function vf(n) {
   if (n = n.trim().toLowerCase(), n === "even")
     return [2, 0];
@@ -17701,8 +17701,8 @@ function vf(n) {
   function r() {
     const u = e;
     let l = 0;
-    for (; e < n.length && n.charCodeAt(e) >= Sr && n.charCodeAt(e) <= xf; )
-      l = l * 10 + (n.charCodeAt(e) - Sr), e++;
+    for (; e < n.length && n.charCodeAt(e) >= Cr && n.charCodeAt(e) <= xf; )
+      l = l * 10 + (n.charCodeAt(e) - Cr), e++;
     return e === u ? null : l;
   }
   function a() {
@@ -17816,7 +17816,7 @@ function Po(n) {
     };
   };
 }
-const Cr = {
+const Er = {
   empty(n, { adapter: e }) {
     return !e.getChildren(n).some((t) => (
       // FIXME: `getText` call is potentially expensive.
@@ -17869,7 +17869,7 @@ const Cr = {
     return e.getSiblings(n).every((o) => t(n, o) || !e.isTag(o));
   }
 };
-function Er(n, e, t, o) {
+function Tr(n, e, t, o) {
   if (t === null) {
     if (n.length > o)
       throw new Error(`Pseudo-class :${e} requires an argument`);
@@ -17946,7 +17946,7 @@ const Ho = (n, e, t, o, i) => {
   has(n, e, t, o, i) {
     const { adapter: s } = t, r = ki(t);
     r.relativeSelector = !0;
-    const a = e.some((c) => c.some(us)) ? (
+    const a = e.some((c) => c.some(ls)) ? (
       // Used as a placeholder. Will be replaced with the actual element.
       [Du]
     ) : void 0, u = i(e, r, a);
@@ -17982,12 +17982,12 @@ function Sf(n, e, t, o, i) {
     return Fo.is(n, c, t, o, i);
   }
   if (typeof u == "function")
-    return Er(u, r, a, 1), (c) => u(c, a) && n(c);
+    return Tr(u, r, a, 1), (c) => u(c, a) && n(c);
   if (r in wi)
     return wi[r](n, a, t, o);
-  if (r in Cr) {
-    const c = Cr[r];
-    return Er(c, r, a, 2), (d) => c(d, t, a) && n(d);
+  if (r in Er) {
+    const c = Er[r];
+    return Tr(c, r, a, 2), (d) => c(d, t, a) && n(d);
   }
   throw new Error(`Unknown pseudo-class :${r}`);
 }
@@ -18114,7 +18114,7 @@ function Lf(n, { adapter: e }, t) {
     return i === Du || s && e.isTag(s);
   }));
   for (const i of n) {
-    if (!(i.length > 0 && us(i[0]) && i[0].type !== $.Descendant))
+    if (!(i.length > 0 && ls(i[0]) && i[0].type !== $.Descendant))
       if (o && !i.some(Fu))
         i.unshift(Tf);
       else
@@ -18128,7 +18128,7 @@ function qu(n, e, t) {
   const i = Array.isArray(t), s = t && (Array.isArray(t) ? t : [t]);
   if (e.relativeSelector !== !1)
     Lf(n, e, s);
-  else if (n.some((u) => u.length > 0 && us(u[0])))
+  else if (n.some((u) => u.length > 0 && ls(u[0])))
     throw new Error("Relative selectors are not allowed when the `relativeSelector` option is disabled");
   let r = !1;
   const a = n.map((u) => {
@@ -18150,13 +18150,13 @@ function Mf(n, e) {
   };
 }
 const $u = (n, e) => n === e, If = {
-  adapter: es,
+  adapter: ts,
   equals: $u
 };
 function Uu(n) {
   var e, t, o, i;
   const s = n ?? If;
-  return (e = s.adapter) !== null && e !== void 0 || (s.adapter = es), (t = s.equals) !== null && t !== void 0 || (s.equals = (i = (o = s.adapter) === null || o === void 0 ? void 0 : o.equals) !== null && i !== void 0 ? i : $u), s;
+  return (e = s.adapter) !== null && e !== void 0 || (s.adapter = ts), (t = s.equals) !== null && t !== void 0 || (s.equals = (i = (o = s.adapter) === null || o === void 0 ? void 0 : o.equals) !== null && i !== void 0 ? i : $u), s;
 }
 function Rf(n) {
   return function(t, o, i) {
@@ -18292,7 +18292,7 @@ class Ku extends Ut {
     const e = new Xe();
     let { firstElementChild: t } = this;
     for (; t; )
-      e.push(t), t = os(t);
+      e.push(t), t = is(t);
     return e;
   }
   /**
@@ -18441,7 +18441,7 @@ class Ku extends Ut {
     return t.remove(), this.insertBefore(e, o), t;
   }
 }
-class ls extends Ku {
+class cs extends Ku {
   getElementById(e) {
     let { [N]: t, [F]: o } = this;
     for (; t !== o; ) {
@@ -18469,7 +18469,7 @@ class ls extends Ku {
     return Jp(this, e), e;
   }
 }
-let cs = class extends ls {
+let ds = class extends cs {
   constructor(e) {
     super(e, "#document-fragment", st);
   }
@@ -18528,7 +18528,7 @@ class Qu {
   }
 }
 Be(Qu.prototype, null);
-const { add: Jf } = Set.prototype, Tr = (n, e) => {
+const { add: Jf } = Set.prototype, Br = (n, e) => {
   for (const t of e)
     t && Jf.call(n, t);
 }, fn = ({ [Ma]: n, value: e }) => {
@@ -18542,7 +18542,7 @@ class Qf extends Set {
   constructor(e) {
     super(), this[Ma] = e;
     const t = e.getAttributeNode("class");
-    t && Tr(this, t.value.split(/\s+/));
+    t && Br(this, t.value.split(/\s+/));
   }
   get length() {
     return this.size;
@@ -18554,7 +18554,7 @@ class Qf extends Set {
    * @param  {...string} tokens
    */
   add(...e) {
-    Tr(this, e), fn(this);
+    Br(this, e), fn(this);
   }
   /**
    * @param {string} token
@@ -18677,37 +18677,37 @@ const { prototype: e1 } = el;
 function t1(n, e) {
   e !== Se && this.push(`${e}:${n}`);
 }
-const Br = 3, Ar = 2, Lr = 1, Nr = 0;
+const Ar = 3, Lr = 2, Nr = 1, Mr = 0;
 function n1(n) {
   return n.currentTarget;
 }
 class qt {
   static get BUBBLING_PHASE() {
-    return Br;
-  }
-  static get AT_TARGET() {
     return Ar;
   }
-  static get CAPTURING_PHASE() {
+  static get AT_TARGET() {
     return Lr;
   }
-  static get NONE() {
+  static get CAPTURING_PHASE() {
     return Nr;
+  }
+  static get NONE() {
+    return Mr;
   }
   constructor(e, t = {}) {
     this.type = e, this.bubbles = !!t.bubbles, this.cancelBubble = !1, this._stopImmediatePropagationFlag = !1, this.cancelable = !!t.cancelable, this.eventPhase = this.NONE, this.timeStamp = Date.now(), this.defaultPrevented = !1, this.originalTarget = null, this.returnValue = null, this.srcElement = null, this.target = null, this._path = [];
   }
   get BUBBLING_PHASE() {
-    return Br;
-  }
-  get AT_TARGET() {
     return Ar;
   }
-  get CAPTURING_PHASE() {
+  get AT_TARGET() {
     return Lr;
   }
-  get NONE() {
+  get CAPTURING_PHASE() {
     return Nr;
+  }
+  get NONE() {
+    return Mr;
   }
   preventDefault() {
     this.defaultPrevented = !0;
@@ -18752,7 +18752,7 @@ class tl extends Array {
   }
   /* c8 ignore stop */
 }
-let ds = class extends ls {
+let hs = class extends cs {
   constructor(e) {
     super(e.ownerDocument, "#shadow-root", st), this.host = e;
   }
@@ -18767,7 +18767,7 @@ const o1 = {
   get(n, e) {
     return e in n ? n[e] : n.find(({ name: t }) => t === e);
   }
-}, Mr = (n, e, t) => {
+}, Ir = (n, e, t) => {
   if ("ownerSVGElement" in e) {
     const o = n.createElementNS(oo, t);
     return o.ownerSVGElement = e.ownerSVGElement, o;
@@ -18798,7 +18798,7 @@ let Rn = class extends Ku {
     return Tu(this);
   }
   get nextElementSibling() {
-    return os(this);
+    return is(this);
   }
   before(...e) {
     Bu(this, e);
@@ -18807,7 +18807,7 @@ let Rn = class extends Ku {
     Au(this, e);
   }
   replaceWith(...e) {
-    ss(this, e);
+    rs(this, e);
   }
   remove() {
     Lu(this[he], this, this[F][N]);
@@ -18953,7 +18953,7 @@ let Rn = class extends Ku {
     let t = this[N];
     for (; t.nodeType === me; ) {
       if (t.name === e) {
-        xr(this, t);
+        vr(this, t);
         return;
       }
       t = t[N];
@@ -18963,7 +18963,7 @@ let Rn = class extends Ku {
     let t = this[N];
     for (; t.nodeType === me; ) {
       if (t === e) {
-        xr(this, t);
+        vr(this, t);
         return;
       }
       t = t[N];
@@ -19002,7 +19002,7 @@ let Rn = class extends Ku {
   attachShadow(e) {
     if (vt.has(this))
       throw new Error("operation not supported");
-    const t = new ds(this);
+    const t = new hs(this);
     return vt.set(this, {
       mode: e.mode,
       shadowRoot: t
@@ -19058,7 +19058,7 @@ let Rn = class extends Ku {
   cloneNode(e = !1) {
     const { ownerDocument: t, localName: o } = this, i = (c) => {
       c.parentNode = r, Ge(a, c), a = c;
-    }, s = Mr(t, this, o);
+    }, s = Ir(t, this, o);
     let r = s, a = s, { [N]: u, [F]: l } = this;
     for (; u !== l && (e || u.nodeType === me); ) {
       switch (u.nodeType) {
@@ -19066,7 +19066,7 @@ let Rn = class extends Ku {
           Ge(a, r[F]), a = r[F], r = r.parentNode;
           break;
         case J: {
-          const c = Mr(t, u, u.localName);
+          const c = Ir(t, u, u.localName);
           i(c), r = c;
           break;
         }
@@ -19186,73 +19186,73 @@ let Tn = class extends Rn {
 const Oe = () => {
   throw new TypeError("Illegal constructor");
 };
-function hs() {
-  Oe();
-}
-Be(hs, Nn);
-hs.prototype = Nn.prototype;
 function ps() {
   Oe();
 }
-Be(ps, rs);
-ps.prototype = rs.prototype;
+Be(ps, Nn);
+ps.prototype = Nn.prototype;
 function fs() {
   Oe();
 }
-Be(fs, Mn);
-fs.prototype = Mn.prototype;
+Be(fs, as);
+fs.prototype = as.prototype;
 function gs() {
   Oe();
 }
-Be(gs, as);
-gs.prototype = as.prototype;
+Be(gs, Mn);
+gs.prototype = Mn.prototype;
 function bs() {
   Oe();
 }
-Be(bs, cs);
-bs.prototype = cs.prototype;
+Be(bs, us);
+bs.prototype = us.prototype;
 function ms() {
   Oe();
 }
-Be(ms, so);
-ms.prototype = so.prototype;
+Be(ms, ds);
+ms.prototype = ds.prototype;
 function xs() {
   Oe();
 }
-Be(xs, Rn);
-xs.prototype = Rn.prototype;
+Be(xs, so);
+xs.prototype = so.prototype;
 function vs() {
   Oe();
 }
-Be(vs, Ut);
-vs.prototype = Ut.prototype;
+Be(vs, Rn);
+vs.prototype = Rn.prototype;
 function ys() {
   Oe();
 }
-Be(ys, ds);
-ys.prototype = ds.prototype;
+Be(ys, Ut);
+ys.prototype = Ut.prototype;
 function ws() {
   Oe();
 }
-Be(ws, In);
-ws.prototype = In.prototype;
+Be(ws, hs);
+ws.prototype = hs.prototype;
 function ks() {
   Oe();
 }
-Be(ks, Tn);
-ks.prototype = Tn.prototype;
+Be(ks, In);
+ks.prototype = In.prototype;
+function Ss() {
+  Oe();
+}
+Be(Ss, Tn);
+Ss.prototype = Tn.prototype;
 const r1 = {
-  Attr: hs,
-  CDATASection: ps,
-  CharacterData: fs,
-  Comment: gs,
-  DocumentFragment: bs,
-  DocumentType: ms,
-  Element: xs,
-  Node: vs,
-  ShadowRoot: ys,
-  Text: ws,
-  SVGElement: ks
+  Attr: ps,
+  CDATASection: fs,
+  CharacterData: gs,
+  Comment: bs,
+  DocumentFragment: ms,
+  DocumentType: xs,
+  Element: vs,
+  Node: ys,
+  ShadowRoot: ws,
+  Text: ks,
+  SVGElement: Ss
 }, gn = /* @__PURE__ */ new WeakMap(), b = {
   get(n, e) {
     return gn.has(n) && gn.get(n)[e] || null;
@@ -19977,11 +19977,11 @@ ue.CSSRule.prototype = {
   //FIXME
 };
 De.CSSRule = ue.CSSRule;
-var Ir;
+var Rr;
 function Eo() {
-  if (Ir)
+  if (Rr)
     return Wo;
-  Ir = 1;
+  Rr = 1;
   var n = {
     CSSStyleDeclaration: dn().CSSStyleDeclaration,
     CSSRule: De.CSSRule
@@ -20070,11 +20070,11 @@ function Eo() {
     return u;
   }, Wo.CSSStyleRule = n.CSSStyleRule, Wo;
 }
-var Rr;
+var _r;
 function To() {
-  if (Rr)
+  if (_r)
     return Go;
-  Rr = 1;
+  _r = 1;
   var n = {
     StyleSheet: ul.StyleSheet,
     CSSStyleRule: Eo().CSSStyleRule
@@ -20095,9 +20095,9 @@ function To() {
       e += t[o].cssText + `
 `;
     return e;
-  }, Go.CSSStyleSheet = n.CSSStyleSheet, n.parse = As().parse, Go;
+  }, Go.CSSStyleSheet = n.CSSStyleSheet, n.parse = Ls().parse, Go;
 }
-var Ko = {}, Ss = {}, uo = {};
+var Ko = {}, Cs = {}, uo = {};
 uo.MediaList = function() {
   this.length = 0;
 };
@@ -20130,16 +20130,16 @@ uo.MediaList.prototype = {
     e !== -1 && Array.prototype.splice.call(this, e, 1);
   }
 };
-Ss.MediaList = uo.MediaList;
-var _r;
+Cs.MediaList = uo.MediaList;
+var Or;
 function cl() {
-  if (_r)
+  if (Or)
     return Ko;
-  _r = 1;
+  Or = 1;
   var n = {
     CSSRule: De.CSSRule,
     CSSStyleSheet: To().CSSStyleSheet,
-    MediaList: Ss.MediaList
+    MediaList: Cs.MediaList
   };
   return n.CSSImportRule = function() {
     n.CSSRule.call(this), this.href = "", this.media = new n.MediaList(), this.styleSheet = new n.CSSStyleSheet();
@@ -20215,7 +20215,7 @@ et.CSSGroupingRule.prototype.deleteRule = function(e) {
   this.cssRules.splice(e, 1)[0].parentRule = null;
 };
 cn.CSSGroupingRule = et.CSSGroupingRule;
-var Cs = {}, _n = {}, ct = {
+var Es = {}, _n = {}, ct = {
   CSSRule: De.CSSRule,
   CSSGroupingRule: cn.CSSGroupingRule
 };
@@ -20231,7 +20231,7 @@ var Je = {
   CSSRule: De.CSSRule,
   CSSGroupingRule: cn.CSSGroupingRule,
   CSSConditionRule: _n.CSSConditionRule,
-  MediaList: Ss.MediaList
+  MediaList: Cs.MediaList
 };
 Je.CSSMediaRule = function() {
   Je.CSSConditionRule.call(this), this.media = new Je.MediaList();
@@ -20260,8 +20260,8 @@ Object.defineProperties(Je.CSSMediaRule.prototype, {
     enumerable: !0
   }
 });
-Cs.CSSMediaRule = Je.CSSMediaRule;
-var Es = {}, dt = {
+Es.CSSMediaRule = Je.CSSMediaRule;
+var Ts = {}, dt = {
   CSSRule: De.CSSRule,
   CSSGroupingRule: cn.CSSGroupingRule,
   CSSConditionRule: _n.CSSConditionRule
@@ -20279,12 +20279,12 @@ Object.defineProperty(dt.CSSSupportsRule.prototype, "cssText", {
     return "@supports " + this.conditionText + " {" + n.join("") + "}";
   }
 });
-Es.CSSSupportsRule = dt.CSSSupportsRule;
-var Zo = {}, Or;
+Ts.CSSSupportsRule = dt.CSSSupportsRule;
+var Zo = {}, Dr;
 function dl() {
-  if (Or)
+  if (Dr)
     return Zo;
-  Or = 1;
+  Dr = 1;
   var n = {
     CSSStyleDeclaration: dn().CSSStyleDeclaration,
     CSSRule: De.CSSRule
@@ -20314,11 +20314,11 @@ Object.defineProperty(ht.CSSHostRule.prototype, "cssText", {
   }
 });
 hl.CSSHostRule = ht.CSSHostRule;
-var Yo = {}, Dr;
-function Ts() {
-  if (Dr)
+var Yo = {}, Pr;
+function Bs() {
+  if (Pr)
     return Yo;
-  Dr = 1;
+  Pr = 1;
   var n = {
     CSSRule: De.CSSRule,
     CSSStyleDeclaration: dn().CSSStyleDeclaration
@@ -20331,7 +20331,7 @@ function Ts() {
     }
   }), Yo.CSSKeyframeRule = n.CSSKeyframeRule, Yo;
 }
-var Bs = {}, pt = {
+var As = {}, pt = {
   CSSRule: De.CSSRule
 };
 pt.CSSKeyframesRule = function() {
@@ -20350,7 +20350,7 @@ Object.defineProperty(pt.CSSKeyframesRule.prototype, "cssText", {
 }`;
   }
 });
-Bs.CSSKeyframesRule = pt.CSSKeyframesRule;
+As.CSSKeyframesRule = pt.CSSKeyframesRule;
 var pl = {}, fl = {}, lo = {};
 lo.CSSValue = function() {
 };
@@ -20541,11 +20541,11 @@ Object.defineProperty(Qe.CSSDocumentRule.prototype, "cssText", {
   }
 });
 gl.CSSDocumentRule = Qe.CSSDocumentRule;
-var Pr;
-function As() {
-  if (Pr)
+var Hr;
+function Ls() {
+  if (Hr)
     return zo;
-  Pr = 1;
+  Hr = 1;
   var n = {};
   return n.parse = function(t) {
     for (var o = 0, i = "before-selector", s, r = "", a = 0, u = {
@@ -20712,13 +20712,13 @@ function As() {
           break;
       }
     return l;
-  }, zo.parse = n.parse, n.CSSStyleSheet = To().CSSStyleSheet, n.CSSStyleRule = Eo().CSSStyleRule, n.CSSImportRule = cl().CSSImportRule, n.CSSGroupingRule = cn.CSSGroupingRule, n.CSSMediaRule = Cs.CSSMediaRule, n.CSSConditionRule = _n.CSSConditionRule, n.CSSSupportsRule = Es.CSSSupportsRule, n.CSSFontFaceRule = dl().CSSFontFaceRule, n.CSSHostRule = hl.CSSHostRule, n.CSSStyleDeclaration = dn().CSSStyleDeclaration, n.CSSKeyframeRule = Ts().CSSKeyframeRule, n.CSSKeyframesRule = Bs.CSSKeyframesRule, n.CSSValueExpression = pl.CSSValueExpression, n.CSSDocumentRule = gl.CSSDocumentRule, zo;
+  }, zo.parse = n.parse, n.CSSStyleSheet = To().CSSStyleSheet, n.CSSStyleRule = Eo().CSSStyleRule, n.CSSImportRule = cl().CSSImportRule, n.CSSGroupingRule = cn.CSSGroupingRule, n.CSSMediaRule = Es.CSSMediaRule, n.CSSConditionRule = _n.CSSConditionRule, n.CSSSupportsRule = Ts.CSSSupportsRule, n.CSSFontFaceRule = dl().CSSFontFaceRule, n.CSSHostRule = hl.CSSHostRule, n.CSSStyleDeclaration = dn().CSSStyleDeclaration, n.CSSKeyframeRule = Bs().CSSKeyframeRule, n.CSSKeyframesRule = As.CSSKeyframesRule, n.CSSValueExpression = pl.CSSValueExpression, n.CSSDocumentRule = gl.CSSDocumentRule, zo;
 }
-var Hr;
+var Fr;
 function dn() {
-  if (Hr)
+  if (Fr)
     return Vo;
-  Hr = 1;
+  Fr = 1;
   var n = {};
   return n.CSSStyleDeclaration = function() {
     this.length = 0, this.parentRule = null, this._importants = {};
@@ -20800,16 +20800,16 @@ function dn() {
       for (t = 0; t < s; ++t)
         o = i[t], this.setProperty(i[t], i.getPropertyValue(o), i.getPropertyPriority(o));
     }
-  }, Vo.CSSStyleDeclaration = n.CSSStyleDeclaration, n.parse = As().parse, Vo;
+  }, Vo.CSSStyleDeclaration = n.CSSStyleDeclaration, n.parse = Ls().parse, Vo;
 }
-To().CSSStyleSheet, De.CSSRule, Eo().CSSStyleRule, cn.CSSGroupingRule, _n.CSSConditionRule, Cs.CSSMediaRule, Es.CSSSupportsRule, dn().CSSStyleDeclaration, Ts().CSSKeyframeRule, Bs.CSSKeyframesRule;
+To().CSSStyleSheet, De.CSSRule, Eo().CSSStyleRule, cn.CSSGroupingRule, _n.CSSConditionRule, Es.CSSMediaRule, Ts.CSSSupportsRule, dn().CSSStyleDeclaration, Bs().CSSKeyframeRule, As.CSSKeyframesRule;
 dn().CSSStyleDeclaration;
 Eo().CSSStyleRule;
 cl().CSSImportRule;
 dl().CSSFontFaceRule;
 To().CSSStyleSheet;
-Ts().CSSKeyframeRule;
-var p1 = As().parse;
+Bs().CSSKeyframeRule;
+var p1 = Ls().parse;
 const ml = "style";
 class xl extends Co {
   constructor(e, t = ml) {
@@ -20971,11 +20971,11 @@ class L1 extends M {
     super(e, t);
   }
 }
-var Ti = { exports: {} }, Xo, Fr;
+var Ti = { exports: {} }, Xo, qr;
 function N1() {
-  if (Fr)
+  if (qr)
     return Xo;
-  Fr = 1;
+  qr = 1;
   class n {
     constructor(t, o) {
       this.width = t, this.height = o;
@@ -21309,7 +21309,7 @@ class Z1 extends M {
   }
 }
 const Fl = "img";
-class Ls extends M {
+class Ns extends M {
   constructor(e, t = Fl) {
     super(e, t);
   }
@@ -21358,7 +21358,7 @@ class Ls extends M {
   }
   /* c8 ignore stop */
 }
-fe(Fl, Ls);
+fe(Fl, Ns);
 class Y1 extends M {
   constructor(e, t = "pre") {
     super(e, t);
@@ -21578,7 +21578,7 @@ const ug = {
   HTMLLinkElement: Dl,
   HTMLSlotElement: Hl,
   HTMLFormElement: Z1,
-  HTMLImageElement: Ls,
+  HTMLImageElement: Ns,
   HTMLPreElement: Y1,
   HTMLUListElement: X1,
   HTMLMetaElement: $l,
@@ -21634,7 +21634,7 @@ const dg = (n) => (
   /**
    * @implements globalThis.Image
    */
-  class extends Ls {
+  class extends Ns {
     constructor(t, o) {
       switch (super(n), arguments.length) {
         case 1:
@@ -21646,7 +21646,7 @@ const dg = (n) => (
       }
     }
   }
-), qr = ({ [Le]: n, [F]: e }, t = null) => {
+), $r = ({ [Le]: n, [F]: e }, t = null) => {
   fu(n[he], e[N]);
   do {
     const o = Re(n), i = o === e ? o : o[N];
@@ -21700,11 +21700,11 @@ let hg = class Wl {
     return o;
   }
   deleteContents() {
-    qr(this);
+    $r(this);
   }
   extractContents() {
     const e = this[Le].ownerDocument.createDocumentFragment();
-    return qr(this, e), e;
+    return $r(this, e), e;
   }
   createContextualFragment(e) {
     const { commonAncestorContainer: t } = this, o = "ownerSVGElement" in t, i = o ? t.ownerDocument : t, s = i.createElement("template");
@@ -21755,7 +21755,7 @@ class fg {
     return this.currentNode = e.i < e.nodes.length ? e.nodes[e.i++] : null, this.currentNode;
   }
 }
-const $r = (n, e, t) => {
+const Ur = (n, e, t) => {
   let { [N]: o, [F]: i } = e;
   return n.call({ ownerDocument: e, [N]: o, [F]: i }, t);
 }, Kl = Fp(
@@ -21765,13 +21765,13 @@ const $r = (n, e, t) => {
   {
     CustomEvent: Gl,
     Event: qt,
-    EventTarget: ns,
+    EventTarget: os,
     InputEvent: cg,
     NamedNodeMap: tl,
     NodeList: Xe
   }
 ), Un = /* @__PURE__ */ new WeakMap();
-let $t = class extends ls {
+let $t = class extends cs {
   constructor(e) {
     super(null, "#document", Nt), this[qe] = { active: !1, registry: null }, this[bt] = { active: !1, class: null }, this[rn] = lg[e], this[Et] = null, this[di] = null, this[Gn] = null, this[$e] = null, this[yn] = null;
   }
@@ -21799,7 +21799,7 @@ let $t = class extends ls {
           case "removeEventListener":
           case "dispatchEvent":
             if (!this[hn]) {
-              const o = this[hn] = new ns();
+              const o = this[hn] = new os();
               o.dispatchEvent = o.dispatchEvent.bind(o), o.addEventListener = o.addEventListener.bind(o), o.removeEventListener = o.removeEventListener.bind(o);
             }
             return this[hn][t];
@@ -21855,13 +21855,13 @@ let $t = class extends ls {
     return new Nn(this, e);
   }
   createCDATASection(e) {
-    return new rs(this, e);
-  }
-  createComment(e) {
     return new as(this, e);
   }
+  createComment(e) {
+    return new us(this, e);
+  }
   createDocumentFragment() {
-    return new cs(this);
+    return new ds(this);
   }
   createDocumentType(e, t, o) {
     return new so(this, e, t, o);
@@ -21928,10 +21928,10 @@ let $t = class extends ls {
     return this.childNodes.join("");
   }
   querySelector(e) {
-    return $r(super.querySelector, this, e);
+    return Ur(super.querySelector, this, e);
   }
   querySelectorAll(e) {
-    return $r(super.querySelectorAll, this, e);
+    return Ur(super.querySelectorAll, this, e);
   }
   /* c8 ignore start */
   getElementsByTagNameNS(e, t) {
@@ -22036,7 +22036,7 @@ class xg extends $t {
     return this[rn].docType + super.toString();
   }
 }
-class Ns {
+class Ms {
   /** @typedef {{ "text/html": HTMLDocument, "image/svg+xml": SVGDocument, "text/xml": XMLDocument }} MimeToDoc */
   /**
    * @template {keyof MimeToDoc} MIME
@@ -22046,10 +22046,10 @@ class Ns {
    */
   parseFromString(e, t, o = null) {
     let i = !1, s;
-    return t === "text/html" ? (i = !0, s = new bg()) : t === "image/svg+xml" ? s = new mg() : s = new xg(), s[di] = Ns, o && (s[Gn] = o), i && e === "..." && (e = "<!doctype html><html><head></head><body></body></html>"), e ? bu(s, i, e) : s;
+    return t === "text/html" ? (i = !0, s = new bg()) : t === "image/svg+xml" ? s = new mg() : s = new xg(), s[di] = Ms, o && (s[Gn] = o), i && e === "..." && (e = "<!doctype html><html><head></head><body></body></html>"), e ? bu(s, i, e) : s;
   }
 }
-const Zl = (n, e = null) => new Ns().parseFromString(
+const Zl = (n, e = null) => new Ms().parseFromString(
   n,
   "text/html",
   e
@@ -22078,7 +22078,7 @@ const Bi = (n, e, t) => {
   jinja: () => `{% ${n.toLowerCase() === "FOR" ? "endfor" : "endif"} %}`
 })[e](), Jl = (n) => (n = n.replaceAll("&lt;", "<"), n = n.replaceAll("&gt;", ">"), n), wg = (n, e, t) => {
   n.querySelectorAll("." + Gi).forEach((o) => {
-    const i = o.firstElementChild.getAttribute("data-statement"), s = o.querySelector("." + Ta).textContent;
+    const i = o.firstElementChild.getAttribute("data-statement"), s = o.querySelector("." + Ki).textContent;
     let r = e.createTextNode(Yl(i, s, t));
     o.replaceWith(r);
   });
@@ -22088,7 +22088,7 @@ const Bi = (n, e, t) => {
     let s = e.createTextNode(Xl(i, t));
     o.replaceWith(s);
   });
-}, Ur = (n, e) => {
+}, jr = (n, e) => {
   const t = Zl(""), { withHeadings: o, content: i } = n;
   let s = "";
   if (o) {
@@ -22096,7 +22096,7 @@ const Bi = (n, e, t) => {
     let c = "";
     l.forEach((d) => {
       const h = t.document.createElement("th");
-      h.innerHTML = jr(d), Bi(h, t.document, e), c += h.outerHTML;
+      h.innerHTML = Vr(d), Bi(h, t.document, e), c += h.outerHTML;
     }), s = Tg(c);
   }
   let r = "";
@@ -22110,7 +22110,7 @@ const Bi = (n, e, t) => {
     let d = "";
     l.forEach((h) => {
       const g = document.createElement("td");
-      g.innerHTML = jr(h), Bi(g, t.document, e), d += g.outerHTML;
+      g.innerHTML = Vr(h), Bi(g, t.document, e), d += g.outerHTML;
     }), r += Ag(d);
   });
   const a = s + Bg(r), u = Eg(a);
@@ -22126,7 +22126,7 @@ const Bi = (n, e, t) => {
 }, Cg = (n, e) => {
   const t = n[0], o = n[1];
   return t.includes("end") ? t.includes("end") ? Xl(t, e) : "" : Yl(t, o, e);
-}, Eg = (n) => `<table>${n}</table>`, Tg = (n) => `<thead>${n}</thead>`, Bg = (n) => `<tbody>${n}</tbody>`, Ag = (n) => `<tr>${n}</tr>`, jr = (n) => n.replaceAll(`
+}, Eg = (n) => `<table>${n}</table>`, Tg = (n) => `<thead>${n}</thead>`, Bg = (n) => `<tbody>${n}</tbody>`, Ag = (n) => `<tr>${n}</tr>`, Vr = (n) => n.replaceAll(`
 `, "<br>"), Lg = (n) => {
   const e = {
     [ke("if")]: {
@@ -22154,8 +22154,8 @@ const Bi = (n, e, t) => {
       jinja: () => "{% endfor %}"
     },
     table: {
-      ejs: ({ data: o }) => Ur(o, n),
-      jinja: ({ data: o }) => Ur(o, n)
+      ejs: ({ data: o }) => jr(o, n),
+      jinja: ({ data: o }) => jr(o, n)
     }
   }, t = {};
   return Object.entries(e).forEach(([o, i]) => {
