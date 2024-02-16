@@ -40,8 +40,11 @@
 <style lang="scss">
   .variable-container {
     font-family: monospace;
-    background-color: yellow;
+    background-color: #ebcb8b;
+    color: #2e343f;
     position: relative;
+    padding: 0.2rem 0.25rem;
+    border-radius: 6px;
     &:hover,
     &:focus {
       .close-icon {

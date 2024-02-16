@@ -1,0 +1,79 @@
+{
+    "time": 1708124202787,
+    "blocks": [
+        {
+            "id": "nvOKSUgS_n",
+            "type": "header",
+            "data": {
+                "text": "If Statements Example",
+                "level": 3
+            }
+        },
+        {
+            "id": "nVvJwaxH9M",
+            "type": "paragraph",
+            "data": {
+                "text": "Hello <span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">name</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>!"
+            }
+        },
+        {
+            "id": "8TRaFSWuea",
+            "type": "IfCondition",
+            "data": {
+                "type": "if",
+                "condition": "score > 80"
+            }
+        },
+        {
+            "id": "eOMZZazfzJ",
+            "type": "paragraph",
+            "data": {
+                "text": "I'm happy to inform you that you did very well on today's <span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">test_name</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>. "
+            }
+        },
+        {
+            "id": "Tqp1TJXS0r",
+            "type": "ElseCondition",
+            "data": {
+                "type": "else",
+                "condition": "variable == \"result\""
+            }
+        },
+        {
+            "id": "4LC3pZ6bIW",
+            "type": "paragraph",
+            "data": {
+                "text": "I'm sorry to inform you that you did not do so well on today's <span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">test_name</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>."
+            }
+        },
+        {
+            "id": "ejwG3HMUK-",
+            "type": "IfEndCondition",
+            "data": {
+                "type": "endif"
+            }
+        },
+        {
+            "id": "8VTYF9GGGK",
+            "type": "paragraph",
+            "data": {
+                "text": "You reached score out of <span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">max_score</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span> points."
+            }
+        },
+        {
+            "id": "TikcrHROla",
+            "type": "paragraph",
+            "data": {
+                "text": "See you tomorrow!"
+            }
+        },
+        {
+            "id": "7msjiZEhwN",
+            "type": "paragraph",
+            "data": {
+                "text": "Anke"
+            }
+        }
+    ],
+    "version": "2.29.0"
+}

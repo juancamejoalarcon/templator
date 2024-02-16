@@ -1,0 +1,42 @@
+{
+    "time": 1708123579367,
+    "blocks": [
+        {
+            "id": "nvOKSUgS_n",
+            "type": "header",
+            "data": {
+                "text": "Variables example",
+                "level": 3
+            }
+        },
+        {
+            "id": "nVvJwaxH9M",
+            "type": "paragraph",
+            "data": {
+                "text": "Hello <span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">name</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>!"
+            }
+        },
+        {
+            "id": "eOMZZazfzJ",
+            "type": "paragraph",
+            "data": {
+                "text": "I'm happy to inform you that you did very well on today's <span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">test_name</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>. You reached score out of <span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">max_score</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span> points."
+            }
+        },
+        {
+            "id": "TikcrHROla",
+            "type": "paragraph",
+            "data": {
+                "text": "See you tomorrow!"
+            }
+        },
+        {
+            "id": "7msjiZEhwN",
+            "type": "paragraph",
+            "data": {
+                "text": "Anke"
+            }
+        }
+    ],
+    "version": "2.29.0"
+}
