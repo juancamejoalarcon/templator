@@ -10,8 +10,8 @@
 
   //   const remove = onRemove || function () {};
 
-  const startCondition = "[";
-  const endCondition = "]";
+  const startCondition = "";
+  const endCondition = "";
 
   const startBracket = "(";
   const endBracket = ")";
@@ -75,7 +75,10 @@
     }
   }
   .condition-input {
-    background-color: #eff0f1;
+    background-color: #ebcb8b;
+    padding: 0.25rem 0.45rem;
+    border-radius: 12px;
+    color: #2e343f;
     cursor: default;
     &-edit {
       border: 1px solid transparent;
@@ -92,8 +95,8 @@
     display: none;
     cursor: pointer;
     width: 10px;
-    top: 2px;
-    padding-left: 5px;
-    color: grey;
+    color: #2e343f;
+    margin-top: -5px;
+    margin-left: -7px;
   }
 </style>

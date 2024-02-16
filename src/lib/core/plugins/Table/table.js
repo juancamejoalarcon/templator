@@ -3,6 +3,7 @@ import * as $ from './utils/dom';
 import throttled from './utils/throttled';
 import ConditionComponent from '@/lib/components/ConditionComponent.svelte'
 import LogicIcon from '@/lib/assets/icons/logic-icon.svg?raw';
+import { conditionContentClassName } from '@/lib/services/condition.service'
 
 import {
   IconDirectionLeftDown,
@@ -1122,7 +1123,7 @@ export default class Table {
       }
       const ifCondition = row.querySelector('.if')
       if (ifCondition) {
-        data.push(['if', ifCondition.querySelector('.condition-input-edit').textContent])
+        data.push(['if', ifCondition.querySelector('.' + conditionContentClassName).textContent])
       }
 
       const cellIsHidden = (cell) => cell.style.display === 'none'

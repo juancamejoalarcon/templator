@@ -1,0 +1,56 @@
+{
+    "time": 1708121965793,
+    "blocks": [
+        {
+            "id": "pWkpTsp-A0",
+            "type": "header",
+            "data": {
+                "text": "Table example 1",
+                "level": 3
+            }
+        },
+        {
+            "id": "_P2e6zQdIg",
+            "type": "table",
+            "data": {
+                "withHeadings": true,
+                "content": [
+                    [
+                        "Person",
+                        "Most interested in",
+                        "Age"
+                    ],
+                    [
+                        "Chris",
+                        "HTML tables",
+                        "22"
+                    ],
+                    [
+                        "Dennis",
+                        "Web accessibility",
+                        "45"
+                    ],
+                    [
+                        "if",
+                        "sarah_is_on_the_list == true"
+                    ],
+                    [
+                        "Sarah",
+                        "JavaScript frameworks",
+                        "29"
+                    ],
+                    [
+                        "endif",
+                        ""
+                    ],
+                    [
+                        "Karen",
+                        "Web performance",
+                        "36"
+                    ]
+                ]
+            }
+        }
+    ],
+    "version": "2.29.0"
+}
