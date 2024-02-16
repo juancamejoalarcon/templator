@@ -16,6 +16,8 @@ export default defineConfig(({ mode, command }) => {
         plugins: [svelte()],
     }
 
+    if (command === 'serve') return { ...common }
+
     if (mode === 'demo') {
         return {
             ...common,
