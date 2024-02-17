@@ -21,8 +21,6 @@ describe('template spec', () => {
       keyCode: 38,
     }).trigger('mouseup');
 
-    cy.wait(200);
-
     // Clicks on ADD IF CONDITION button to wrap them in a condition
     cy.get('iframe').then((body) => {
         body['0'].querySelector('button')

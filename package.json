@@ -1,5 +1,6 @@
 {
   "name": "templator",
+  "author": "Juan Camejo Alarcón",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -18,6 +19,7 @@
     "dev": "vite",
     "build": "vite build && vite build --mode=demo",
     "preview": "vite preview",
+    "test": "cypress run",
     "test:ui": "cypress open"
   },
   "devDependencies": {
