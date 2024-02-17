@@ -5,7 +5,7 @@
     </picture>
 </p>
 
-Live demo: [HERE](https://juancamejoalarcon.github.io/templator/dist/demo/index.html)
+Live demo: [HERE](https://juancamejoalarcon.github.io/templator/dist/demo/index.html?demo=If+Statements&indent=true&export=jinja)
 
 ## TO DO
 

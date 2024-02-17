@@ -1,5 +1,6 @@
 import state from '@/lib/services/state.service';
 import ConditionComponent from '@/lib/components/ConditionComponent.svelte'
+import { variableContainerClassName, getVariableContainer, variableEditContainerClassName } from '@/lib/services/variable.service'
 
 /**
  * @param {(string)} type
@@ -123,8 +124,9 @@ export const reapplyConditionsToBlocks = () => {
 
         if (shouldApplyConditionsToBlock(block)) {
 
+            // Replace conditions
             block.holder.querySelectorAll('.' + startOfInlineConditionClassName).forEach(element => {
-                
+
                 const statement = element.firstElementChild.getAttribute('data-statement')
                 const condition = element.querySelector('.' + conditionContentClassName).textContent
                 const id = Array.from(element.classList).find(className => className.includes(startOfIdForInlineConditionContainers))
@@ -137,6 +139,15 @@ export const reapplyConditionsToBlocks = () => {
 
                 onRemoveObserver(startConditionContainer, id)
             });
+
+            // Replace variables
+            block.holder.querySelectorAll('.' + variableContainerClassName).forEach(element => {
+                const variable = element.querySelector('.' + variableEditContainerClassName).firstChild
+
+                const variableContainer = getVariableContainer(variable)
+
+                element.replaceWith(variableContainer)
+            })
 
         }
     }
@@ -163,4 +174,8 @@ export const onRemoveObserver = (el, id) => {
     });
 
     observer.observe(el.parentElement, { subtree: false, childList: true });
+}
+
+export const blockConditionWrapperStyles = {
+    margin: "5px 0px"
 }

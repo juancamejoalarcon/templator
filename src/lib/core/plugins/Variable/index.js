@@ -1,4 +1,4 @@
-import { variableContainerClassName } from '@/lib/services/variable.service'
+import { variableContainerClassName, getVariableContainer } from '@/lib/services/variable.service'
 import VariableComponent from '@/lib/components/VariableComponent.svelte'
 
 import './index.scss'
@@ -27,20 +27,10 @@ export class Variable {
 
         const selectedText = range.extractContents();
 
-        const ifConditionContainer = document.createElement('span');
-        ifConditionContainer.classList.add(variableContainerClassName)
-        new VariableComponent({ 
-            target: ifConditionContainer, 
-            props: { 
-                text: selectedText,
-                onRemove: () => {
-                    ifConditionContainer.remove()
-                }
-            } 
-        })
+        const variableContainer = getVariableContainer(selectedText)
 
 
-        range.insertNode(ifConditionContainer);
+        range.insertNode(variableContainer);
 
     }
 

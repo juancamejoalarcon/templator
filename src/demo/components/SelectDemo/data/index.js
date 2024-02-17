@@ -11,7 +11,7 @@ export const allDemos = [
     { title: "If Statements", data: ifStatements },
     { title: "Loops", data: forLoop },
     { title: "Table", data: table },
-    { title: "indent", data: indent },
-    { title: "contrato", data: contrato },
-    { title: "lorem", data: lorem },
+    { title: "Indent", data: indent },
+    { title: "Lorem ipsum", data: lorem },
+    { title: "Contrato", data: contrato },
 ]

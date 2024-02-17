@@ -2,7 +2,8 @@ import state from '@/lib/services/state.service';
 
 import logicIcon from '@/lib/assets/icons/logic-icon.svg?raw'
 import ConditionComponent from '@/lib/components/ConditionComponent.svelte'
-import { getDefaultCondition, getBlockNames } from '@/lib/services/condition.service'
+import { getDefaultCondition, getBlockNames, blockConditionWrapperStyles } from '@/lib/services/condition.service'
+import { applyStylesToHTMLElement } from '@/lib/services/dom-utils.service'
 
 
 export class Condition {
@@ -58,6 +59,7 @@ export class Condition {
 
     render() {
         const conditionWrapper = document.createElement("div");
+        applyStylesToHTMLElement(conditionWrapper, blockConditionWrapperStyles)
         new ConditionComponent({
             target: conditionWrapper,
             props: {

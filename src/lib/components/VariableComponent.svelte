@@ -40,7 +40,7 @@
 <style lang="scss">
   .variable-container {
     font-family: monospace;
-    background-color: #ebcb8b;
+    background-color: rgb(250, 250, 0);
     color: #2e343f;
     position: relative;
     padding: 0.2rem 0.25rem;

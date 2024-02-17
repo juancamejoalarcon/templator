@@ -2,7 +2,8 @@ import ConditionComponent from '@/lib/components/ConditionComponent.svelte'
 
 import state from '@/lib/services/state.service';
 
-import { getNameOfEndStatement, getBlockNames } from '@/lib/services/condition.service'
+import { getNameOfEndStatement, getBlockNames, blockConditionWrapperStyles } from '@/lib/services/condition.service'
+import { applyStylesToHTMLElement } from '@/lib/services/dom-utils.service'
 
 export class EndCondition {
 
@@ -30,7 +31,8 @@ export class EndCondition {
 
     render() {
         const endConditionWrapper = document.createElement("div");
-
+        applyStylesToHTMLElement(endConditionWrapper, blockConditionWrapperStyles);
+        
         new ConditionComponent({ 
             target: endConditionWrapper,
             props: {
