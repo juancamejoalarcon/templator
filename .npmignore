@@ -1,0 +1,16 @@
+.vscode/*
+node_modules
+src
+cypress
+public
+.gitignore
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+jest.config.ts
+.eslintrc.js
+cypress.config.js
+index.html
+jsconfig.json
+svelte.config.js
+vite.config.js
