@@ -39,12 +39,12 @@ export default defineConfig(({ mode, command }) => {
             rollupOptions: {
                 // make sure to externalize deps that shouldn't be bundled
                 // into your library
-                external: ['svelte'],
-                output: {
-                    globals: {
-                        vue: 'svelte',
-                    },
-                },
+                // external: ['svelte'],
+                // output: {
+                //     globals: {
+                //         vue: 'svelte',
+                //     },
+                // },
             },
         },
     }
