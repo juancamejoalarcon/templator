@@ -16,7 +16,17 @@ export default defineConfig(({ mode, command }) => {
         plugins: [svelte()],
     }
 
-    if (command === 'serve') return { ...common }
+    if (command === 'serve') return { 
+        ...common,
+        rollupOptions: {
+            external: ['svelte'],
+            output: {
+                globals: {
+                    vue: 'svelte',
+                },
+            },
+        },
+    }
 
     if (mode === 'demo') {
         return {
@@ -36,16 +46,6 @@ export default defineConfig(({ mode, command }) => {
                 fileName: 'templator',
             },
             outDir: './dist/lib',
-            rollupOptions: {
-                // make sure to externalize deps that shouldn't be bundled
-                // into your library
-                // external: ['svelte'],
-                // output: {
-                //     globals: {
-                //         vue: 'svelte',
-                //     },
-                // },
-            },
         },
     }
 })
