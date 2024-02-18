@@ -15,6 +15,9 @@
       "require": "./dist/lib/templator.umd.cjs"
     }
   },
+  "publishConfig": {
+	"access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build && vite build --mode=demo",
