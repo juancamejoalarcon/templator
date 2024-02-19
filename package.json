@@ -45,6 +45,7 @@
     "editorjs-html": "^3.4.3",
     "editorjs-text-color-plugin": "^2.0.4",
     "linkedom": "^0.16.8",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "vite-plugin-css-injected-by-js": "^3.4.0"
   }
 }
