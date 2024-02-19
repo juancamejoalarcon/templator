@@ -19,14 +19,6 @@ export default defineConfig(({ mode, command }) => {
 
     if (command === 'serve') return { 
         ...common,
-        // rollupOptions: {
-        //     external: ['svelte'],
-        //     output: {
-        //         globals: {
-        //             vue: 'svelte',
-        //         },
-        //     },
-        // },
     }
 
     if (mode === 'demo') {

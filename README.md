@@ -7,15 +7,15 @@
 
 Live demo: [HERE](https://juancamejoalarcon.github.io/templator/dist/demo/index.html?demo=If+Statements&indent=true&export=jinja)
 
+## GETTING STARTED
+
+```
+npm i @juancamejoalarcon/templator
+```
+
 ## TO DO
 
-- Publish package and automate release
-- Add e2e Tests
 - AST documentation. Explain each block type.
-- Improve demo (create a demo for Tables, Inline conditions, indent)
-- Choose fonts
-- Transform to jinja, nunjucks...
-- logo
 
 
 ## TECH
