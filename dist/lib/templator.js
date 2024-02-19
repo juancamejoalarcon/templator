@@ -12522,16 +12522,16 @@ const Gi = "templator-variable", La = "variable-edit-container", Na = (n) => {
     endConditionContainer: r
   };
 }, Uh = () => {
-  const n = se.api, e = n.blocks.getBlocksCount(), t = (o) => o.name === "header" || o.name === "paragraph";
-  for (let o = 0; o < e; o++) {
-    const i = n.blocks.getBlockByIndex(o);
-    t(i) && (i.holder.querySelectorAll("." + Wi).forEach((s) => {
-      const r = s.firstElementChild.getAttribute("data-statement"), a = s.querySelector("." + Zi).textContent, u = Array.from(s.classList).find((h) => h.includes(Ma)), { startConditionContainer: l, endConditionContainer: c } = Ia(u, a, r.toLowerCase()), d = i.holder.querySelector(`.${Ki}.${u}`);
-      s.replaceWith(l), d.replaceWith(c), Ra(l, u);
-    }), i.holder.querySelectorAll("." + Gi).forEach((s) => {
-      const r = s.querySelector("." + La).firstChild, a = Na(r);
-      s.replaceWith(a);
-    }));
+  const n = se.api, e = n.blocks.getBlocksCount(), t = (i) => i.name === "header" || i.name === "paragraph", o = (i) => i.name === "header" || i.name === "paragraph" || i.name === "table";
+  for (let i = 0; i < e; i++) {
+    const s = n.blocks.getBlockByIndex(i);
+    t(s) && s.holder.querySelectorAll("." + Wi).forEach((r) => {
+      const a = r.firstElementChild.getAttribute("data-statement"), u = r.querySelector("." + Zi).textContent, l = Array.from(r.classList).find((g) => g.includes(Ma)), { startConditionContainer: c, endConditionContainer: d } = Ia(l, u, a.toLowerCase()), h = s.holder.querySelector(`.${Ki}.${l}`);
+      r.replaceWith(c), h.replaceWith(d), Ra(c, l);
+    }), o(s) && s.holder.querySelectorAll("." + Gi).forEach((r) => {
+      const a = r.querySelector("." + La).firstChild, u = Na(a);
+      r.replaceWith(u);
+    });
   }
 }, Ra = (n, e) => {
   const t = new MutationObserver((o) => {

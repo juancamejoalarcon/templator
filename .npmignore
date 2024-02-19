@@ -14,3 +14,4 @@ index.html
 jsconfig.json
 svelte.config.js
 vite.config.js
+dist/demo/*

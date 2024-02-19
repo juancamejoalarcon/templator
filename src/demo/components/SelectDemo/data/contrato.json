@@ -1,11 +1,11 @@
 {
-    "time": 1707070455137,
+    "time": 1708344215711,
     "blocks": [
         {
             "id": "Z8_yQSk41t",
             "type": "IfCondition",
             "data": {
-                "type": "IF",
+                "type": "if",
                 "condition": "tipo_contrato == 'instalments'"
             }
         },
@@ -21,7 +21,7 @@
             "id": "ib5yfjkom5",
             "type": "IfElseCondition",
             "data": {
-                "type": "ELSE",
+                "type": "else if",
                 "condition": "tipo_contrato == 'pay in 4'"
             }
         },
@@ -37,7 +37,7 @@
             "id": "m9-niBrJ3I",
             "type": "IfElseCondition",
             "data": {
-                "type": "ELSE",
+                "type": "else if",
                 "condition": "tipo_contrato == 'paylater'"
             }
         },
@@ -45,7 +45,7 @@
             "id": "KmO94oLTHu",
             "type": "header",
             "data": {
-                "text": "Contrato de servicio de pago aplazado en <span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container  s-TQFJ7UDzQX2l\">paylater_num_days</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span> días de Aplazame.",
+                "text": "Contrato de servicio de pago aplazado en <span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">paylater_num_days</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>&nbsp;días de Aplazame.",
                 "level": 2
             }
         },
@@ -53,7 +53,7 @@
             "id": "GSvwocZPvK",
             "type": "IfEndCondition",
             "data": {
-                "type": "ENDIF"
+                "type": "endif"
             }
         },
         {
@@ -95,22 +95,22 @@
                         "2. Identidad y datos de contacto del prestatario."
                     ],
                     [
-                        "<b>Nombre y apellidos</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">full_name</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n"
+                        "<b>Nombre y apellidos</b>\n<span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">full_name</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>"
                     ],
                     [
-                        "<b>Correo electrónico</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">email</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>",
-                        "<b>D.N.I / N.I.E.</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">document_id</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n",
-                        "<b>Teléfono</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">phone</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n"
+                        "<b>Correo electrónico</b>\n<span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">mail</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>",
+                        "<b>D.N.I / N.I.E.</b>\n<span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">document_id</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>",
+                        "<b>Teléfono</b>\n<span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">phone</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>"
                     ],
                     [
-                        "<b>Domicilio a efectos del presente contrato</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">address</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>"
+                        "<b>Domicilio a efectos del presente contrato</b>\n<span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">address</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>"
                     ],
                     [
                         "if",
                         "shipping_info"
                     ],
                     [
-                        "<b>Dirección de envío del producto adquirido</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">shipping_info</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n"
+                        "<b>Dirección de envío del producto adquirido</b>\n<span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">shipping_info</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span>"
                     ],
                     [
                         "endif",
@@ -121,7 +121,7 @@
                         "billing_address"
                     ],
                     [
-                        "<b>Direccion de facturacion del producto o servicio adquirido</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\"><span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">{{</span> <span class=\"variable-container s-TQFJ7UDzQX2l\">billing_address</span> <span contenteditable=\"false\" class=\"s-TQFJ7UDzQX2l\">}}</span></span></span>\n"
+                        "<b>Direccion de facturacion del producto o servicio adquirido</b>\n<span class=\"templator-variable\"><span class=\"s-TQFJ7UDzQX2l\">&nbsp;<span class=\"templator-variable\"><span contenteditable=\"false\" class=\"variable-container s-EOzA1G7TEuil\"><span class=\"s-EOzA1G7TEuil\">{{</span> <span contenteditable=\"true\" class=\"variable-edit-container s-EOzA1G7TEuil\">billing_address</span> <span class=\"close-icon s-EOzA1G7TEuil\" role=\"button\" tabindex=\"0\"></span> <span class=\"s-EOzA1G7TEuil\">}}</span></span></span></span></span>\n"
                     ],
                     [
                         "endif",

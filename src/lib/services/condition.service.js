@@ -118,6 +118,7 @@ export const reapplyConditionsToBlocks = () => {
 
     const blockCount = api.blocks.getBlocksCount();
     const shouldApplyConditionsToBlock = (block) => block.name === 'header' || block.name === 'paragraph'
+    const shouldApplyVariablesToBlock = (block) => block.name === 'header' || block.name === 'paragraph' || block.name === 'table'
 
     for (let i = 0; i < blockCount; i++) {
         const block = api.blocks.getBlockByIndex(i);
@@ -140,6 +141,9 @@ export const reapplyConditionsToBlocks = () => {
                 onRemoveObserver(startConditionContainer, id)
             });
 
+        }
+
+        if (shouldApplyVariablesToBlock(block)) {
             // Replace variables
             block.holder.querySelectorAll('.' + variableContainerClassName).forEach(element => {
                 const variable = element.querySelector('.' + variableEditContainerClassName).firstChild
@@ -148,7 +152,6 @@ export const reapplyConditionsToBlocks = () => {
 
                 element.replaceWith(variableContainer)
             })
-
         }
     }
 }

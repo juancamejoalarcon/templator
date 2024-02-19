@@ -39,6 +39,7 @@ export default defineConfig(({ mode, command }) => {
 
     return {
         ...common,
+        publicDir: false,
         build: {
             lib: {
                 entry: path.resolve(__dirname, './src/lib/core/Templator/index.js'),
